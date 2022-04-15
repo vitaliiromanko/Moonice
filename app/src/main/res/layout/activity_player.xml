@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PlayerActivity"
+    android:backgroundTint="@color/white_cyan"
+    android:backgroundTintMode="multiply"
+    android:background="@drawable/galaxy_png"
+    >
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/indigo"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            >
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                app:srcCompat="@android:drawable/ic_menu_revert"
+                android:id="@+id/backToMainActivityBtn"
+                android:backgroundTint="#00FFFFFF"
+                app:tint="@color/white_cyan" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:paddingHorizontal="10dp"
+                android:gravity="center_vertical"
+                >
+                <TextView
+                    android:text="The Adventures of Princess Nikita"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView4"
+                    android:textColor="@color/white_purple"
+                    android:textStyle="bold"
+                    />
+                <TextView
+                    android:text="Ch.1 Mystical Dream"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView5"
+                    android:textColor="@color/purple_blue"
+                    />
+            </LinearLayout>
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/ic_bookmark_border"
+                android:id="@+id/imageButton1"
+                android:backgroundTint="#00FFFFFF"
+                app:tint="@color/white_cyan" />
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/my_toolbar"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_toolbar"
+        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:layout_width="350dp"
+            android:layout_height="350dp"
+            app:srcCompat="@drawable/ic_drive"
+            android:id="@+id/imageView8"
+            />
+        <ImageView
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            app:srcCompat="@drawable/universe_button"
+            android:id="@+id/imageView9"
+            android:layout_gravity="center"
+            />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bottom_toolbar"
+        android:background="@color/indigo"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/seekBar"
+            android:background="@color/dark_purple_blue"
+            android:thumbTint="@color/sky_blue"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@color/white"
+            >
+            <ImageButton
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:srcCompat="@android:drawable/ic_media_previous"
+                android:id="@+id/previousChapter"
+                android:backgroundTint="#00FFFFFF"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                app:tint="@color/dark_purple_blue" />
+            <ImageButton
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:srcCompat="@android:drawable/ic_media_rew"
+                android:id="@+id/fiveSecAgo"
+                android:backgroundTint="#00FFFFFF"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                app:tint="@color/dark_purple_blue" />
+            <ImageButton
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:srcCompat="@android:drawable/ic_media_play"
+                android:id="@+id/playStop"
+                android:backgroundTint="#00FFFFFF"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                app:tint="@color/dark_purple_blue" />
+            <ImageButton
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:srcCompat="@android:drawable/ic_media_ff"
+                android:id="@+id/fiveSecForward"
+                android:backgroundTint="#00FFFFFF"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                app:tint="@color/dark_purple_blue" />
+            <ImageButton
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:srcCompat="@android:drawable/ic_media_next"
+                android:id="@+id/nextChapter"
+                android:backgroundTint="#00FFFFFF"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                app:tint="@color/dark_purple_blue" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:background="@color/indigo"
+            >
+            <ImageButton
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:srcCompat="@drawable/ic_chapter_list"
+                android:id="@+id/imageButton2"
+                android:backgroundTint="#00FFFFFF"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                app:tint="@color/white_purple" />
+            <ImageButton
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:srcCompat="@android:drawable/ic_menu_share"
+                android:id="@+id/imageButton3"
+                android:backgroundTint="#00FFFFFF"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                app:tint="@color/white_purple" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

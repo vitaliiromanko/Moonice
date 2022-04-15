@@ -1,0 +1,682 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.books.BooksFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white_cyan"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingTop="15dp"
+            tools:context=".ui.home.HomeFragment">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_moon"
+                    app:tint="@color/indigo" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="10dp"
+                    android:text="Popular Books"
+                    android:textColor="@color/indigo"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="10dp"
+                        android:orientation="vertical"
+
+                        >
+
+                        <ImageButton
+                            android:layout_width="120dp"
+                            android:layout_height="130dp"
+                            android:background="@drawable/universe_button" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingHorizontal="2dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingVertical="2dp"
+                                android:text="Romance"
+                                android:textColor="@color/additional_purple_2" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="40sp"
+                                android:ellipsize="none"
+                                android:scrollHorizontally="false"
+                                android:text="The Adventures Of Princess..."
+                                android:textColor="@color/indigo"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="10dp"
+                        android:orientation="vertical"
+
+                        >
+
+                        <ImageButton
+                            android:layout_width="120dp"
+                            android:layout_height="130dp"
+                            android:background="@drawable/universe_button" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingHorizontal="2dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingVertical="2dp"
+                                android:text="Drama"
+                                android:textColor="@color/additional_purple_2" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="40sp"
+                                android:ellipsize="none"
+                                android:scrollHorizontally="false"
+                                android:text="Nikita And A Lost Fox"
+                                android:textColor="@color/indigo"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="10dp"
+                        android:orientation="vertical"
+
+                        >
+
+                        <ImageButton
+                            android:layout_width="120dp"
+                            android:layout_height="130dp"
+                            android:background="@drawable/universe_button" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingHorizontal="2dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingVertical="2dp"
+                                android:text="Thriller"
+                                android:textColor="@color/additional_purple_2" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="40sp"
+                                android:ellipsize="none"
+                                android:scrollHorizontally="false"
+                                android:text="Rabbit Stew For Nikita"
+                                android:textColor="@color/indigo"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="10dp"
+                        android:orientation="vertical"
+
+                        >
+
+                        <ImageButton
+                            android:layout_width="120dp"
+                            android:layout_height="130dp"
+                            android:background="@drawable/universe_button" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingHorizontal="2dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingVertical="2dp"
+                                android:text="Drama"
+                                android:textColor="@color/additional_purple_2" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="40sp"
+                                android:ellipsize="none"
+                                android:scrollHorizontally="false"
+                                android:text="The Adventures of Princess..."
+                                android:textColor="@color/indigo"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_moon"
+                    app:tint="@color/indigo" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="10dp"
+                    android:text="New Chapters"
+                    android:textColor="@color/indigo"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="10dp"
+                        android:orientation="vertical"
+
+                        >
+
+                        <ImageButton
+                            android:layout_width="120dp"
+                            android:layout_height="130dp"
+                            android:background="@drawable/universe_button" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingHorizontal="2dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingVertical="2dp"
+                                android:text="Romance"
+                                android:textColor="@color/additional_purple_2" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="40sp"
+                                android:ellipsize="none"
+                                android:scrollHorizontally="false"
+                                android:text="The Adventures Of Princess..."
+                                android:textColor="@color/indigo"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="10dp"
+                        android:orientation="vertical"
+
+                        >
+
+                        <ImageButton
+                            android:layout_width="120dp"
+                            android:layout_height="130dp"
+                            android:background="@drawable/universe_button" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingHorizontal="2dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingVertical="2dp"
+                                android:text="Drama"
+                                android:textColor="@color/additional_purple_2" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="40sp"
+                                android:ellipsize="none"
+                                android:scrollHorizontally="false"
+                                android:text="Nikita And A Lost Fox"
+                                android:textColor="@color/indigo"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="10dp"
+                        android:orientation="vertical"
+
+                        >
+
+                        <ImageButton
+                            android:layout_width="120dp"
+                            android:layout_height="130dp"
+                            android:background="@drawable/universe_button" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingHorizontal="2dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingVertical="2dp"
+                                android:text="Thriller"
+                                android:textColor="@color/additional_purple_2" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="40sp"
+                                android:ellipsize="none"
+                                android:scrollHorizontally="false"
+                                android:text="Rabbit Stew For Nikita"
+                                android:textColor="@color/indigo"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="10dp"
+                        android:orientation="vertical"
+
+                        >
+
+                        <ImageButton
+                            android:layout_width="120dp"
+                            android:layout_height="130dp"
+                            android:background="@drawable/universe_button" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingHorizontal="2dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingVertical="2dp"
+                                android:text="Drama"
+                                android:textColor="@color/additional_purple_2" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="40sp"
+                                android:ellipsize="none"
+                                android:scrollHorizontally="false"
+                                android:text="The Adventures of Princess..."
+                                android:textColor="@color/indigo"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_moon"
+                    app:tint="@color/indigo" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="10dp"
+                    android:text="Top Drama"
+                    android:textColor="@color/indigo"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="10dp"
+                        android:orientation="vertical"
+
+                        >
+
+                        <ImageButton
+                            android:layout_width="120dp"
+                            android:layout_height="130dp"
+                            android:background="@drawable/universe_button" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingHorizontal="2dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingVertical="2dp"
+                                android:text="Drama"
+                                android:textColor="@color/additional_purple_2" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="40sp"
+                                android:ellipsize="none"
+                                android:scrollHorizontally="false"
+                                android:text="Nikita's Curse"
+                                android:textColor="@color/indigo"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="10dp"
+                        android:orientation="vertical"
+
+                        >
+
+                        <ImageButton
+                            android:layout_width="120dp"
+                            android:layout_height="130dp"
+                            android:background="@drawable/universe_button" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingHorizontal="2dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingVertical="2dp"
+                                android:text="Drama"
+                                android:textColor="@color/additional_purple_2" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="40sp"
+                                android:ellipsize="none"
+                                android:scrollHorizontally="false"
+                                android:text="Nikita And A Lost Fox"
+                                android:textColor="@color/indigo"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="10dp"
+                        android:orientation="vertical"
+
+                        >
+
+                        <ImageButton
+                            android:layout_width="120dp"
+                            android:layout_height="130dp"
+                            android:background="@drawable/universe_button" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingHorizontal="2dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingVertical="2dp"
+                                android:text="Drama"
+                                android:textColor="@color/additional_purple_2" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="40sp"
+                                android:ellipsize="none"
+                                android:scrollHorizontally="false"
+                                android:text="Sad Nikita"
+                                android:textColor="@color/indigo"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="10dp"
+                        android:orientation="vertical"
+
+                        >
+
+                        <ImageButton
+                            android:layout_width="120dp"
+                            android:layout_height="130dp"
+                            android:background="@drawable/universe_button" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingHorizontal="2dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingVertical="2dp"
+                                android:text="Drama"
+                                android:textColor="@color/additional_purple_2" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="40sp"
+                                android:ellipsize="none"
+                                android:scrollHorizontally="false"
+                                android:text="The Adventures of Princess..."
+                                android:textColor="@color/indigo"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_moon"
+                    app:tint="@color/additional_purple_1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="10dp"
+                    android:text="Top Fantasy"
+                    android:textColor="@color/additional_purple_1"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_moon"
+                    app:tint="@color/additional_purple_1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="10dp"
+                    android:text="Top Thriller"
+                    android:textColor="@color/additional_purple_1"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_moon"
+                    app:tint="@color/additional_purple_1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="10dp"
+                    android:text="Top Comedy"
+                    android:textColor="@color/additional_purple_1"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_moon"
+                    app:tint="@color/additional_purple_1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="10dp"
+                    android:text="Top Romance"
+                    android:textColor="@color/additional_purple_1"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

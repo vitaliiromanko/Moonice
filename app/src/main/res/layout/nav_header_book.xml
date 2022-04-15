@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:orientation="vertical"
+        android:id="@+id/linearLayout"
+        android:background="@drawable/universe_button"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingVertical="5dp"
+        android:backgroundTint="#B23D085E"
+        android:backgroundTintMode="src_atop"
+>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:orientation="horizontal"
+    >
+
+        <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/pink_space"
+                android:contentDescription="@string/nav_header_desc"
+                android:id="@+id/imageView"
+                android:layout_gravity="center"
+        />
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center_vertical"
+                android:layout_marginStart="10dp"
+        >
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="The Adventures of Princess Nikita"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@color/white_cyan"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+
+            />
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/nav_header_vertical_spacing"
+                    android:text="Nikita Nikitius, 2022"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@color/light_purple"
+                    android:textStyle="bold"
+
+            />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginVertical="5dp"
+    >
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Description"
+                android:id="@+id/textView3"
+                android:textColor="@color/light_purple"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:textStyle="bold"
+        />
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Once upon a time in a far away kingdom called Foxia there was a beautiful little princess Nikita waiting for a true love's kiss."
+                android:id="@+id/textView4"
+                android:textColor="@color/purple_blue"
+        />
+    </LinearLayout>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginVertical="5dp"
+    >
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Genre"
+                android:id="@+id/textView5"
+                android:textColor="@color/light_purple"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:textStyle="bold"
+        />
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Romance"
+                android:id="@+id/textView6"
+                android:textColor="@color/purple_blue"
+        />
+    </LinearLayout>
+</LinearLayout>
