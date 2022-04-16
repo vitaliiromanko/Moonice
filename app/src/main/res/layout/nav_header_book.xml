@@ -35,6 +35,7 @@
                 android:layout_marginStart="10dp"
         >
             <TextView
+                android:id="@+id/book_title_header_bar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="The Adventures of Princess Nikita"
@@ -45,6 +46,7 @@
 
             />
             <TextView
+                android:id="@+id/book_author_header_bar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingTop="@dimen/nav_header_vertical_spacing"
@@ -78,7 +80,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Once upon a time in a far away kingdom called Foxia there was a beautiful little princess Nikita waiting for a true love's kiss."
-                android:id="@+id/textView4"
+                android:id="@+id/book_description_header_bar"
                 android:textColor="@color/purple_blue"
         />
     </LinearLayout>
@@ -103,7 +105,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Romance"
-                android:id="@+id/textView6"
+                android:id="@+id/book_genre_header_bar"
                 android:textColor="@color/purple_blue"
         />
     </LinearLayout>

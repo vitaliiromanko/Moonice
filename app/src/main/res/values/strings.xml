@@ -13,7 +13,8 @@
     <string name="log_in">Log in</string>
     <string name="sign_up">Sign up</string>
     <string name="forgot_password">Forgot password</string>
-    <string name="menu_books">Книги</string>
+    <string name="menu_books">Books</string>
     <string name="moonice">moonice</string>
-    <string name="menu_bookmarks">Закладки</string>
+    <string name="menu_bookmarks">Bookmarks</string>
+    <string name="prompt_email">Email</string>
 </resources>

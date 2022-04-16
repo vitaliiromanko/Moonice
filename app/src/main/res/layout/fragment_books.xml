@@ -10,8 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/white_cyan"
@@ -43,169 +42,11 @@
                     android:textStyle="bold" />
             </LinearLayout>
 
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginHorizontal="10dp"
-                        android:orientation="vertical"
-
-                        >
-
-                        <ImageButton
-                            android:layout_width="120dp"
-                            android:layout_height="130dp"
-                            android:background="@drawable/universe_button" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:paddingHorizontal="2dp">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:paddingVertical="2dp"
-                                android:text="Romance"
-                                android:textColor="@color/additional_purple_2" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="40sp"
-                                android:ellipsize="none"
-                                android:scrollHorizontally="false"
-                                android:text="The Adventures Of Princess..."
-                                android:textColor="@color/indigo"
-                                android:textSize="15sp"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginHorizontal="10dp"
-                        android:orientation="vertical"
-
-                        >
-
-                        <ImageButton
-                            android:layout_width="120dp"
-                            android:layout_height="130dp"
-                            android:background="@drawable/universe_button" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:paddingHorizontal="2dp">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:paddingVertical="2dp"
-                                android:text="Drama"
-                                android:textColor="@color/additional_purple_2" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="40sp"
-                                android:ellipsize="none"
-                                android:scrollHorizontally="false"
-                                android:text="Nikita And A Lost Fox"
-                                android:textColor="@color/indigo"
-                                android:textSize="15sp"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginHorizontal="10dp"
-                        android:orientation="vertical"
-
-                        >
-
-                        <ImageButton
-                            android:layout_width="120dp"
-                            android:layout_height="130dp"
-                            android:background="@drawable/universe_button" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:paddingHorizontal="2dp">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:paddingVertical="2dp"
-                                android:text="Thriller"
-                                android:textColor="@color/additional_purple_2" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="40sp"
-                                android:ellipsize="none"
-                                android:scrollHorizontally="false"
-                                android:text="Rabbit Stew For Nikita"
-                                android:textColor="@color/indigo"
-                                android:textSize="15sp"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginHorizontal="10dp"
-                        android:orientation="vertical"
-
-                        >
-
-                        <ImageButton
-                            android:layout_width="120dp"
-                            android:layout_height="130dp"
-                            android:background="@drawable/universe_button" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:paddingHorizontal="2dp">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:paddingVertical="2dp"
-                                android:text="Drama"
-                                android:textColor="@color/additional_purple_2" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="40sp"
-                                android:ellipsize="none"
-                                android:scrollHorizontally="false"
-                                android:text="The Adventures of Princess..."
-                                android:textColor="@color/indigo"
-                                android:textSize="15sp"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-                    </LinearLayout>
-                </LinearLayout>
-
-            </HorizontalScrollView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:context=".MainActivity" />
 
             <LinearLayout
                 android:layout_width="match_parent"

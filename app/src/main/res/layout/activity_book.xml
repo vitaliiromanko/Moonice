@@ -31,7 +31,7 @@
                 app:tint="@color/white_cyan" />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/book_title_main"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -51,7 +51,9 @@
         </LinearLayout>
     </androidx.appcompat.widget.Toolbar>
 
-    <include layout="@layout/nav_header_book" />
+    <include
+        android:id="@+id/nav_header_book"
+        layout="@layout/nav_header_book" />
 
     <include layout="@layout/chapter_item_list" />
 

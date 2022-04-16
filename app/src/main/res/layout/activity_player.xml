@@ -6,9 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PlayerActivity"
-    android:backgroundTint="@color/white_cyan"
-    android:backgroundTintMode="multiply"
-    android:background="@drawable/galaxy_png"
+    android:background="@color/white_cyan"
     >
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/my_toolbar"
@@ -31,7 +29,7 @@
                 app:srcCompat="@android:drawable/ic_menu_revert"
                 android:id="@+id/backToMainActivityBtn"
                 android:backgroundTint="#00FFFFFF"
-                app:tint="@color/white_cyan" />
+                app:tint="@color/white_purple" />
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -63,7 +61,7 @@
                 app:srcCompat="@drawable/ic_bookmark_border"
                 android:id="@+id/imageButton1"
                 android:backgroundTint="#00FFFFFF"
-                app:tint="@color/white_cyan" />
+                app:tint="@color/white_purple" />
         </LinearLayout>
     </androidx.appcompat.widget.Toolbar>
 
@@ -103,7 +101,7 @@
         >
         <SeekBar
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:id="@+id/seekBar"
             android:background="@color/dark_purple_blue"
             android:thumbTint="@color/sky_blue"
@@ -111,13 +109,13 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:orientation="horizontal"
-            android:background="@color/white"
+            android:background="@color/white_cyan"
             >
             <ImageButton
                 android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_height="match_parent"
                 app:srcCompat="@android:drawable/ic_media_previous"
                 android:id="@+id/previousChapter"
                 android:backgroundTint="#00FFFFFF"
@@ -126,7 +124,7 @@
                 app:tint="@color/dark_purple_blue" />
             <ImageButton
                 android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_height="match_parent"
                 app:srcCompat="@android:drawable/ic_media_rew"
                 android:id="@+id/fiveSecAgo"
                 android:backgroundTint="#00FFFFFF"
@@ -135,7 +133,7 @@
                 app:tint="@color/dark_purple_blue" />
             <ImageButton
                 android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_height="match_parent"
                 app:srcCompat="@android:drawable/ic_media_play"
                 android:id="@+id/playStop"
                 android:backgroundTint="#00FFFFFF"
@@ -144,7 +142,7 @@
                 app:tint="@color/dark_purple_blue" />
             <ImageButton
                 android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_height="match_parent"
                 app:srcCompat="@android:drawable/ic_media_ff"
                 android:id="@+id/fiveSecForward"
                 android:backgroundTint="#00FFFFFF"
@@ -153,7 +151,7 @@
                 app:tint="@color/dark_purple_blue" />
             <ImageButton
                 android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_height="match_parent"
                 app:srcCompat="@android:drawable/ic_media_next"
                 android:id="@+id/nextChapter"
                 android:backgroundTint="#00FFFFFF"
@@ -169,8 +167,32 @@
             android:orientation="horizontal"
             android:background="@color/indigo"
             >
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_weight="1"
+                >
+                <ImageButton
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    app:srcCompat="@drawable/ic_heart_fill"
+                    android:id="@+id/like"
+                    android:backgroundTint="#00FFFFFF"
+                    android:layout_gravity="center"
+                    app:tint="@color/white_purple" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="666"
+                    android:id="@+id/textView1"
+                    android:textColor="@color/white_purple"
+                    android:layout_marginStart="5dp"
+                    />
+            </LinearLayout>
             <ImageButton
-                android:layout_width="30dp"
+                android:layout_width="0dp"
                 android:layout_height="30dp"
                 app:srcCompat="@drawable/ic_chapter_list"
                 android:id="@+id/imageButton2"
@@ -179,7 +201,7 @@
                 android:layout_weight="1"
                 app:tint="@color/white_purple" />
             <ImageButton
-                android:layout_width="30dp"
+                android:layout_width="0dp"
                 android:layout_height="30dp"
                 app:srcCompat="@android:drawable/ic_menu_share"
                 android:id="@+id/imageButton3"

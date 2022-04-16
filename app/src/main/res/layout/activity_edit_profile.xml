@@ -1,20 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/dark_space"
-    android:backgroundTint="#E4E9FEFF"
-    android:backgroundTintMode="src_over"
-    android:paddingHorizontal="20dp"
-    android:paddingTop="15dp">
+    android:background="@color/white_cyan"
+    >
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/indigo"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            >
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                app:srcCompat="@android:drawable/ic_menu_revert"
+                android:id="@+id/backToMainActivityBtn"
+                android:backgroundTint="#00FFFFFF"
+                app:tint="@color/white_cyan" />
+            <TextView
+                android:text="Edit Profile"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:id="@+id/edit_profile"
+                android:textColor="@color/white_cyan"
+                android:textStyle="bold"
+                android:layout_weight="1"
+                android:paddingHorizontal="10dp"
+                android:textSize="20sp"
+                android:gravity="center"
+                />
+
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                app:srcCompat="@android:drawable/ic_menu_save"
+                android:id="@+id/imageButton1"
+                android:backgroundTint="#00FFFFFF"
+                app:tint="@color/white_cyan" />
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="top"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/my_toolbar"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="15dp"
+        >
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -36,7 +83,7 @@
                     android:contentDescription="@string/nav_header_desc"
                     android:src="@mipmap/ic_launcher_round"
                     android:tintMode="src_over"
-                    app:tint="#A8563D7C" />
+                    app:tint="#A8563D7C"/>
 
                 <ImageView
                     android:id="@+id/imageView1"
@@ -44,7 +91,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:contentDescription="@string/nav_header_desc"
-                    android:src="@android:drawable/ic_menu_camera" />
+                    android:src="@android:drawable/ic_menu_camera"/>
             </FrameLayout>
 
             <LinearLayout
@@ -59,7 +106,7 @@
                     android:text="Username"
                     android:textColor="@color/additional_purple_1"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"/>
 
                 <EditText
                     android:id="@+id/username"
@@ -86,7 +133,7 @@
                     android:text="Email"
                     android:textColor="@color/additional_purple_1"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"/>
 
                 <EditText
                     android:id="@+id/email"
@@ -113,7 +160,7 @@
                     android:text="New Password"
                     android:textColor="@color/additional_purple_1"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"/>
 
                 <EditText
                     android:id="@+id/new_password"
@@ -140,7 +187,7 @@
                     android:text="Confirm Password"
                     android:textColor="@color/additional_purple_1"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"/>
 
                 <EditText
                     android:id="@+id/confirm_password"
@@ -167,7 +214,7 @@
                     android:text="Birth Date"
                     android:textColor="@color/additional_purple_1"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"/>
 
                 <EditText
                     android:id="@+id/birth_date"
@@ -185,22 +232,4 @@
         </LinearLayout>
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_cornerdecorlight"
-        app:tint="@color/additional_purple_2" />
-
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:scaleX="-1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_cornerdecorlight"
-        app:tint="@color/additional_purple_2" />
 </androidx.constraintlayout.widget.ConstraintLayout>
