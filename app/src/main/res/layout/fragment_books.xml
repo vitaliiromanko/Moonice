@@ -91,7 +91,7 @@
                         <ImageButton
                             android:layout_width="120dp"
                             android:layout_height="130dp"
-                            android:background="@drawable/universe_button" />
+                            android:background="@drawable/book_item_1" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -109,9 +109,10 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="40sp"
-                                android:ellipsize="none"
+                                android:ellipsize="end"
+                                android:lines="2"
                                 android:scrollHorizontally="false"
-                                android:text="The Adventures Of Princess..."
+                                android:text="The Most Beautiful Kite in the World"
                                 android:textColor="@color/indigo"
                                 android:textSize="15sp"
                                 android:textStyle="bold" />
@@ -129,7 +130,7 @@
                         <ImageButton
                             android:layout_width="120dp"
                             android:layout_height="130dp"
-                            android:background="@drawable/universe_button" />
+                            android:background="@drawable/book_item_2" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -149,7 +150,7 @@
                                 android:layout_height="40sp"
                                 android:ellipsize="none"
                                 android:scrollHorizontally="false"
-                                android:text="Nikita And A Lost Fox"
+                                android:text="Throne of glass"
                                 android:textColor="@color/indigo"
                                 android:textSize="15sp"
                                 android:textStyle="bold" />
@@ -167,7 +168,7 @@
                         <ImageButton
                             android:layout_width="120dp"
                             android:layout_height="130dp"
-                            android:background="@drawable/universe_button" />
+                            android:background="@drawable/book_item_3" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -187,7 +188,7 @@
                                 android:layout_height="40sp"
                                 android:ellipsize="none"
                                 android:scrollHorizontally="false"
-                                android:text="Rabbit Stew For Nikita"
+                                android:text="The bazaar of bad dreams"
                                 android:textColor="@color/indigo"
                                 android:textSize="15sp"
                                 android:textStyle="bold" />
@@ -279,7 +280,7 @@
                         <ImageButton
                             android:layout_width="120dp"
                             android:layout_height="130dp"
-                            android:background="@drawable/universe_button" />
+                            android:background="@drawable/book_item_4" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -297,9 +298,10 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="40sp"
-                                android:ellipsize="none"
+                                android:ellipsize="end"
+                                android:lines="2"
                                 android:scrollHorizontally="false"
-                                android:text="Nikita's Curse"
+                                android:text="Electric power in the United States"
                                 android:textColor="@color/indigo"
                                 android:textSize="15sp"
                                 android:textStyle="bold" />
@@ -317,7 +319,7 @@
                         <ImageButton
                             android:layout_width="120dp"
                             android:layout_height="130dp"
-                            android:background="@drawable/universe_button" />
+                            android:background="@drawable/book_item_5" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -335,9 +337,10 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="40sp"
-                                android:ellipsize="none"
+                                android:ellipsize="end"
+                                android:lines="2"
                                 android:scrollHorizontally="false"
-                                android:text="Nikita And A Lost Fox"
+                                android:text="No more pencils, no more books, no more teacher's dirty looks!"
                                 android:textColor="@color/indigo"
                                 android:textSize="15sp"
                                 android:textStyle="bold" />
@@ -355,7 +358,7 @@
                         <ImageButton
                             android:layout_width="120dp"
                             android:layout_height="130dp"
-                            android:background="@drawable/universe_button" />
+                            android:background="@drawable/book_item_6" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -373,9 +376,10 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="40sp"
-                                android:ellipsize="none"
+                                android:ellipsize="end"
+                                android:lines="2"
                                 android:scrollHorizontally="false"
-                                android:text="Sad Nikita"
+                                android:text="Research directions in object-oriented programming"
                                 android:textColor="@color/indigo"
                                 android:textSize="15sp"
                                 android:textStyle="bold" />

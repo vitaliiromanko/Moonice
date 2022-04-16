@@ -1,11 +1,14 @@
 package com.nulp.moonice
 
+import android.graphics.BitmapFactory
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.nulp.moonice.databinding.ItemBookBinding
 import com.nulp.moonice.model.Book
+import java.io.File
 
 interface BooksActionListener {
     fun onBookClick(book: Book)
@@ -27,7 +30,7 @@ class BooksAdapter(
             R.id.book_icon -> {
                 actionListener.onBookClick(book)
             }
-            R.id.test -> {
+            R.id.book_image_logo -> {
                 actionListener.onBookClick(book)
             }
         }
@@ -39,7 +42,7 @@ class BooksAdapter(
 
 //        binding.test.setOnClickListener(this)
         binding.bookIcon.setOnClickListener(this)
-        binding.test.setOnClickListener(this)
+        binding.bookImageLogo.setOnClickListener(this)
 
         return BooksViewHolder(binding)
     }
@@ -49,10 +52,12 @@ class BooksAdapter(
         with(holder.binding) {
             holder.itemView.tag = book
             bookIcon.tag = book
-            test.tag = book
+            bookImageLogo.tag = book
 
             bookGenre.text = book.genre.genreName
             bookTitle.text = book.title
+            //bookImageLogo.setImageResource(book.picturePath)
+            bookImageLogo.setBackgroundResource(book.picturePath)
         }
     }
 

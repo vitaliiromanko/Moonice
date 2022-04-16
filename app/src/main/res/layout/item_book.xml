@@ -14,9 +14,10 @@
         android:background="?android:attr/selectableItemBackground">
 
         <ImageButton
-            android:id="@+id/test"
+            android:id="@+id/book_image_logo"
             android:layout_width="120dp"
             android:layout_height="130dp"
+            android:scaleType="centerCrop"
             android:background="@drawable/universe_button" />
 
         <LinearLayout
