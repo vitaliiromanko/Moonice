@@ -55,6 +55,8 @@
         android:id="@+id/nav_header_book"
         layout="@layout/nav_header_book" />
 
-    <include layout="@layout/chapter_item_list" />
+    <include
+        android:id="@+id/chapter_list"
+        layout="@layout/chapter_list" />
 
 </LinearLayout>

@@ -37,7 +37,7 @@ class BooksFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val homeViewModel =
-            ViewModelProvider(this).get(BooksViewModel::class.java)
+            ViewModelProvider(this)[BooksViewModel::class.java]
 
         _binding = FragmentBooksBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -60,8 +60,6 @@ class BooksFragment : Fragment() {
     private fun initRecycleView(binding: FragmentBooksBinding) {
         adapter = BooksAdapter(object : BooksActionListener {
             override fun onBookClick(book: Book) {
-                Log.d("Test", "Clicked")
-                //Toast.makeText(this@MainActivity, "Book: ${book.title}", Toast.LENGTH_SHORT).show()
                 val gson = Gson()
                 val intent = Intent(activity, BookActivity::class.java)
                 intent.putExtra("book", gson.toJson(book))

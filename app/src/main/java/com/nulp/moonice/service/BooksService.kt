@@ -2,9 +2,10 @@ package com.nulp.moonice.service
 
 import com.github.javafaker.Faker
 import com.nulp.moonice.R
-import com.nulp.moonice.model.AudioRecords
 import com.nulp.moonice.model.Book
 import com.nulp.moonice.model.Genre
+import java.time.LocalDateTime
+import java.util.*
 
 typealias BooksListener = (books: List<Book>) -> Unit
 class BooksService {
@@ -15,22 +16,14 @@ class BooksService {
 
     init {
         val faker = Faker.instance()
-        //IMAGES.shuffle()
         books = (1..9).map {
             Book(
                 id = it.toLong(),
                 title = faker.book().title(),
                 author = faker.book().author(),
-                uploadDate = faker.date().birthday(),
+                uploadDate = Date(1245678955 * 1000),
                 description = faker.book().title(),
                 genre = Genre.values()[4 % it],
-                audioRecords = (1..10).map { recordNum ->
-                    AudioRecords(
-                        id = recordNum.toLong(),
-                        chapterNumber = recordNum,
-                        chapterTitle = "Chapter title",
-                        duration = (recordNum * 100).toLong()
-                    ) },
                 picturePath = IMAGES[it - 1]
             ) }.toMutableList()
     }

@@ -9,6 +9,5 @@ data class Book(
     val uploadDate: Date,
     val description: String,
     val genre: Genre,
-    val audioRecords: List<AudioRecords>,
     val picturePath: Int
 )

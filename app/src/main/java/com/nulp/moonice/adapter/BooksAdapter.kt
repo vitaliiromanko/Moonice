@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.nulp.moonice.R
 import com.nulp.moonice.databinding.ItemBookBinding
 import com.nulp.moonice.model.Book
 
@@ -20,26 +19,27 @@ class BooksAdapter(
     var books: List<Book> = emptyList()
         set(newValue) {
             field = newValue
+            notifyDataSetChanged()
         }
 
     override fun onClick(v: View) {
         val book = v.tag as Book
-        when (v.id) {
-            R.id.book_icon -> {
-                actionListener.onBookClick(book)
-            }
-            R.id.book_image_logo -> {
-                actionListener.onBookClick(book)
-            }
-        }
+        actionListener.onBookClick(book)
+//        when (v.id) {
+//            R.id.book_icon -> {
+//                actionListener.onBookClick(book)
+//            }
+//            R.id.book_image_logo -> {
+//                actionListener.onBookClick(book)
+//            }
+//        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BooksViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemBookBinding.inflate(inflater, parent, false)
 
-//        binding.test.setOnClickListener(this)
-        binding.bookIcon.setOnClickListener(this)
+        binding.root.setOnClickListener(this)
         binding.bookImageLogo.setOnClickListener(this)
 
         return BooksViewHolder(binding)

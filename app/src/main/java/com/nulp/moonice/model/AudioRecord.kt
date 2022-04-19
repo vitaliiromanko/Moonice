@@ -1,8 +1,10 @@
 package com.nulp.moonice.model
 
-data class AudioRecords(
+data class AudioRecord(
     val id: Long,
     val chapterNumber: Int,
     val chapterTitle: String?,
-    val duration: Long
+    val duration: Long,
+    val like: Int,
+    val book: Book
 )
