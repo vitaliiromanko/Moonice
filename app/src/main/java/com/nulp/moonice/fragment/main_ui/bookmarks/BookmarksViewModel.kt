@@ -1,13 +1,12 @@
-package com.nulp.moonice.ui.books
+package com.nulp.moonice.fragment.main_ui.bookmarks
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class BooksViewModel : ViewModel() {
-
+class BookmarksViewModel : ViewModel() {
     private val _text = MutableLiveData<String>().apply {
-        value = "This is books Fragment"
+        value = "This is bookmarks Fragment"
     }
     val text: LiveData<String> = _text
 }

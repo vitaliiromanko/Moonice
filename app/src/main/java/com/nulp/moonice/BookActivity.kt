@@ -1,38 +1,38 @@
 package com.nulp.moonice
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
 import com.nulp.moonice.databinding.ActivityBookBinding
-import com.nulp.moonice.model.Genre
+import com.nulp.moonice.model.Book
 import java.text.DateFormat
 import java.text.SimpleDateFormat
-import java.util.*
 
 class BookActivity : AppCompatActivity() {
 
-    private lateinit var bindingClass : ActivityBookBinding
+    private lateinit var binding : ActivityBookBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        bindingClass = ActivityBookBinding.inflate(layoutInflater)
-        setContentView(bindingClass.root)
-        setSupportActionBar(bindingClass.myToolbar)
+        binding = ActivityBookBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        setSupportActionBar(binding.myToolbar)
         val gson = Gson()
-        val title = gson.fromJson(intent.getStringExtra("title"), String::class.java)
-        val author = gson.fromJson(intent.getStringExtra("author"), String::class.java)
-        val uploadDate = gson.fromJson(intent.getStringExtra("uploadDate"), Date::class.java)
-        val description = gson.fromJson(intent.getStringExtra("description"), String()::class.java)
-        val genre = gson.fromJson(intent.getStringExtra("genre"), Genre::class.java)
-        //val genre = gson.fromJson(intent.getStringExtra("genre"), Genre::class.java)
+        val book = gson.fromJson(intent.getStringExtra("book"), Book::class.java)
         val dateFormat: DateFormat = SimpleDateFormat("yyyy")
-        val strDate = dateFormat.format(uploadDate)
+        val strDate = dateFormat.format(book.uploadDate)
 
-        bindingClass.bookTitleMain.text = title
-        bindingClass.navHeaderBook.bookTitleHeaderBar.text = title
-        bindingClass.navHeaderBook.bookAuthorHeaderBar.text = "$author $strDate"
-        bindingClass.navHeaderBook.bookDescriptionHeaderBar.text = description
-        bindingClass.navHeaderBook.bookGenreHeaderBar.text = genre.genreName
+        binding.bookTitleMain.text = book.title
+        binding.navHeaderBook.bookTitleHeaderBar.text = book.title
+        binding.navHeaderBook.bookAuthorHeaderBar.text = "${book.author} $strDate"
+        binding.navHeaderBook.bookDescriptionHeaderBar.text = book.description
+        binding.navHeaderBook.bookGenreHeaderBar.text = book.genre.genreName
+        binding.navHeaderBook.navHeaderBookBookImage.setBackgroundResource(book.picturePath)
 
+        binding.activityBookBackButton.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

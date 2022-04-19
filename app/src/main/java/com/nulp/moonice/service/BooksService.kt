@@ -1,8 +1,10 @@
-package com.nulp.moonice.model
+package com.nulp.moonice.service
 
-import android.content.res.Resources
 import com.github.javafaker.Faker
 import com.nulp.moonice.R
+import com.nulp.moonice.model.AudioRecords
+import com.nulp.moonice.model.Book
+import com.nulp.moonice.model.Genre
 
 typealias BooksListener = (books: List<Book>) -> Unit
 class BooksService {

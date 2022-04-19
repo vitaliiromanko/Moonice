@@ -1,14 +1,12 @@
-package com.nulp.moonice
+package com.nulp.moonice.adapter
 
-import android.graphics.BitmapFactory
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.nulp.moonice.R
 import com.nulp.moonice.databinding.ItemBookBinding
 import com.nulp.moonice.model.Book
-import java.io.File
 
 interface BooksActionListener {
     fun onBookClick(book: Book)

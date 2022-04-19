@@ -1,4 +1,4 @@
-package com.nulp.moonice.ui.books
+package com.nulp.moonice.fragment.main_ui.books
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,10 +11,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
 import com.nulp.moonice.*
+import com.nulp.moonice.adapter.BooksActionListener
+import com.nulp.moonice.adapter.BooksAdapter
 import com.nulp.moonice.databinding.FragmentBooksBinding
 import com.nulp.moonice.model.Book
-import com.nulp.moonice.model.BooksListener
-import com.nulp.moonice.model.BooksService
+import com.nulp.moonice.service.BooksListener
+import com.nulp.moonice.service.BooksService
+
 
 class BooksFragment : Fragment() {
 
@@ -61,12 +64,7 @@ class BooksFragment : Fragment() {
                 //Toast.makeText(this@MainActivity, "Book: ${book.title}", Toast.LENGTH_SHORT).show()
                 val gson = Gson()
                 val intent = Intent(activity, BookActivity::class.java)
-                intent.putExtra("title", gson.toJson(book.title))
-                intent.putExtra("author", gson.toJson(book.author))
-                intent.putExtra("uploadDate", gson.toJson(book.uploadDate))
-                intent.putExtra("description", gson.toJson(book.description))
-                intent.putExtra("genre", gson.toJson(book.genre))
-                intent.putExtra("audioRecords", gson.toJson(book.audioRecords))
+                intent.putExtra("book", gson.toJson(book))
                 startActivity(intent)
             }
         })

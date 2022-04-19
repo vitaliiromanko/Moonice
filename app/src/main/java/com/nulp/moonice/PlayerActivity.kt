@@ -1,23 +1,21 @@
 package com.nulp.moonice
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.nulp.moonice.databinding.ActivityBookBinding
 import com.nulp.moonice.databinding.ActivityPlayerBinding
 
 class PlayerActivity : AppCompatActivity() {
 
-    private lateinit var bindingClass : ActivityPlayerBinding
+    private lateinit var binding : ActivityPlayerBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        bindingClass = ActivityPlayerBinding.inflate(layoutInflater)
-        setContentView(bindingClass.root)
-        setSupportActionBar(bindingClass.myToolbar)
+        binding = ActivityPlayerBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        setSupportActionBar(binding.myToolbar)
 
-        bindingClass.backToMainActivityBtn.setOnClickListener {
+        binding.backToMainActivityBtn.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             // start your next activity
             startActivity(intent)

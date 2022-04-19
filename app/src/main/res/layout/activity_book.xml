@@ -23,7 +23,7 @@
             android:orientation="horizontal">
 
             <ImageButton
-                android:id="@+id/imageButton"
+                android:id="@+id/activity_book_back_button"
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:backgroundTint="#00FFFFFF"
@@ -37,7 +37,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
                 android:paddingHorizontal="10dp"
-                android:text="The Adventures of Princess Nikita"
+                android:text="Throne of glass"
                 android:textColor="@color/white_purple"
                 android:textStyle="bold" />
 

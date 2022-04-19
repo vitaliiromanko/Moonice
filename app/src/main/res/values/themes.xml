@@ -13,6 +13,7 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+
     </style>
 
     <style name="Theme.Moonice.NoActionBar">
@@ -25,7 +26,10 @@
     <style name="Theme.Moonice.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
     <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
         <item name="color">@color/indigo</item>
-        <item name="barLength">60dp</item>
-        <item name="arrowShaftLength">60dp</item>
+        <item name="barLength">40dp</item>
+        <item name="gapBetweenBars">5dp</item>
+        <item name="thickness">7dp</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
     </style>
 </resources>

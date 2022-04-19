@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.bookmarks.BookmarksFragment">
+    tools:context=".fragment.main_ui.bookmarks.BookmarksFragment">
 
 
     <ScrollView
@@ -60,11 +60,11 @@
                     <ImageButton
                         android:layout_width="120dp"
                         android:layout_height="130dp"
-                        android:background="@drawable/universe_button" />
+                        android:background="@drawable/book_item_1" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="90dp"
                         android:layout_gravity="center_vertical"
                         android:layout_marginHorizontal="10dp"
                         android:orientation="vertical">
@@ -72,9 +72,10 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:ellipsize="none"
+                            android:ellipsize="end"
+                            android:lines="1"
                             android:scrollHorizontally="false"
-                            android:text="The Adventures Of Princess..."
+                            android:text="The Most Beautiful Kite in the World."
                             android:textColor="@color/indigo"
                             android:textSize="15sp"
                             android:textStyle="bold" />
@@ -83,14 +84,14 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:paddingVertical="2dp"
-                            android:text="Nikita Nikitius, 2022"
+                            android:text="Andrea Spalding, 2003"
                             android:textColor="@color/additional_purple_2" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="30dp"
-                            android:text="Ch.2 Marry me, Mister Vita!"
+                            android:text="Ch.2 Jenny wants a store"
                             android:textColor="@color/additional_purple_2" />
                     </LinearLayout>
                 </LinearLayout>
@@ -106,7 +107,7 @@
                     <ImageButton
                         android:layout_width="120dp"
                         android:layout_height="130dp"
-                        android:background="@drawable/universe_button" />
+                        android:background="@drawable/book_item_2" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -120,7 +121,7 @@
                             android:layout_height="wrap_content"
                             android:ellipsize="none"
                             android:scrollHorizontally="false"
-                            android:text="Nikita And A Lost Fox"
+                            android:text="Throne of glass"
                             android:textColor="@color/indigo"
                             android:textSize="15sp"
                             android:textStyle="bold" />
@@ -129,7 +130,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:paddingVertical="2dp"
-                            android:text="Nikitelo le Nikidi, 1756"
+                            android:text="Sarah J. Maas, 2018"
                             android:textColor="@color/additional_purple_2" />
 
                         <TextView
@@ -152,7 +153,7 @@
                     <ImageButton
                         android:layout_width="120dp"
                         android:layout_height="130dp"
-                        android:background="@drawable/universe_button" />
+                        android:background="@drawable/book_item_3" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -166,7 +167,7 @@
                             android:layout_height="wrap_content"
                             android:ellipsize="none"
                             android:scrollHorizontally="false"
-                            android:text="Rabbit Stew For Nikita"
+                            android:text="The bazaar of bad dreams"
                             android:textColor="@color/indigo"
                             android:textSize="15sp"
                             android:textStyle="bold" />
@@ -175,14 +176,14 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:paddingVertical="2dp"
-                            android:text="Nikitano Kita, 1999"
+                            android:text="Stephen King, 1999"
                             android:textColor="@color/additional_purple_2" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="30dp"
-                            android:text="Ch.5 Cutting"
+                            android:text="Ch.5"
                             android:textColor="@color/additional_purple_2" />
                     </LinearLayout>
                 </LinearLayout>
@@ -198,7 +199,7 @@
                     <ImageButton
                         android:layout_width="120dp"
                         android:layout_height="130dp"
-                        android:background="@drawable/universe_button" />
+                        android:background="@drawable/book_item_5" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -212,7 +213,7 @@
                             android:layout_height="wrap_content"
                             android:ellipsize="none"
                             android:scrollHorizontally="false"
-                            android:text="Nikita + Nikito = 3"
+                            android:text="No more pencils, no more books, no more teacher's dirty looks!"
                             android:textColor="@color/indigo"
                             android:textSize="15sp"
                             android:textStyle="bold" />
@@ -221,14 +222,14 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:paddingVertical="2dp"
-                            android:text="Niki Tita, 2013"
+                            android:text="Diane deGroat, 2009"
                             android:textColor="@color/additional_purple_2" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="30dp"
-                            android:text="Ch.89 Tita Tootita"
+                            android:text="Ch.89"
                             android:textColor="@color/additional_purple_2" />
                     </LinearLayout>
                 </LinearLayout>
@@ -243,7 +244,7 @@
                     <ImageButton
                         android:layout_width="120dp"
                         android:layout_height="130dp"
-                        android:background="@drawable/universe_button" />
+                        android:background="@drawable/book_item_4" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -266,14 +267,14 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:paddingVertical="2dp"
-                            android:text="Veronika Rainheart, 1592"
+                            android:text="Ching-Chin Chen, 2000"
                             android:textColor="@color/additional_purple_2" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="30dp"
-                            android:text="Ch.13 Hold me tighter"
+                            android:text="Ch.13"
                             android:textColor="@color/additional_purple_2" />
                     </LinearLayout>
 
