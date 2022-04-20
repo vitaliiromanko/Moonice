@@ -4,5 +4,5 @@
     android:id="@+id/list_of_records"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white_cyan"
+    style="@style/LayoutBackground"
     tools:listitem="@layout/item_chapter" />

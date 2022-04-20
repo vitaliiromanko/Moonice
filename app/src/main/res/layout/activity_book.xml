@@ -27,12 +27,12 @@
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:backgroundTint="#00FFFFFF"
-                app:srcCompat="@android:drawable/ic_menu_revert"
+                app:srcCompat="@drawable/ic_arrow_back"
                 app:tint="@color/white_cyan" />
 
             <TextView
                 android:id="@+id/book_title_main"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
@@ -42,10 +42,10 @@
                 android:textStyle="bold" />
 
             <ImageButton
-                android:id="@+id/imageButton1"
+                android:id="@+id/bookmark"
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
-                android:backgroundTint="#00FFFFFF"
+                android:backgroundTint="@color/transparent"
                 app:srcCompat="@drawable/ic_bookmark_border"
                 app:tint="@color/white_cyan" />
         </LinearLayout>

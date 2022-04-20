@@ -2,8 +2,11 @@ package com.nulp.moonice.authorization.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.util.Patterns
+import android.view.View
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -12,18 +15,20 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.nulp.moonice.MainActivity
+import com.nulp.moonice.R
 import com.nulp.moonice.authorization.forgotpassword.ForgotPasswordActivity
 import com.nulp.moonice.authorization.register.RegistrationActivity
 import com.nulp.moonice.databinding.ActivityLoginBinding
-import com.nulp.moonice.utils.AppValueEventListener
-import com.nulp.moonice.utils.FIREBASE_URL
-import com.nulp.moonice.utils.NODE_USERS
-import com.nulp.moonice.utils.NODE_USER_DETAILS
+
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
     private lateinit var auth: FirebaseAuth
+
+    private var progressBar: ProgressBar? = null
+    private var i = 0
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,8 +54,30 @@ class LoginActivity : AppCompatActivity() {
             finish()
         }
 
+        progressBar = findViewById<ProgressBar>(R.id.loading) as ProgressBar
+
         binding.loginButton.setOnClickListener {
+
+            progressBar!!.visibility = View.VISIBLE
+
+            i = progressBar!!.progress
+
+            Thread(Runnable {
+                // this loop will run until the value of i becomes 99
+                while (i < 20) {
+                    i += 1
+                    Thread.sleep(100)
+                }
+
+                // setting the visibility of the progressbar to invisible
+                // or you can use View.GONE instead of invisible
+                // View.GONE will remove the progressbar
+            }).start()
+
+            progressBar!!.visibility = View.GONE
+
             validateData()
+
         }
 
     }
@@ -95,13 +122,19 @@ class LoginActivity : AppCompatActivity() {
     private fun checkUser() {
         val firebaseUser = auth.currentUser!!
         val ref =
-            FirebaseDatabase.getInstance(FIREBASE_URL)
-                .getReference(NODE_USERS)
+            FirebaseDatabase.getInstance("https://moonicedatabase-default-rtdb.europe-west1.firebasedatabase.app")
+                .getReference("Users")
 
-        ref.child(NODE_USER_DETAILS).child(firebaseUser.uid)
-            .addListenerForSingleValueEvent(AppValueEventListener {
-                startActivity(Intent(this@LoginActivity, MainActivity::class.java))
-                finish()
+        ref.child(firebaseUser.uid)
+            .addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                    finish()
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Log.w("DatabaseError", "loadPost:onCancelled", error.toException());
+                }
             })
     }
 }

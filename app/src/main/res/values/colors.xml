@@ -2,7 +2,7 @@
 <resources>
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">@color/indigo</color>
+    <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
@@ -17,9 +17,12 @@
     <color name="indigo">#3D085E</color>
 
     <color name="white_cyan">#E9FEFF</color>
-    <color name="dark_purple_blue">#37264D</color>
+    <color name="dark_purple_blue">#1D132C</color>
 
     <color name="additional_purple_1">#6D5887</color>
     <color name="additional_purple_2">#9276B7</color>
     <color name="additional_purple_3">#563D7C</color>
+
+    <color name="transparent">#00000000</color>
+    <color name="white_blue">#C5CAE9</color>
 </resources>

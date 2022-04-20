@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/LayoutBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.main_ui.books.BooksFragment">
@@ -12,8 +13,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/white_cyan"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingHorizontal="20dp"
             android:paddingTop="15dp"
@@ -25,21 +25,13 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp">
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_moon"
-                    app:tint="@color/indigo" />
+                <ImageView style="@style/IconMainTitle" />
 
                 <TextView
+                    style="@style/TextMainTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingHorizontal="10dp"
-                    android:text="Popular Books"
-                    android:textColor="@color/indigo"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:text="Popular Books" />
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
@@ -54,21 +46,13 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="10dp">
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_moon"
-                    app:tint="@color/indigo" />
+                <ImageView style="@style/IconMainTitle" />
 
                 <TextView
+                    style="@style/TextMainTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingHorizontal="10dp"
-                    android:text="New Chapters"
-                    android:textColor="@color/indigo"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:text="New Chapters" />
             </LinearLayout>
 
             <HorizontalScrollView
@@ -88,10 +72,13 @@
 
                         >
 
-                        <ImageButton
-                            android:layout_width="120dp"
-                            android:layout_height="130dp"
-                            android:background="@drawable/book_item_1" />
+                        <androidx.cardview.widget.CardView style="@style/ImageButtonStyle">
+
+                            <ImageButton
+                                style="@style/ImageButtonStyle"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/book_item_1" />
+                        </androidx.cardview.widget.CardView>
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -100,22 +87,90 @@
                             android:paddingHorizontal="2dp">
 
                             <TextView
+                                style="@style/BookSubTitleItem"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:paddingVertical="2dp"
-                                android:text="Romance"
-                                android:textColor="@color/additional_purple_2" />
+                                android:text="Romance" />
 
                             <TextView
+                                style="@style/BookTitleItem"
                                 android:layout_width="match_parent"
-                                android:layout_height="40sp"
-                                android:ellipsize="end"
+                                android:layout_height="wrap_content"
                                 android:lines="2"
-                                android:scrollHorizontally="false"
-                                android:text="The Most Beautiful Kite in the World"
-                                android:textColor="@color/indigo"
-                                android:textSize="15sp"
-                                android:textStyle="bold" />
+                                android:text="The Most Beautiful Kite in the World" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="10dp"
+                        android:orientation="vertical"
+
+                        >
+
+                        <androidx.cardview.widget.CardView style="@style/ImageButtonStyle">
+
+                            <ImageButton
+                                style="@style/ImageButtonStyle"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/book_item_2" />
+                        </androidx.cardview.widget.CardView>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingHorizontal="2dp">
+
+                            <TextView
+                                style="@style/BookSubTitleItem"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Drama" />
+
+                            <TextView
+                                style="@style/BookTitleItem"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Throne of glass" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="10dp"
+                        android:orientation="vertical"
+
+                        >
+
+                        <androidx.cardview.widget.CardView style="@style/ImageButtonStyle">
+
+                            <ImageButton
+                                style="@style/ImageButtonStyle"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/book_item_3" />
+                        </androidx.cardview.widget.CardView>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingHorizontal="2dp">
+
+                            <TextView
+                                style="@style/BookSubTitleItem"
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Thriller" />
+
+                            <TextView
+                                style="@style/BookTitleItem"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="The bazaar of bad dreams" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -128,9 +183,8 @@
                         >
 
                         <ImageButton
-                            android:layout_width="120dp"
-                            android:layout_height="130dp"
-                            android:background="@drawable/book_item_2" />
+                            style="@style/ImageButtonStyle"
+                            android:src="@drawable/universe_button" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -139,97 +193,16 @@
                             android:paddingHorizontal="2dp">
 
                             <TextView
+                                style="@style/BookSubTitleItem"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:paddingVertical="2dp"
-                                android:text="Drama"
-                                android:textColor="@color/additional_purple_2" />
+                                android:text="Drama" />
 
                             <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="40sp"
-                                android:ellipsize="none"
-                                android:scrollHorizontally="false"
-                                android:text="Throne of glass"
-                                android:textColor="@color/indigo"
-                                android:textSize="15sp"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginHorizontal="10dp"
-                        android:orientation="vertical"
-
-                        >
-
-                        <ImageButton
-                            android:layout_width="120dp"
-                            android:layout_height="130dp"
-                            android:background="@drawable/book_item_3" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:paddingHorizontal="2dp">
-
-                            <TextView
+                                style="@style/BookTitleItem"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:paddingVertical="2dp"
-                                android:text="Thriller"
-                                android:textColor="@color/additional_purple_2" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="40sp"
-                                android:ellipsize="none"
-                                android:scrollHorizontally="false"
-                                android:text="The bazaar of bad dreams"
-                                android:textColor="@color/indigo"
-                                android:textSize="15sp"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginHorizontal="10dp"
-                        android:orientation="vertical"
-
-                        >
-
-                        <ImageButton
-                            android:layout_width="120dp"
-                            android:layout_height="130dp"
-                            android:background="@drawable/universe_button" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:paddingHorizontal="2dp">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:paddingVertical="2dp"
-                                android:text="Drama"
-                                android:textColor="@color/additional_purple_2" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="40sp"
-                                android:ellipsize="none"
-                                android:scrollHorizontally="false"
-                                android:text="The Adventures of Princess..."
-                                android:textColor="@color/indigo"
-                                android:textSize="15sp"
-                                android:textStyle="bold" />
+                                android:text="The Adventures of Princess..." />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
@@ -243,21 +216,13 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="10dp">
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_moon"
-                    app:tint="@color/indigo" />
+                <ImageView style="@style/IconMainTitle" />
 
                 <TextView
+                    style="@style/TextMainTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingHorizontal="10dp"
-                    android:text="Top Drama"
-                    android:textColor="@color/indigo"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:text="Top Drama" />
             </LinearLayout>
 
             <HorizontalScrollView
@@ -277,10 +242,13 @@
 
                         >
 
-                        <ImageButton
-                            android:layout_width="120dp"
-                            android:layout_height="130dp"
-                            android:background="@drawable/book_item_4" />
+                        <androidx.cardview.widget.CardView style="@style/ImageButtonStyle">
+
+                            <ImageButton
+                                style="@style/ImageButtonStyle"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/book_item_4" />
+                        </androidx.cardview.widget.CardView>
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -289,22 +257,89 @@
                             android:paddingHorizontal="2dp">
 
                             <TextView
+                                style="@style/BookSubTitleItem"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:paddingVertical="2dp"
-                                android:text="Drama"
-                                android:textColor="@color/additional_purple_2" />
+                                android:text="Drama" />
 
                             <TextView
+                                style="@style/BookTitleItem"
                                 android:layout_width="match_parent"
-                                android:layout_height="40sp"
-                                android:ellipsize="end"
+                                android:layout_height="wrap_content"
                                 android:lines="2"
-                                android:scrollHorizontally="false"
-                                android:text="Electric power in the United States"
-                                android:textColor="@color/indigo"
-                                android:textSize="15sp"
-                                android:textStyle="bold" />
+                                android:text="Electric power in the United States" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="10dp"
+                        android:orientation="vertical"
+
+                        >
+
+                        <androidx.cardview.widget.CardView style="@style/ImageButtonStyle">
+
+                            <ImageButton
+                                style="@style/ImageButtonStyle"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/book_item_5" />
+                        </androidx.cardview.widget.CardView>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingHorizontal="2dp">
+
+                            <TextView
+                                style="@style/BookSubTitleItem"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Drama" />
+
+                            <TextView
+                                style="@style/BookTitleItem"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="No more pencils, no more books, no more teacher's dirty looks!" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="10dp"
+                        android:orientation="vertical"
+
+                        >
+
+                        <androidx.cardview.widget.CardView style="@style/ImageButtonStyle">
+
+                            <ImageButton
+                                style="@style/ImageButtonStyle"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/book_item_6" />
+                        </androidx.cardview.widget.CardView>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingHorizontal="2dp">
+
+                            <TextView
+                                style="@style/BookSubTitleItem"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Drama" />
+
+                            <TextView
+                                style="@style/BookTitleItem"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Research directions in object-oriented programming" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -317,9 +352,8 @@
                         >
 
                         <ImageButton
-                            android:layout_width="120dp"
-                            android:layout_height="130dp"
-                            android:background="@drawable/book_item_5" />
+                            style="@style/ImageButtonStyle"
+                            android:src="@drawable/universe_button" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -328,99 +362,16 @@
                             android:paddingHorizontal="2dp">
 
                             <TextView
+                                style="@style/BookSubTitleItem"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:paddingVertical="2dp"
-                                android:text="Drama"
-                                android:textColor="@color/additional_purple_2" />
+                                android:text="Drama" />
 
                             <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="40sp"
-                                android:ellipsize="end"
-                                android:lines="2"
-                                android:scrollHorizontally="false"
-                                android:text="No more pencils, no more books, no more teacher's dirty looks!"
-                                android:textColor="@color/indigo"
-                                android:textSize="15sp"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginHorizontal="10dp"
-                        android:orientation="vertical"
-
-                        >
-
-                        <ImageButton
-                            android:layout_width="120dp"
-                            android:layout_height="130dp"
-                            android:background="@drawable/book_item_6" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:paddingHorizontal="2dp">
-
-                            <TextView
+                                style="@style/BookTitleItem"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:paddingVertical="2dp"
-                                android:text="Drama"
-                                android:textColor="@color/additional_purple_2" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="40sp"
-                                android:ellipsize="end"
-                                android:lines="2"
-                                android:scrollHorizontally="false"
-                                android:text="Research directions in object-oriented programming"
-                                android:textColor="@color/indigo"
-                                android:textSize="15sp"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginHorizontal="10dp"
-                        android:orientation="vertical"
-
-                        >
-
-                        <ImageButton
-                            android:layout_width="120dp"
-                            android:layout_height="130dp"
-                            android:background="@drawable/universe_button" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:paddingHorizontal="2dp">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:paddingVertical="2dp"
-                                android:text="Drama"
-                                android:textColor="@color/additional_purple_2" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="40sp"
-                                android:ellipsize="none"
-                                android:scrollHorizontally="false"
-                                android:text="The Adventures of Princess..."
-                                android:textColor="@color/indigo"
-                                android:textSize="15sp"
-                                android:textStyle="bold" />
+                                android:text="The Adventures of Princess..." />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
@@ -434,21 +385,13 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="10dp">
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_moon"
-                    app:tint="@color/additional_purple_1" />
+                <ImageView style="@style/IconMainTitle" />
 
                 <TextView
+                    style="@style/TextMainTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingHorizontal="10dp"
-                    android:text="Top Fantasy"
-                    android:textColor="@color/additional_purple_1"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:text="Top Fantasy" />
             </LinearLayout>
 
             <LinearLayout
@@ -457,21 +400,13 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="10dp">
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_moon"
-                    app:tint="@color/additional_purple_1" />
+                <ImageView style="@style/IconMainTitle" />
 
                 <TextView
+                    style="@style/TextMainTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingHorizontal="10dp"
-                    android:text="Top Thriller"
-                    android:textColor="@color/additional_purple_1"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:text="Top Thriller" />
             </LinearLayout>
 
             <LinearLayout
@@ -480,21 +415,13 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="10dp">
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_moon"
-                    app:tint="@color/additional_purple_1" />
+                <ImageView style="@style/IconMainTitle" />
 
                 <TextView
+                    style="@style/TextMainTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingHorizontal="10dp"
-                    android:text="Top Comedy"
-                    android:textColor="@color/additional_purple_1"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:text="Top Comedy" />
             </LinearLayout>
 
             <LinearLayout
@@ -503,21 +430,13 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="10dp">
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_moon"
-                    app:tint="@color/additional_purple_1" />
+                <ImageView style="@style/IconMainTitle" />
 
                 <TextView
+                    style="@style/TextMainTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingHorizontal="10dp"
-                    android:text="Top Romance"
-                    android:textColor="@color/additional_purple_1"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:text="Top Romance" />
             </LinearLayout>
 
         </LinearLayout>

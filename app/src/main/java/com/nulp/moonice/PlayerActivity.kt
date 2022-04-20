@@ -30,7 +30,7 @@ class PlayerActivity : AppCompatActivity() {
         binding.activityPlayerBookTitle.text = record.book.title
         binding.activityPlayerChapterInfo.text =
             "Ch. ${record.chapterNumber} ${record.chapterTitle}"
-        binding.activityPlayerBookImage.setBackgroundResource(record.book.picturePath)
+        binding.activityPlayerBookImage.setImageResource(record.book.picturePath)
         binding.activityPlayerLike.text = record.like.toString()
     }
 }

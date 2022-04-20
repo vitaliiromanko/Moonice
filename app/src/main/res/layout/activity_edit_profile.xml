@@ -5,16 +5,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white_cyan"
+    style="@style/LayoutBackground"
     >
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/my_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/indigo"
         android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        android:theme="@style/EditProfileToolbarTheme"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:layout_constraintTop_toTopOf="parent"
         >
@@ -26,30 +25,21 @@
             <ImageButton
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
-                app:srcCompat="@android:drawable/ic_menu_revert"
-                android:id="@+id/backToMainActivityBtn"
-                android:backgroundTint="#00FFFFFF"
-                app:tint="@color/white_cyan" />
+                android:src="@drawable/ic_arrow_back"
+                android:id="@+id/backToMainActivityBtn" />
             <TextView
                 android:text="Edit Profile"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:id="@+id/edit_profile"
-                android:textColor="@color/white_cyan"
-                android:textStyle="bold"
                 android:layout_weight="1"
-                android:paddingHorizontal="10dp"
-                android:textSize="20sp"
-                android:gravity="center"
                 />
 
             <ImageButton
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
-                app:srcCompat="@android:drawable/ic_menu_save"
-                android:id="@+id/imageButton1"
-                android:backgroundTint="#00FFFFFF"
-                app:tint="@color/white_cyan" />
+                app:srcCompat="@drawable/ic_save"
+                android:id="@+id/imageButton1"/>
         </LinearLayout>
     </androidx.appcompat.widget.Toolbar>
 
@@ -91,7 +81,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:contentDescription="@string/nav_header_desc"
-                    android:src="@android:drawable/ic_menu_camera"/>
+                    android:src="@drawable/ic_photo_camera"
+                    app:tint="@color/white_purple"
+                    />
             </FrameLayout>
 
             <LinearLayout
@@ -100,23 +92,19 @@
                 android:orientation="vertical">
 
                 <TextView
+                    style="@style/ProfileSecondaryText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingHorizontal="10dp"
-                    android:text="Username"
-                    android:textColor="@color/additional_purple_1"
-                    android:textSize="18sp"
-                    android:textStyle="bold"/>
+                    android:text="Username"/>
 
                 <EditText
+                    style="@style/EditText"
                     android:id="@+id/username"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="10dp"
-                    android:backgroundTint="@color/additional_purple_2"
                     android:inputType="text"
                     android:selectAllOnFocus="true"
-                    android:textColor="@color/indigo"
 
                     />
             </LinearLayout>
@@ -127,23 +115,19 @@
                 android:orientation="vertical">
 
                 <TextView
+                    style="@style/ProfileSecondaryText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingHorizontal="10dp"
-                    android:text="Email"
-                    android:textColor="@color/additional_purple_1"
-                    android:textSize="18sp"
-                    android:textStyle="bold"/>
+                    android:text="Email"/>
 
                 <EditText
+                    style="@style/EditText"
                     android:id="@+id/email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="10dp"
-                    android:backgroundTint="@color/additional_purple_2"
                     android:inputType="textEmailAddress"
                     android:selectAllOnFocus="true"
-                    android:textColor="@color/indigo"
 
                     />
             </LinearLayout>
@@ -154,23 +138,19 @@
                 android:orientation="vertical">
 
                 <TextView
+                    style="@style/ProfileSecondaryText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingHorizontal="10dp"
-                    android:text="New Password"
-                    android:textColor="@color/additional_purple_1"
-                    android:textSize="18sp"
-                    android:textStyle="bold"/>
+                    android:text="New Password"/>
 
                 <EditText
+                    style="@style/EditText"
                     android:id="@+id/new_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="10dp"
-                    android:backgroundTint="@color/additional_purple_2"
                     android:inputType="textPassword"
                     android:selectAllOnFocus="true"
-                    android:textColor="@color/indigo"
 
                     />
             </LinearLayout>
@@ -181,23 +161,19 @@
                 android:orientation="vertical">
 
                 <TextView
+                    style="@style/ProfileSecondaryText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingHorizontal="10dp"
-                    android:text="Confirm Password"
-                    android:textColor="@color/additional_purple_1"
-                    android:textSize="18sp"
-                    android:textStyle="bold"/>
+                    android:text="Confirm Password"/>
 
                 <EditText
+                    style="@style/EditText"
                     android:id="@+id/confirm_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="10dp"
-                    android:backgroundTint="@color/additional_purple_2"
                     android:inputType="textPassword"
                     android:selectAllOnFocus="true"
-                    android:textColor="@color/indigo"
 
                     />
             </LinearLayout>
@@ -208,23 +184,19 @@
                 android:orientation="vertical">
 
                 <TextView
+                    style="@style/ProfileSecondaryText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingHorizontal="10dp"
-                    android:text="Birth Date"
-                    android:textColor="@color/additional_purple_1"
-                    android:textSize="18sp"
-                    android:textStyle="bold"/>
+                    android:text="Birth Date"/>
 
                 <EditText
+                    style="@style/EditText"
                     android:id="@+id/birth_date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="10dp"
-                    android:backgroundTint="@color/additional_purple_2"
                     android:inputType="date"
                     android:selectAllOnFocus="true"
-                    android:textColor="@color/indigo"
 
                     />
             </LinearLayout>
