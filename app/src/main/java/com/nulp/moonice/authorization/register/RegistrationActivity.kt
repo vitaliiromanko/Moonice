@@ -3,11 +3,8 @@ package com.nulp.moonice.authorization.register
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
-import android.text.TextUtils
 import android.util.Log
 import android.util.Patterns
-import android.view.View
-import android.widget.DatePicker
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
@@ -18,16 +15,16 @@ import com.google.firebase.database.FirebaseDatabase
 import com.nulp.moonice.MainActivity
 import com.nulp.moonice.authorization.login.LoginActivity
 import com.nulp.moonice.databinding.ActivityRegistrationBinding
+import com.nulp.moonice.utils.*
 import java.text.SimpleDateFormat
 import java.util.*
-import java.util.regex.Pattern
-import kotlin.collections.HashMap
-import kotlin.time.Duration.Companion.milliseconds
 
 class RegistrationActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRegistrationBinding
     private lateinit var auth: FirebaseAuth
+    private lateinit var ref: DatabaseReference
+    private lateinit var cal: Calendar
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,19 +43,21 @@ class RegistrationActivity : AppCompatActivity() {
             finish()
         }
 
-        textview_date = binding.birthDate
-        button_date = binding.birthDateButton
+        textviewDate = binding.birthDate
+        buttonDate = binding.birthDateButton
 
 
         val dateSetListener =
-            DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+            DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
                 cal.set(Calendar.YEAR, year)
                 cal.set(Calendar.MONTH, monthOfYear)
                 cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+
                 updateDateInView()
             }
 
-        button_date!!.setOnClickListener {
+        buttonDate!!.setOnClickListener {
+            cal = Calendar.getInstance()
             val datePickerDialog = DatePickerDialog(
                 this@RegistrationActivity,
                 dateSetListener,
@@ -67,28 +66,27 @@ class RegistrationActivity : AppCompatActivity() {
                 cal.get(Calendar.DAY_OF_MONTH)
             )
             cal.add(Calendar.YEAR, -130)
+            Log.d("Test", cal.timeInMillis.toString())
             datePickerDialog.datePicker.minDate = cal.timeInMillis
             cal.add(Calendar.YEAR, 128)
             datePickerDialog.datePicker.maxDate = cal.timeInMillis
-            cal.add(Calendar.YEAR, -10)
             datePickerDialog.show()
         }
     }
+
     private fun updateDateInView() {
         val myFormat = "MM/dd/yyyy"
         val sdf = SimpleDateFormat(myFormat, Locale.US)
-        textview_date!!.text = sdf.format(cal.time)
+        textviewDate!!.text = sdf.format(cal.time)
     }
-
 
 
     private var username: String = ""
     private var email: String = ""
     private var password: String = ""
     private var birthDate: String = ""
-    private var button_date: ImageButton? = null
-    private var textview_date: TextView? = null
-    var cal = Calendar.getInstance()
+    private var buttonDate: ImageButton? = null
+    private var textviewDate: TextView? = null
 
 
     private fun register() {
@@ -98,12 +96,11 @@ class RegistrationActivity : AppCompatActivity() {
         birthDate = binding.birthDate.text.toString().trim()
         val cPassword = binding.confirmPassword.text.toString().trim()
 
-        var mistakeCount = 0
-        if (username.isEmpty()) {
-            binding.username.error = "Please enter username..."
-            mistakeCount++
-        }
+        ref =
+            FirebaseDatabase.getInstance(FIREBASE_URL)
+                .getReference(NODE_USERS)
 
+        var mistakeCount = 0
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             binding.email.error = "Invalid email..."
             mistakeCount++
@@ -129,8 +126,19 @@ class RegistrationActivity : AppCompatActivity() {
             mistakeCount++
         }
 
-        if (mistakeCount == 0) {
-            createUserAccount()
+        if (username.isEmpty()) {
+            binding.username.error = "Please enter username..."
+            mistakeCount++
+        } else {
+            ref.child(NODE_USERNAMES)
+                .addListenerForSingleValueEvent(AppValueEventListener {
+                    if (it.hasChild(username)) {
+                        binding.username.error = "The specified user already exists!"
+                        mistakeCount++
+                    } else if (mistakeCount == 0) {
+                        createUserAccount()
+                    }
+                })
         }
     }
 
@@ -149,38 +157,47 @@ class RegistrationActivity : AppCompatActivity() {
     }
 
     private fun updateUserInfo() {
+
         val timestamp = System.currentTimeMillis()
 
         val uid = auth.uid
         val hashMap: HashMap<String, Any?> = HashMap()
-        hashMap["uid"] = uid
-        hashMap["username"] = username
-        hashMap["email"] = email
-        hashMap["birthDate"] = birthDate
-        hashMap["profileImage"] = "" //add empty, will do in profile edit
-        hashMap["timestamp"] = timestamp
+        hashMap[USER_DETAILS_UID] = uid
+        hashMap[USER_DETAILS_USERNAME] = username
+        hashMap[USER_DETAILS_EMAIL] = email
+        hashMap[USER_DETAILS_BIRTH_DATE] = birthDate
+        hashMap[USER_DETAILS_PROFILE_IMAGE] = "" //add empty, will do in profile edit
+        hashMap[USER_DETAILS_TIMESTAMP] = timestamp
 
-        val ref =
-            FirebaseDatabase.getInstance("https://moonicedatabase-default-rtdb.europe-west1.firebasedatabase.app")
-                .getReference("Users")
-        ref.child(uid!!)
-            .setValue(hashMap)
-            .addOnSuccessListener {
-                Toast.makeText(
-                    this,
-                    "Account created...",
-                    Toast.LENGTH_SHORT
-                ).show()
 
-                startActivity(Intent(this@RegistrationActivity, MainActivity::class.java))
-                finish()
-            }
-            .addOnFailureListener { e ->
-                Toast.makeText(
-                    this,
-                    "Failed saving user info due to ${e.message}",
-                    Toast.LENGTH_SHORT
-                ).show()
+        ref.child(NODE_USERNAMES).child(username).setValue(uid)
+            .addOnCompleteListener {
+                if (it.isSuccessful) {
+                    ref.child(NODE_USER_DETAILS).child(uid!!)
+                        .setValue(hashMap)
+                        .addOnSuccessListener {
+                            Toast.makeText(
+                                this,
+                                "Account created...",
+                                Toast.LENGTH_SHORT
+                            ).show()
+
+                            startActivity(
+                                Intent(
+                                    this@RegistrationActivity,
+                                    MainActivity::class.java
+                                )
+                            )
+                            finish()
+                        }
+                        .addOnFailureListener { e ->
+                            Toast.makeText(
+                                this,
+                                "Failed saving user info due to ${e.message}",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                }
             }
     }
 }
