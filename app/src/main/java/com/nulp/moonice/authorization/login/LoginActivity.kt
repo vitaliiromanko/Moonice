@@ -15,6 +15,10 @@ import com.nulp.moonice.MainActivity
 import com.nulp.moonice.authorization.forgotpassword.ForgotPasswordActivity
 import com.nulp.moonice.authorization.register.RegistrationActivity
 import com.nulp.moonice.databinding.ActivityLoginBinding
+import com.nulp.moonice.utils.AppValueEventListener
+import com.nulp.moonice.utils.FIREBASE_URL
+import com.nulp.moonice.utils.NODE_USERS
+import com.nulp.moonice.utils.NODE_USER_DETAILS
 
 class LoginActivity : AppCompatActivity() {
 
@@ -91,19 +95,13 @@ class LoginActivity : AppCompatActivity() {
     private fun checkUser() {
         val firebaseUser = auth.currentUser!!
         val ref =
-            FirebaseDatabase.getInstance("https://moonicedatabase-default-rtdb.europe-west1.firebasedatabase.app")
-                .getReference("Users")
+            FirebaseDatabase.getInstance(FIREBASE_URL)
+                .getReference(NODE_USERS)
 
-        ref.child(firebaseUser.uid)
-            .addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    startActivity(Intent(this@LoginActivity, MainActivity::class.java))
-                    finish()
-                }
-
-                override fun onCancelled(error: DatabaseError) {
-                    Log.w("DatabaseError", "loadPost:onCancelled", error.toException());
-                }
+        ref.child(NODE_USER_DETAILS).child(firebaseUser.uid)
+            .addListenerForSingleValueEvent(AppValueEventListener {
+                startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                finish()
             })
     }
 }
