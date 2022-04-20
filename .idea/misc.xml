@@ -8,7 +8,7 @@
         <entry key="..\:/PMD_University/Moonice/app/src/main/res/layout/activity_book.xml" value="0.264" />
         <entry key="..\:/PMD_University/Moonice/app/src/main/res/layout/activity_edit_profile.xml" value="0.264" />
         <entry key="..\:/PMD_University/Moonice/app/src/main/res/layout/activity_forgot_password.xml" value="0.264" />
-        <entry key="..\:/PMD_University/Moonice/app/src/main/res/layout/activity_likes.xml" value="0.25416666666666665" />
+        <entry key="..\:/PMD_University/Moonice/app/src/main/res/layout/activity_likes.xml" value="0.25" />
         <entry key="..\:/PMD_University/Moonice/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/PMD_University/Moonice/app/src/main/res/layout/activity_main.xml" value="0.22407407407407406" />
         <entry key="..\:/PMD_University/Moonice/app/src/main/res/layout/activity_player.xml" value="0.264" />
@@ -29,27 +29,6 @@
         <entry key="..\:/PMD_University/Moonice/app/src/main/res/layout/popular_books_fragment.xml" value="0.25416666666666665" />
         <entry key="..\:/PMD_University/Moonice/app/src/main/res/menu/activity_main_drawer.xml" value="0.25025641025641027" />
         <entry key="..\:/PMD_University/Moonice/app/src/main/res/menu/main.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Downloads/Moonice/app/src/main/res/drawable/ic_skip_previous.xml" value="0.2265" />
-        <entry key="..\:/Users/Downloads/Moonice/app/src/main/res/drawable/ic_star.xml" value="0.2265" />
-        <entry key="..\:/Users/Downloads/Moonice/app/src/main/res/layout/activity_book.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/Downloads/Moonice/app/src/main/res/layout/activity_edit_profile.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/Downloads/Moonice/app/src/main/res/layout/activity_forgot_password.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/Downloads/Moonice/app/src/main/res/layout/activity_likes.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/Downloads/Moonice/app/src/main/res/layout/activity_login.xml" value="0.2" />
-        <entry key="..\:/Users/Downloads/Moonice/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/Downloads/Moonice/app/src/main/res/layout/activity_player.xml" value="0.2" />
-        <entry key="..\:/Users/Downloads/Moonice/app/src/main/res/layout/activity_registration.xml" value="0.264" />
-        <entry key="..\:/Users/Downloads/Moonice/app/src/main/res/layout/app_bar_main.xml" value="0.264" />
-        <entry key="..\:/Users/Downloads/Moonice/app/src/main/res/layout/chapter_list.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/Downloads/Moonice/app/src/main/res/layout/content_main.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/Downloads/Moonice/app/src/main/res/layout/fragment_bookmarks.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/Downloads/Moonice/app/src/main/res/layout/fragment_books.xml" value="0.264" />
-        <entry key="..\:/Users/Downloads/Moonice/app/src/main/res/layout/item_book.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/Downloads/Moonice/app/src/main/res/layout/item_chapter.xml" value="0.1" />
-        <entry key="..\:/Users/Downloads/Moonice/app/src/main/res/layout/nav_header_book.xml" value="0.264" />
-        <entry key="..\:/Users/Downloads/Moonice/app/src/main/res/layout/nav_header_main.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/Downloads/Moonice/app/src/main/res/menu/activity_main_drawer.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Downloads/Moonice/app/src/main/res/menu/main.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>
