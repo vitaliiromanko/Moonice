@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1065206639517",
+    "project_id": "moonicedatabase",
+    "storage_bucket": "moonicedatabase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1065206639517:android:867658a878dc2b2f5f1d74",
+        "android_client_info": {
+          "package_name": "com.nulp.moonice"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1065206639517-ll8pnsktpno44038um7ts4jguormkue8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwQnisAad1H4CuQVyIhvkoYJdTMJs2yxg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1065206639517-ll8pnsktpno44038um7ts4jguormkue8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

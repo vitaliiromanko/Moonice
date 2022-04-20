@@ -35,20 +35,20 @@
             android:textSize="@dimen/login_app_name_size" />
 
         <EditText
-            android:id="@+id/userLogin"
+            android:id="@+id/user_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="5dp"
             android:backgroundTint="@color/light_purple"
-            android:hint="@string/prompt_login"
+            android:hint="@string/prompt_email"
             android:importantForAutofill="no"
-            android:inputType="text"
+            android:inputType="textEmailAddress"
             android:selectAllOnFocus="true"
             android:textColor="@color/indigo"
             android:textColorHint="@color/additional_purple_2" />
 
         <EditText
-            android:id="@+id/userPassword"
+            android:id="@+id/user_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="5dp"
@@ -69,19 +69,18 @@
         <!--            android:visibility="gone" />-->
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/loginButton"
+            android:id="@+id/login_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="10dp"
             android:backgroundTint="@color/purple_blue"
-            android:enabled="false"
             android:paddingHorizontal="60dp"
             android:text="@string/log_in"
             android:textColor="@color/indigo"
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/sign_up_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -93,7 +92,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/forgot_password_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"

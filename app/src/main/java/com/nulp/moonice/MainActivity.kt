@@ -12,18 +12,23 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.nulp.moonice.authorization.login.LoginActivity
 import com.nulp.moonice.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        auth = FirebaseAuth.getInstance()
 
         setSupportActionBar(binding.appBarMain.toolbar)
 
@@ -45,10 +50,12 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
+
+        //TEST LOGOUT//
         binding.appBarMain.fab.setOnClickListener {
-            val intent = Intent(this, BookActivity::class.java)
-            // start your next activity
-            startActivity(intent)
+            auth.signOut()
+            startActivity(Intent(this@MainActivity, LoginActivity::class.java))
+            finish()
         }
     }
 
