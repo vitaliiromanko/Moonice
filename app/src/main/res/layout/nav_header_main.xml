@@ -18,19 +18,27 @@
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="16dp">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/nav_header_desc"
+        <androidx.cardview.widget.CardView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:paddingTop="@dimen/nav_header_vertical_spacing"
-            app:srcCompat="@mipmap/ic_launcher_round" />
+            app:cardCornerRadius="50dp"
+            >
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/foxy"
+                android:contentDescription="@string/nav_header_desc"
+                android:scaleType="centerCrop"
+                />
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="10dp"
-            android:text="@string/nav_header_title"
+            android:text="Anonymous"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="@color/white_cyan"
             android:textStyle="bold" />
@@ -39,26 +47,4 @@
 
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/cornerProfileImage1"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_cornerdecorlight"
-        app:tint="@color/light_purple"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="10dp"/>
-
-    <ImageView
-        android:id="@+id/cornerProfileImage2"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:scaleX="-1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_cornerdecorlight"
-        app:tint="@color/light_purple"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

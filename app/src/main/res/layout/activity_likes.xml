@@ -6,16 +6,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LikesActivity"
-    android:background="@color/white_cyan"
+    style="@style/LayoutBackground"
     >
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/my_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/indigo"
         android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        android:theme="@style/EditProfileToolbarTheme"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:layout_constraintTop_toTopOf="parent"
         >
@@ -27,30 +26,22 @@
             <ImageButton
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
-                app:srcCompat="@android:drawable/ic_menu_revert"
-                android:id="@+id/backToMainActivityBtn"
-                android:backgroundTint="#00FFFFFF"
-                app:tint="@color/white_cyan" />
+                app:srcCompat="@drawable/ic_arrow_back"
+                android:id="@+id/backToMainActivityBtn" />
             <TextView
                 android:text="Likes"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:id="@+id/edit_profile"
-                android:textColor="@color/white_cyan"
-                android:textStyle="bold"
                 android:layout_weight="1"
                 android:paddingHorizontal="10dp"
-                android:textSize="20sp"
-                android:gravity="center"
                 />
 
             <ImageButton
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
-                app:srcCompat="@drawable/ic_heart_fill"
-                android:id="@+id/imageButton1"
-                android:backgroundTint="#00FFFFFF"
-                app:tint="@color/white_cyan" />
+                app:srcCompat="@drawable/ic_favorite_border"
+                android:id="@+id/imageButton1" />
         </LinearLayout>
     </androidx.appcompat.widget.Toolbar>
 
@@ -63,7 +54,7 @@
         >
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingHorizontal="20dp"
             android:paddingTop="15dp">
@@ -72,7 +63,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="20dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
                 >
@@ -86,16 +77,8 @@
                     />
 
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="none"
-                    android:scrollHorizontally="false"
-                    android:text="Nikitani228"
-                    android:textColor="@color/indigo"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:layout_weight="1"
-                    android:layout_marginStart="20dp"
+                    style="@style/LikesUsername"
+                    android:text="Jetavella"
                     />
             </LinearLayout>
 
@@ -103,7 +86,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="20dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
                 >
@@ -117,16 +100,8 @@
                     />
 
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="none"
-                    android:scrollHorizontally="false"
-                    android:text="NikitanelloKitanito"
-                    android:textColor="@color/indigo"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:layout_weight="1"
-                    android:layout_marginStart="20dp"
+                    style="@style/LikesUsername"
+                    android:text="KnightSand"
                     />
             </LinearLayout>
 
@@ -134,7 +109,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="20dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
                 >
@@ -148,16 +123,8 @@
                     />
 
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="none"
-                    android:scrollHorizontally="false"
-                    android:text="Kita_Nikita_TitoTa"
-                    android:textColor="@color/indigo"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:layout_weight="1"
-                    android:layout_marginStart="20dp"
+                    style="@style/LikesUsername"
+                    android:text="Apothodom"
                     />
             </LinearLayout>
 
@@ -165,7 +132,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="20dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
                 >
@@ -179,16 +146,8 @@
                     />
 
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="none"
-                    android:scrollHorizontally="false"
-                    android:text="Nikita111299320024"
-                    android:textColor="@color/indigo"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:layout_weight="1"
-                    android:layout_marginStart="20dp"
+                    style="@style/LikesUsername"
+                    android:text="Monsulde"
                     />
             </LinearLayout>
 
@@ -196,7 +155,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="20dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
                 >
@@ -210,16 +169,8 @@
                     />
 
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="none"
-                    android:scrollHorizontally="false"
-                    android:text="Nik"
-                    android:textColor="@color/indigo"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:layout_weight="1"
-                    android:layout_marginStart="20dp"
+                    style="@style/LikesUsername"
+                    android:text="Oktobooth"
                     />
             </LinearLayout>
 
@@ -227,7 +178,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="20dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
                 >
@@ -241,16 +192,8 @@
                     />
 
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="none"
-                    android:scrollHorizontally="false"
-                    android:text="Kin"
-                    android:textColor="@color/indigo"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:layout_weight="1"
-                    android:layout_marginStart="20dp"
+                    style="@style/LikesUsername"
+                    android:text="NovelsNomism"
                     />
             </LinearLayout>
 
@@ -258,7 +201,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="20dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
                 >
@@ -272,16 +215,8 @@
                     />
 
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="none"
-                    android:scrollHorizontally="false"
-                    android:text="NikitessaPrincessa"
-                    android:textColor="@color/indigo"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:layout_weight="1"
-                    android:layout_marginStart="20dp"
+                    style="@style/LikesUsername"
+                    android:text="BooksNephew"
                     />
             </LinearLayout>
 
@@ -289,7 +224,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="20dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
                 >
@@ -303,16 +238,8 @@
                     />
 
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="none"
-                    android:scrollHorizontally="false"
-                    android:text="NikitaForClearSkin"
-                    android:textColor="@color/indigo"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:layout_weight="1"
-                    android:layout_marginStart="20dp"
+                    style="@style/LikesUsername"
+                    android:text="Craigen"
                     />
             </LinearLayout>
 
@@ -334,16 +261,8 @@
                     />
 
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="none"
-                    android:scrollHorizontally="false"
-                    android:text="Forever_AndN1k1tever"
-                    android:textColor="@color/indigo"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:layout_weight="1"
-                    android:layout_marginStart="20dp"
+                    style="@style/LikesUsername"
+                    android:text="DeskKix"
                     />
             </LinearLayout>
         </LinearLayout>

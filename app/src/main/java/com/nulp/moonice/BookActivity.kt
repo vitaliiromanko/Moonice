@@ -45,7 +45,7 @@ class BookActivity : AppCompatActivity() {
         binding.navHeaderBook.bookAuthorHeaderBar.text = "${book.author} $strDate"
         binding.navHeaderBook.bookDescriptionHeaderBar.text = book.description
         binding.navHeaderBook.bookGenreHeaderBar.text = book.genre.genreName
-        binding.navHeaderBook.navHeaderBookBookImage.setBackgroundResource(book.picturePath)
+        binding.navHeaderBook.navHeaderBookBookImage.setImageResource(book.picturePath)
 
         binding.activityBookBackButton.setOnClickListener {
             finish()

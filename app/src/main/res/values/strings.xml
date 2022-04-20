@@ -17,4 +17,6 @@
     <string name="moonice">moonice</string>
     <string name="menu_bookmarks">Bookmarks</string>
     <string name="prompt_email">Email</string>
+    <string name="log_out">Log out</string>
+    <string name="settings">Settings</string>
 </resources>

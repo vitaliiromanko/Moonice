@@ -1,66 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white_cyan"
-    tools:context=".PlayerActivity">
-
+    tools:context=".PlayerActivity"
+    style="@style/LayoutBackground"
+    >
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/my_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/indigo"
         android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        android:theme="@style/PlayerToolbarTheme"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:layout_constraintTop_toTopOf="parent"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
-
+        >
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
-
+            android:orientation="horizontal"
+            >
             <ImageButton
-                android:id="@+id/back_to_book_activity"
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
-                android:backgroundTint="#00FFFFFF"
-                app:srcCompat="@android:drawable/ic_menu_revert"
-                app:tint="@color/white_purple" />
+                android:src="@drawable/ic_arrow_back"
+                android:id="@+id/back_to_book_activity" />
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center_vertical"
                 android:orientation="vertical"
-                android:paddingHorizontal="10dp">
-
+                android:layout_weight="1"
+                android:paddingHorizontal="10dp"
+                android:gravity="center_vertical"
+                >
                 <TextView
-                    android:id="@+id/activity_player_book_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:text="Throne of glass"
-                    android:textColor="@color/white_purple"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/activity_player_chapter_info"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/activity_player_book_title"
+                    android:lines="1"
+                    android:ellipsize="end"
+                    android:scrollHorizontally="true"
+                    />
+                <TextView
                     android:text="Ch.1 Mystical Dream"
-                    android:textColor="@color/purple_blue" />
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/activity_player_chapter_info"
+                    style="@style/SecondaryPlayer"
+                    android:lines="1"
+                    android:ellipsize="end"
+                    android:scrollHorizontally="true"
+                    />
             </LinearLayout>
-
             <ImageButton
-                android:id="@+id/imageButton1"
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
-                android:backgroundTint="#00FFFFFF"
                 app:srcCompat="@drawable/ic_bookmark_border"
-                app:tint="@color/white_purple" />
+                android:id="@+id/imageButton1"/>
         </LinearLayout>
     </androidx.appcompat.widget.Toolbar>
 
@@ -69,149 +69,114 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_toolbar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/my_toolbar"
-        app:layout_constraintVertical_bias="0.5">
+        app:layout_constraintBottom_toTopOf="@+id/bottom_toolbar"
+        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <ImageView
-            android:id="@+id/imageView8"
             android:layout_width="350dp"
             android:layout_height="350dp"
-            app:srcCompat="@drawable/ic_drive" />
-
+            app:srcCompat="@drawable/ic_drive"
+            android:id="@+id/imageView8"
+            />
         <ImageView
-            android:id="@+id/activity_player_book_image"
-            android:layout_width="140dp"
+            android:layout_width="170dp"
             android:layout_height="170dp"
+            app:srcCompat="@drawable/book_item_2"
+            android:id="@+id/activity_player_book_image"
             android:layout_gravity="center"
-            android:background="@drawable/book_item_2" />
+            />
     </FrameLayout>
 
     <LinearLayout
-        android:id="@+id/bottom_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/bottom_toolbar"
         android:background="@color/indigo"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent">
-
-        <SeekBar
-            android:id="@+id/seekBar"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:background="@color/dark_purple_blue"
-            android:thumbTint="@color/sky_blue" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:background="@color/white_cyan"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            style="@style/PlayerControl"
+            >
 
             <ImageButton
                 android:id="@+id/previousChapter"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:backgroundTint="#00FFFFFF"
-                app:srcCompat="@android:drawable/ic_media_previous"
-                app:tint="@color/dark_purple_blue" />
-
+                style="@style/PlayerControlButton"
+                app:srcCompat="@drawable/ic_skip_previous" />
             <ImageButton
-                android:id="@+id/fiveSecAgo"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:backgroundTint="#00FFFFFF"
-                app:srcCompat="@android:drawable/ic_media_rew"
-                app:tint="@color/dark_purple_blue" />
-
+                style="@style/PlayerControlButton"
+                app:srcCompat="@drawable/ic_fast_rewind"
+                android:id="@+id/fiveSecAgo"/>
             <ImageButton
-                android:id="@+id/playStop"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:backgroundTint="#00FFFFFF"
-                app:srcCompat="@android:drawable/ic_media_play"
-                app:tint="@color/dark_purple_blue" />
-
+                style="@style/PlayerControlButton"
+                app:srcCompat="@drawable/ic_play"
+                android:id="@+id/playStop"/>
             <ImageButton
-                android:id="@+id/fiveSecForward"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:backgroundTint="#00FFFFFF"
-                app:srcCompat="@android:drawable/ic_media_ff"
-                app:tint="@color/dark_purple_blue" />
-
+                style="@style/PlayerControlButton"
+                app:srcCompat="@drawable/ic_fast_forward"
+                android:id="@+id/fiveSecForward"/>
             <ImageButton
-                android:id="@+id/nextChapter"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:backgroundTint="#00FFFFFF"
-                app:srcCompat="@android:drawable/ic_media_next"
-                app:tint="@color/dark_purple_blue" />
+                style="@style/PlayerControlButton"
+                app:srcCompat="@drawable/ic_skip_next"
+                android:id="@+id/nextChapter"/>
 
         </LinearLayout>
+        <SeekBar
+            style="@style/PlayerSeekBar"
+            android:id="@+id/seekBar"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+
+            />
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:orientation="horizontal"
             android:background="@color/indigo"
-            android:orientation="horizontal">
-
+            >
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:orientation="horizontal"
                 android:gravity="center"
-                android:orientation="horizontal">
-
+                android:layout_weight="1"
+                >
                 <ImageButton
-                    android:id="@+id/like"
+                    style="@style/PlayerImageButton"
                     android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center"
-                    android:backgroundTint="#00FFFFFF"
-                    app:srcCompat="@drawable/ic_heart_fill"
-                    app:tint="@color/white_purple" />
-
+                    app:srcCompat="@drawable/ic_round_favorite_border_24"
+                    android:id="@+id/like"/>
                 <TextView
-                    android:id="@+id/activity_player_like"
+                    style="@style/PlayerLikeText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
                     android:text="1098"
-                    android:textColor="@color/white_purple" />
+                    android:id="@+id/activity_player_like"
+                    android:layout_marginStart="5dp"
+                    />
             </LinearLayout>
-
             <ImageButton
+                style="@style/PlayerImageButton"
+                android:layout_width="0dp"
+                app:srcCompat="@drawable/ic_playlist_play"
                 android:id="@+id/imageButton2"
-                android:layout_width="0dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:backgroundTint="#00FFFFFF"
-                app:srcCompat="@drawable/ic_chapter_list"
-                app:tint="@color/white_purple" />
-
+                android:layout_weight="1"/>
             <ImageButton
-                android:id="@+id/imageButton3"
+                style="@style/PlayerImageButton"
                 android:layout_width="0dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:backgroundTint="#00FFFFFF"
-                app:srcCompat="@android:drawable/ic_menu_share"
-                app:tint="@color/white_purple" />
+                app:srcCompat="@drawable/ic_share"
+                android:id="@+id/imageButton3"
+                android:layout_weight="1"/>
 
         </LinearLayout>
 
