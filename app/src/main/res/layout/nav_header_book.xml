@@ -19,15 +19,15 @@ android:paddingRight="@dimen/activity_horizontal_margin">
 
     <androidx.cardview.widget.CardView
         android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_height="90dp"
         app:cardCornerRadius="4dp"
         android:layout_gravity="center"
         >
 
         <ImageView
             android:id="@+id/nav_header_book_book_image"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:contentDescription="@string/nav_header_desc"
             android:background="@color/indigo"
             android:scaleType="centerCrop"
