@@ -18,13 +18,17 @@ import com.nulp.moonice.databinding.ActivityRegistrationBinding
 import com.nulp.moonice.utils.*
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.system.measureTimeMillis
 
 class RegistrationActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRegistrationBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var ref: DatabaseReference
-    private lateinit var cal: Calendar
+    private var cal: Calendar = Calendar.getInstance()
+    private val today: Calendar = Calendar.getInstance()
+    private val millieYear: Long = 31556952000
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,7 +61,6 @@ class RegistrationActivity : AppCompatActivity() {
             }
 
         buttonDate!!.setOnClickListener {
-            cal = Calendar.getInstance()
             val datePickerDialog = DatePickerDialog(
                 this@RegistrationActivity,
                 dateSetListener,
@@ -65,11 +68,9 @@ class RegistrationActivity : AppCompatActivity() {
                 cal.get(Calendar.MONTH),
                 cal.get(Calendar.DAY_OF_MONTH)
             )
-            cal.add(Calendar.YEAR, -130)
             Log.d("Test", cal.timeInMillis.toString())
-            datePickerDialog.datePicker.minDate = cal.timeInMillis
-            cal.add(Calendar.YEAR, 128)
-            datePickerDialog.datePicker.maxDate = cal.timeInMillis
+            datePickerDialog.datePicker.minDate = today.timeInMillis - 130 * millieYear
+            datePickerDialog.datePicker.maxDate = today.timeInMillis - 2 * millieYear
             datePickerDialog.show()
         }
     }

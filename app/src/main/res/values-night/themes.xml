@@ -56,7 +56,7 @@
 
 
     <style name="ImageButtonStyle" parent="Widget.AppCompat.ImageButton">
-        <item name="android:layout_width">120dp</item>
+        <item name="android:layout_width">105dp</item>
         <item name="android:layout_height">130dp</item>
         <item name="android:background">@color/white_purple</item>
         <item name="android:scaleType">centerCrop</item>

@@ -2,6 +2,7 @@ package com.nulp.moonice.authorization.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.view.View
 import android.widget.ProgressBar
@@ -17,6 +18,10 @@ import com.nulp.moonice.utils.AppValueEventListener
 import com.nulp.moonice.utils.FIREBASE_URL
 import com.nulp.moonice.utils.NODE_USERS
 import com.nulp.moonice.utils.NODE_USER_DETAILS
+import kotlinx.coroutines.awaitCancellation
+import kotlinx.coroutines.delay
+import kotlin.concurrent.thread
+import android.os.Handler as Handler
 
 
 class LoginActivity : AppCompatActivity() {
@@ -24,7 +29,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var auth: FirebaseAuth
 
-    private var progressBar: ProgressBar? = null
+    var progressStatus = 0
     private var i = 0
 
 
@@ -52,24 +57,35 @@ class LoginActivity : AppCompatActivity() {
             finish()
         }
 
-        progressBar = binding.loading
+
+        val progressBar = binding.loading
         binding.loginButton.setOnClickListener {
-            progressBar!!.visibility = View.VISIBLE
-            i = progressBar!!.progress
-            Thread(Runnable {
-                // this loop will run until the value of i becomes 99
-                while (i < 20) {
-                    i += 1
-                    Thread.sleep(100)
-                }
-                // setting the visibility of the progressbar to invisible
-                // or you can use View.GONE instead of invisible
-                // View.GONE will remove the progressbar
-            }).start()
-            progressBar!!.visibility = View.GONE
+            progressLoading(progressBar)
             validateData()
         }
 
+    }
+
+    private fun progressLoading(progressBar : ProgressBar){
+        progressStatus = 0
+        progressBar.progress = progressStatus
+        progressBar.visibility = View.VISIBLE
+        val thread : Thread = Thread{
+            Thread.sleep(100)
+        }
+        while (progressStatus < 100) {
+            // performing some dummy operation
+            try {
+                thread.start()
+                Log.d("Test", progressStatus.toString())
+                progressStatus += 10
+            } catch (e: InterruptedException) {
+                e.printStackTrace()
+            }
+            // Updating the progress bar
+            progressBar.progress = progressStatus
+        }
+        progressBar.visibility = View.GONE
     }
 
     private var email = ""
