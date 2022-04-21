@@ -4,7 +4,7 @@
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/indigo</item>
         <item name="colorPrimaryVariant">@color/indigo</item>
-        <item name="colorOnPrimary">@color/white_cyan</item>
+        <item name="colorOnPrimary">@color/white_cyan</item>\
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
@@ -12,6 +12,7 @@
         <item name="android:textColorPrimary">@color/indigo</item>
         <item name="android:textColorSecondary">@color/additional_purple_1</item>
         <item name="android:listDivider">@color/white_blue</item>
+        <item name="statusBarScrim">@color/indigo</item>
 
 
         <!-- Status bar color. -->
@@ -22,6 +23,11 @@
         <item name="colorAccent">@color/purple_blue</item>
 
 
+    </style>
+
+    <style name="AlertDialogStyle" parent="Theme.AppCompat.DayNight.Dialog.Alert">
+        <item name="android:background">@color/transparent</item>
+        <item name="android:windowBackground">@color/transparent</item>
     </style>
 
 
@@ -130,12 +136,14 @@
 
     <style name="LogoStyle">
         <item name="android:src">@drawable/ic_logolight</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">150dp</item>
     </style>
 
     <style name="LogoTitle">
         <item name="android:textColor">@color/indigo</item>
         <item name="android:textAllCaps">true</item>
-        <item name="android:textSize">36sp</item>
+        <item name="android:textSize">32sp</item>
         <item name="fontFamily">@font/bauhaus_93</item>
     </style>
 
@@ -145,21 +153,21 @@
     </style>
 
     <style name="EditText" parent="Widget.AppCompat.EditText">
-        <item name="android:backgroundTint">@color/light_purple</item>
+        <item name="android:backgroundTint">@color/additional_purple_2</item>
         <item name="android:selectAllOnFocus">true</item>
         <item name="android:textColor">@color/indigo</item>
-        <item name="android:textColorHint">@color/light_purple</item>
+        <item name="android:textColorHint">@color/additional_purple_2</item>
     </style>
 
     <style name="AuthorizationSecondaryText">
-        <item name="android:textColor">@color/additional_purple_1</item>
+        <item name="android:textColor">@color/additional_purple_2</item>
         <item name="textAllCaps">true</item>
         <item name="android:textSize">15sp</item>
         <item name="android:textStyle">bold</item>
     </style>
 
     <style name="ProfileSecondaryText">
-        <item name="android:textColor">@color/additional_purple_1</item>
+        <item name="android:textColor">@color/additional_purple_2</item>
         <item name="android:textSize">18sp</item>
         <item name="android:textStyle">bold</item>
     </style>

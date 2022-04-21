@@ -2,12 +2,15 @@ package com.nulp.moonice.authorization.forgotpassword
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.util.Log
 import android.util.Patterns
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.nulp.moonice.authorization.login.LoginActivity
 import com.nulp.moonice.databinding.ActivityForgotPasswordBinding
+import com.nulp.moonice.vital_changer.LoadingDialog
 
 class ForgotPasswordActivity : AppCompatActivity() {
 
@@ -27,7 +30,18 @@ class ForgotPasswordActivity : AppCompatActivity() {
         }
 
         binding.activityForgotPasswordReset.setOnClickListener {
-            validateData()
+            val loading = LoadingDialog(this)
+            loading.startLoading()
+            val handler = Handler()
+            handler.postDelayed(object :Runnable{
+                override fun run() {
+                    Log.d("Load", "Ing")
+                    loading.isDismiss()
+                    validateData()
+                    Log.d("Validate", "Data")
+                }
+
+            },3000)
         }
     }
 
