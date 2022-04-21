@@ -3,6 +3,7 @@ package com.nulp.moonice.authorization.register
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.util.Patterns
 import android.widget.ImageButton
@@ -16,6 +17,7 @@ import com.nulp.moonice.MainActivity
 import com.nulp.moonice.authorization.login.LoginActivity
 import com.nulp.moonice.databinding.ActivityRegistrationBinding
 import com.nulp.moonice.utils.*
+import com.nulp.moonice.vital_changer.LoadingDialog
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.system.measureTimeMillis
@@ -39,7 +41,18 @@ class RegistrationActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
 
         binding.registerButton.setOnClickListener {
-            register()
+            val loading = LoadingDialog(this)
+            loading.startLoading()
+            val handler = Handler()
+            handler.postDelayed(object :Runnable{
+                override fun run() {
+                    Log.d("Load", "Ing")
+                    loading.isDismiss()
+                    register()
+                    Log.d("Register", "User")
+                }
+
+            },3000)
         }
 
         binding.backToLogin.setOnClickListener {

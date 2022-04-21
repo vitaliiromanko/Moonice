@@ -1,5 +1,6 @@
 package com.nulp.moonice.authorization.login
 
+import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -18,6 +19,7 @@ import com.nulp.moonice.utils.AppValueEventListener
 import com.nulp.moonice.utils.FIREBASE_URL
 import com.nulp.moonice.utils.NODE_USERS
 import com.nulp.moonice.utils.NODE_USER_DETAILS
+import com.nulp.moonice.vital_changer.LoadingDialog
 import kotlinx.coroutines.awaitCancellation
 import kotlinx.coroutines.delay
 import kotlin.concurrent.thread
@@ -28,9 +30,6 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
     private lateinit var auth: FirebaseAuth
-
-    var progressStatus = 0
-    private var i = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,35 +56,22 @@ class LoginActivity : AppCompatActivity() {
             finish()
         }
 
-
-        val progressBar = binding.loading
         binding.loginButton.setOnClickListener {
-            progressLoading(progressBar)
-            validateData()
+            val loading = LoadingDialog(this)
+            loading.startLoading()
+            val handler = Handler()
+            handler.postDelayed(object :Runnable{
+                override fun run() {
+                    Log.d("Log", "In")
+                    loading.isDismiss()
+                    validateData()
+                    Log.d("Validate", "Data")
+                }
+
+            },3000)
+
         }
 
-    }
-
-    private fun progressLoading(progressBar : ProgressBar){
-        progressStatus = 0
-        progressBar.progress = progressStatus
-        progressBar.visibility = View.VISIBLE
-        val thread : Thread = Thread{
-            Thread.sleep(100)
-        }
-        while (progressStatus < 100) {
-            // performing some dummy operation
-            try {
-                thread.start()
-                Log.d("Test", progressStatus.toString())
-                progressStatus += 10
-            } catch (e: InterruptedException) {
-                e.printStackTrace()
-            }
-            // Updating the progress bar
-            progressBar.progress = progressStatus
-        }
-        progressBar.visibility = View.GONE
     }
 
     private var email = ""
@@ -109,6 +95,7 @@ class LoginActivity : AppCompatActivity() {
         if (mistakeCount == 0) {
             loginUser()
         }
+
     }
 
     private fun loginUser() {
