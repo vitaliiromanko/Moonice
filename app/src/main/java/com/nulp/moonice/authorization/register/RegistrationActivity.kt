@@ -20,7 +20,6 @@ import com.nulp.moonice.utils.*
 import com.nulp.moonice.vital_changer.LoadingDialog
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.system.measureTimeMillis
 
 class RegistrationActivity : AppCompatActivity() {
 
@@ -30,7 +29,6 @@ class RegistrationActivity : AppCompatActivity() {
     private var cal: Calendar = Calendar.getInstance()
     private val today: Calendar = Calendar.getInstance()
     private val millieYear: Long = 31556952000
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,14 +42,11 @@ class RegistrationActivity : AppCompatActivity() {
             val loading = LoadingDialog(this)
             loading.startLoading()
             val handler = Handler()
-            handler.postDelayed(object :Runnable{
-                override fun run() {
-                    Log.d("Load", "Ing")
-                    loading.isDismiss()
-                    register()
-                    Log.d("Register", "User")
-                }
-
+            handler.postDelayed({
+                Log.d("Load", "Ing")
+                loading.isDismiss()
+                register()
+                Log.d("Register", "User")
             },3000)
         }
 
