@@ -48,13 +48,13 @@
                 </LinearLayout>
 
                 <ImageButton
+
                     android:id="@+id/imageButton1"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:backgroundTint="@color/transparent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:srcCompat="@drawable/ic_search"
-                    app:tint="@color/indigo" />
+                    app:srcCompat="@drawable/ic_search"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
