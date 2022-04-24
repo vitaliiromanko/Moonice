@@ -1,13 +1,11 @@
 package com.nulp.moonice.authorization.login
 
-import android.app.ProgressDialog
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.util.Patterns
-import android.view.View
-import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -27,10 +25,6 @@ import com.nulp.moonice.utils.FIREBASE_URL
 import com.nulp.moonice.utils.NODE_USERS
 import com.nulp.moonice.utils.NODE_USER_DETAILS
 import com.nulp.moonice.vital_changer.LoadingDialog
-import kotlinx.coroutines.awaitCancellation
-import kotlinx.coroutines.delay
-import kotlin.concurrent.thread
-import android.os.Handler as Handler
 
 
 class LoginActivity : AppCompatActivity() {
@@ -82,7 +76,6 @@ class LoginActivity : AppCompatActivity() {
                 loading.isDismiss()
                 Log.d("Loading", "Stopped")
             }, 1000)
-
         }
 
     }
