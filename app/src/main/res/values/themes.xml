@@ -12,17 +12,24 @@
         <item name="android:textColorPrimary">@color/indigo</item>
         <item name="android:textColorSecondary">@color/additional_purple_1</item>
         <item name="android:listDivider">@color/white_blue</item>
-        <item name="statusBarScrim">@color/indigo</item>
+        <item name="statusBarScrim" tools:targetApi="l">@color/indigo</item>
 
+        <item name="colorAccent">@color/white_purple</item>
+        <item name="colorSwitchThumbNormal">@color/indigo</item>
+        <item name="android:colorForeground">@color/indigo</item>
+
+        <item name="android:textColorHighlight">@color/purple_blue</item>
 
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/indigo</item>
         <!-- Customize your theme here. -->
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
 
-        <item name="colorAccent">@color/purple_blue</item>
 
+    </style>
 
+    <style name="ProgressBarTheme" parent="Widget.AppCompat.ProgressBar">
+        <item name="android:indeterminateTint">@color/purple_blue</item>
     </style>
 
     <style name="AlertDialogStyle" parent="Theme.AppCompat.DayNight.Dialog.Alert">

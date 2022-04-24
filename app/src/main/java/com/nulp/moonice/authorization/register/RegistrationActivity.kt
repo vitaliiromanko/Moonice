@@ -107,7 +107,8 @@ class RegistrationActivity : AppCompatActivity() {
         username = binding.username.text.toString().trim()
         email = binding.email.text.toString().trim()
         password = binding.password.text.toString().trim()
-        birthDate = binding.birthDate.text.toString().trim()
+        birthDate = textviewDate!!.text.toString().trim()
+        Log.d("BirthDate", birthDate)
         val cPassword = binding.confirmPassword.text.toString().trim()
 
         ref =
@@ -135,7 +136,7 @@ class RegistrationActivity : AppCompatActivity() {
             mistakeCount++
         }
 
-        if (birthDate.isEmpty()) {
+        if (birthDate == "--/--/----") {
             binding.birthDate.error = "Please enter date of birth..."
             mistakeCount++
         }

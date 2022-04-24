@@ -1,11 +1,15 @@
 package com.nulp.moonice
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Switch
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.widget.SwitchCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
@@ -26,6 +30,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
     private lateinit var auth: FirebaseAuth
+
+    //        theme changer
+    private lateinit var switch: SwitchCompat
+    //        theme changer
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,6 +65,39 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
         navView.menu.setGroupCheckable(0, false, false)
+
+
+//        theme changer
+
+        switch = navView.menu.findItem(R.id.nav_dark_theme).actionView as SwitchCompat
+
+        val appSettingPrefs: SharedPreferences = getSharedPreferences("AppSettingPrefs", 0)
+        val sharedPreferences: SharedPreferences.Editor = appSettingPrefs.edit()
+        val isDarkThemeOn: Boolean = appSettingPrefs.getBoolean("NightMode", false)
+
+        if (isDarkThemeOn) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            switch.isChecked = true
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            switch.isChecked = false
+        }
+
+        switch.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                sharedPreferences.putBoolean("NightMode", true)
+                sharedPreferences.apply()
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                sharedPreferences.putBoolean("NightMode", false)
+                sharedPreferences.apply()
+            }
+
+        }
+        //        theme changer
+
+
         navView.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.nav_logout -> {
@@ -71,6 +113,7 @@ class MainActivity : AppCompatActivity() {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.nav_host_fragment_content_main, BookmarksFragment()).commit()
                 }
+
             }
             drawerLayout.closeDrawer(GravityCompat.START)
             true
@@ -80,12 +123,15 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
-
         return true
     }
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+    fun getSwitch(): SwitchCompat {
+        return switch
     }
 }

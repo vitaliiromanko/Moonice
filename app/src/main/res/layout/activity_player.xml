@@ -79,7 +79,7 @@
             android:layout_width="350dp"
             android:layout_height="350dp"
             app:srcCompat="@drawable/ic_drive"
-            android:id="@+id/imageView8"
+            android:id="@+id/disk"
             />
         <ImageView
             android:layout_width="170dp"

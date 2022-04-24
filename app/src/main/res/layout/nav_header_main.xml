@@ -22,7 +22,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:paddingTop="@dimen/nav_header_vertical_spacing"
-            app:cardCornerRadius="50dp"
+            app:cardCornerRadius="70dp"
             >
             <ImageView
                 android:id="@+id/imageView"

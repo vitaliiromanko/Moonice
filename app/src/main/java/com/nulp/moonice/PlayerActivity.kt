@@ -1,7 +1,10 @@
 package com.nulp.moonice
 
 import android.os.Bundle
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.ImageButton
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.google.gson.Gson
@@ -12,6 +15,12 @@ class PlayerActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPlayerBinding
     private lateinit var playButton : ImageButton
+
+    private lateinit var rotateDiskAnimation: Animation
+    private lateinit var diskImage : ImageView
+
+    private var isPlaying : Boolean = false
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,11 +33,16 @@ class PlayerActivity : AppCompatActivity() {
         val record = gson.fromJson(intent.getStringExtra("record"), AudioRecord::class.java)
 
         initPage(binding, record)
+
+        diskImage = findViewById(R.id.disk)
+
         playButton.setOnClickListener {
-            if(AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_NO){
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            if(isPlaying) {
+                isPlaying = false
+                diskImage.clearAnimation()
             } else {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                isPlaying = true
+                rotateDiskAnimation()
             }
         }
     }
@@ -43,5 +57,10 @@ class PlayerActivity : AppCompatActivity() {
             "Ch. ${record.chapterNumber} ${record.chapterTitle}"
         binding.activityPlayerBookImage.setImageResource(record.book.picturePath)
         binding.activityPlayerLike.text = record.like.toString()
+    }
+
+    private fun rotateDiskAnimation() {
+        rotateDiskAnimation = AnimationUtils.loadAnimation(this, R.anim.rotate_disk)
+        diskImage.startAnimation(rotateDiskAnimation)
     }
 }
