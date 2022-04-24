@@ -9,21 +9,45 @@
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_200</item>
         <item name="colorOnSecondary">@color/black</item>
-        <item name="statusBarScrim">@color/white_purple</item>
+        <item name="statusBarScrim" tools:targetApi="l">@color/white_purple</item>
 
+        <item name="colorAccent">@color/white_purple</item>
+        <item name="colorSwitchThumbNormal">@color/indigo</item>
+        <item name="android:colorForeground">@color/indigo</item>
+
+
+        <item name="android:textCursorDrawable">@null</item>
+        <item name="android:textSelectHandle">@drawable/ic_star_night</item>
+        <item name="android:textSelectHandleLeft">@drawable/ic_star_night</item>
+        <item name="android:textSelectHandleRight">@drawable/ic_star_night</item>
+
+        <item name="android:textColorHighlight">@color/indigo</item>
 
         <item name="android:textColorSecondary">@color/light_purple</item>
         <item name="android:listDivider">@color/indigo</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
-        <item name="colorAccent">@color/light_purple</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/dark_purple_blue</item>
+        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
 
+    </style>
+
+    <style name="DatePickerDialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/light_purple</item>
+    </style>
+
+    <style name="ProgressBarTheme" parent="Widget.AppCompat.ProgressBar">
+        <item name="android:indeterminateTint">@color/light_purple</item>
     </style>
 
     <style name="AlertDialogStyle" parent="Theme.AppCompat.DayNight.Dialog.Alert">
         <item name="android:background">@color/transparent</item>
         <item name="android:windowBackground">@color/transparent</item>
+    </style>
+
+    <style name="AlertDialogTextStyle">
+        <item name="android:textColor">@color/light_purple</item>
+        <item name="android:textSize">19sp</item>
+        <item name="fontFamily">@font/bauhaus_93</item>
     </style>
 
     <style name="IconDate" parent="Widget.AppCompat.ImageButton">
@@ -122,7 +146,8 @@
         <item name="android:background">@color/dark_purple_blue</item>
         <item name="android:textColor">@color/white_purple</item>
         <item name="android:textAllCaps">true</item>
-        <item name="android:textSize">32sp</item>
+        <item name="android:textSize">26sp</item>
+        <item name="tint">@color/white_purple</item>
         <item name="fontFamily">@font/bauhaus_93</item>
     </style>
 
@@ -141,7 +166,7 @@
         <item name="android:textColor">@color/white_purple</item>
 
         <item name="android:textAllCaps">true</item>
-        <item name="android:textSize">36sp</item>
+        <item name="android:textSize">32sp</item>
         <item name="fontFamily">@font/bauhaus_93</item>
     </style>
 
@@ -196,8 +221,8 @@
     <style name="PlayerSeekBar" parent="Widget.AppCompat.SeekBar">
         <item name="android:background">@color/light_purple</item>
         <item name="android:thumbTint">@color/dark_purple_blue</item>
+        <item name="android:progressTint">@color/dark_purple_blue</item>
     </style>
-
 
     <style name="PlayerControl">
         <item name="android:background">@color/indigo</item>
@@ -227,6 +252,7 @@
         <item name="android:background">@color/dark_purple_blue</item>
         <item name="itemTextColor">@color/white_purple</item>
         <item name="itemIconTint">@color/white_purple</item>
+
     </style>
 
     <attr name="secondaryPlayer" format="reference"/>

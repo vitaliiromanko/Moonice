@@ -154,10 +154,13 @@
                         <TextView
                             style="@style/TextDate"
                             android:id="@+id/birth_date"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="--/--/----"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="@string/emptyDate"
+                            android:gravity="center_vertical"
+                            android:paddingHorizontal="5dp"
                             android:textAppearance="@style/TextAppearance.AppCompat.Medium.Inverse"
+                            android:layout_weight="1"
                             />
                     </LinearLayout>
 

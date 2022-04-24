@@ -1,18 +1,25 @@
 package com.nulp.moonice.authorization.login
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.util.Patterns
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.widget.SwitchCompat
+import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+import com.mifmif.common.regex.Main
 import com.nulp.moonice.MainActivity
+import com.nulp.moonice.R
 import com.nulp.moonice.authorization.forgotpassword.ForgotPasswordActivity
 import com.nulp.moonice.authorization.register.RegistrationActivity
 import com.nulp.moonice.databinding.ActivityLoginBinding
+import com.nulp.moonice.databinding.ActivityMainBinding
 import com.nulp.moonice.utils.AppValueEventListener
 import com.nulp.moonice.utils.FIREBASE_URL
 import com.nulp.moonice.utils.NODE_USERS
@@ -25,11 +32,20 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var auth: FirebaseAuth
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        val appSettingPrefs: SharedPreferences = getSharedPreferences("AppSettingPrefs", 0)
+
+        if (appSettingPrefs.getBoolean("NightMode", false)) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
+
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
         auth = FirebaseAuth.getInstance()
 
@@ -53,14 +69,13 @@ class LoginActivity : AppCompatActivity() {
         binding.loginButton.setOnClickListener {
             val loading = LoadingDialog(this)
             loading.startLoading()
+            validateData()
+            Log.d("Log", "In")
             val handler = Handler()
             handler.postDelayed({
-                Log.d("Log", "In")
                 loading.isDismiss()
-                validateData()
-                Log.d("Validate", "Data")
-            },3000)
-
+                Log.d("Loading", "Stopped")
+            }, 1000)
         }
 
     }

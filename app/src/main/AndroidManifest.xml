@@ -15,27 +15,32 @@
         android:theme="@style/Theme.Moonice">
         <activity
             android:name=".LikesActivity"
-            android:exported="false" />
+            android:exported="false"
+            />
         <activity
             android:name=".EditProfileActivity"
-            android:exported="false" />
+            android:exported="false"
+            />
         <activity
             android:name=".PlayerActivity"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+            />
         <activity
             android:name=".BookActivity"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+            />
         <activity
             android:name=".authorization.forgotpassword.ForgotPasswordActivity"
-            android:exported="false" />
+            android:exported="false"
+            />
         <activity
             android:name=".authorization.register.RegistrationActivity"
-            android:exported="false" />
+            android:exported="false"
+            />
         <activity
             android:name=".authorization.login.LoginActivity"
-            android:exported="true">
+            android:exported="true"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -45,7 +50,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.Moonice.NoActionBar" />
+            />
     </application>
 
 </manifest>

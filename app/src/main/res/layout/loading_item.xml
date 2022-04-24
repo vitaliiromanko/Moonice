@@ -9,7 +9,7 @@
 
     <ProgressBar
         android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
+        style="@style/ProgressBarTheme"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:rotation="180"
@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
     <ProgressBar
         android:id="@+id/mProgressBar"
-        style="?android:attr/progressBarStyle"
+        style="@style/ProgressBarTheme"
         android:layout_width="45dp"
         android:layout_height="45dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -28,13 +28,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        style="@style/AlertDialogTextStyle"
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/bauhaus_93"
-        android:text="loading"
-        android:textColor="@color/purple_blue"
-        android:textSize="19sp"
+        android:text="@string/loading"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

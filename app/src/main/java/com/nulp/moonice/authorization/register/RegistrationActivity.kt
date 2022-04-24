@@ -14,6 +14,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.nulp.moonice.MainActivity
+import com.nulp.moonice.R
 import com.nulp.moonice.authorization.login.LoginActivity
 import com.nulp.moonice.databinding.ActivityRegistrationBinding
 import com.nulp.moonice.utils.*
@@ -70,7 +71,7 @@ class RegistrationActivity : AppCompatActivity() {
 
         buttonDate!!.setOnClickListener {
             val datePickerDialog = DatePickerDialog(
-                this@RegistrationActivity,
+                this@RegistrationActivity, R.style.DatePickerDialogTheme,
                 dateSetListener,
                 cal.get(Calendar.YEAR),
                 cal.get(Calendar.MONTH),
@@ -102,7 +103,8 @@ class RegistrationActivity : AppCompatActivity() {
         username = binding.username.text.toString().trim()
         email = binding.email.text.toString().trim()
         password = binding.password.text.toString().trim()
-        birthDate = binding.birthDate.text.toString().trim()
+        birthDate = textviewDate!!.text.toString().trim()
+        Log.d("BirthDate", birthDate)
         val cPassword = binding.confirmPassword.text.toString().trim()
 
         ref =
@@ -130,7 +132,7 @@ class RegistrationActivity : AppCompatActivity() {
             mistakeCount++
         }
 
-        if (birthDate.isEmpty()) {
+        if (birthDate == "--/--/----") {
             binding.birthDate.error = "Please enter date of birth..."
             mistakeCount++
         }

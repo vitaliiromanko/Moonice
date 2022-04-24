@@ -12,22 +12,44 @@
         <item name="android:textColorPrimary">@color/indigo</item>
         <item name="android:textColorSecondary">@color/additional_purple_1</item>
         <item name="android:listDivider">@color/white_blue</item>
-        <item name="statusBarScrim">@color/indigo</item>
+        <item name="statusBarScrim" tools:targetApi="l">@color/indigo</item>
 
+        <item name="colorAccent">@color/white_purple</item>
+        <item name="colorSwitchThumbNormal">@color/indigo</item>
+        <item name="android:colorForeground">@color/indigo</item>
+
+        <item name="android:textCursorDrawable">@null</item>
+        <item name="android:textSelectHandle">@drawable/ic_star</item>
+        <item name="android:textSelectHandleLeft">@drawable/ic_star</item>
+        <item name="android:textSelectHandleRight">@drawable/ic_star</item>
+
+        <item name="android:textColorHighlight">@color/purple_blue</item>
 
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+        <item name="android:statusBarColor" tools:targetApi="l">@color/indigo</item>
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
 
+
+    </style>
+
+    <style name="DatePickerDialogTheme" parent="Theme.AppCompat.DayNight.Dialog">
         <item name="colorAccent">@color/purple_blue</item>
+        <item name="android:textColor">@color/indigo</item>
+    </style>
 
-
+    <style name="ProgressBarTheme" parent="Widget.AppCompat.ProgressBar">
+        <item name="android:indeterminateTint">@color/purple_blue</item>
     </style>
 
     <style name="AlertDialogStyle" parent="Theme.AppCompat.DayNight.Dialog.Alert">
         <item name="android:background">@color/transparent</item>
         <item name="android:windowBackground">@color/transparent</item>
+    </style>
+
+    <style name="AlertDialogTextStyle">
+        <item name="android:textColor">@color/purple_blue</item>
+        <item name="android:textSize">19sp</item>
+        <item name="fontFamily">@font/bauhaus_93</item>
     </style>
 
 
@@ -131,6 +153,7 @@
         <item name="android:textColor">@color/indigo</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:textSize">26sp</item>
+        <item name="tint">@color/indigo</item>
         <item name="fontFamily">@font/bauhaus_93</item>
     </style>
 
@@ -210,6 +233,9 @@
     <style name="PlayerSeekBar" parent="Widget.AppCompat.SeekBar">
         <item name="android:background">@color/dark_purple_blue</item>
         <item name="android:thumbTint">@color/sky_blue</item>
+        <item name="android:progressTint">@color/sky_blue</item>
+
+
     </style>
 
     <style name="PlayerControl">

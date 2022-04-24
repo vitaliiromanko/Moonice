@@ -1,7 +1,12 @@
 package com.nulp.moonice
 
 import android.os.Bundle
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
+import android.widget.ImageButton
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.google.gson.Gson
 import com.nulp.moonice.databinding.ActivityPlayerBinding
 import com.nulp.moonice.model.AudioRecord
@@ -9,17 +14,37 @@ import com.nulp.moonice.model.AudioRecord
 class PlayerActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPlayerBinding
+    private lateinit var playButton : ImageButton
+
+    private lateinit var rotateDiskAnimation: Animation
+    private lateinit var diskImage : ImageView
+
+    private var isPlaying : Boolean = false
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPlayerBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        playButton = findViewById(R.id.playStop)
         setSupportActionBar(binding.myToolbar)
 
         val gson = Gson()
         val record = gson.fromJson(intent.getStringExtra("record"), AudioRecord::class.java)
 
         initPage(binding, record)
+
+        diskImage = findViewById(R.id.disk)
+
+        playButton.setOnClickListener {
+            if(isPlaying) {
+                isPlaying = false
+                diskImage.clearAnimation()
+            } else {
+                isPlaying = true
+                rotateDiskAnimation()
+            }
+        }
     }
 
     private fun initPage(binding: ActivityPlayerBinding, record: AudioRecord) {
@@ -32,5 +57,10 @@ class PlayerActivity : AppCompatActivity() {
             "Ch. ${record.chapterNumber} ${record.chapterTitle}"
         binding.activityPlayerBookImage.setImageResource(record.book.picturePath)
         binding.activityPlayerLike.text = record.like.toString()
+    }
+
+    private fun rotateDiskAnimation() {
+        rotateDiskAnimation = AnimationUtils.loadAnimation(this, R.anim.rotate_disk)
+        diskImage.startAnimation(rotateDiskAnimation)
     }
 }
