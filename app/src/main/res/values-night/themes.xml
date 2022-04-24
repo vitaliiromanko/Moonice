@@ -15,6 +15,12 @@
         <item name="colorSwitchThumbNormal">@color/indigo</item>
         <item name="android:colorForeground">@color/indigo</item>
 
+
+        <item name="android:textCursorDrawable">@null</item>
+        <item name="android:textSelectHandle">@drawable/ic_star_night</item>
+        <item name="android:textSelectHandleLeft">@drawable/ic_star_night</item>
+        <item name="android:textSelectHandleRight">@drawable/ic_star_night</item>
+
         <item name="android:textColorHighlight">@color/indigo</item>
 
         <item name="android:textColorSecondary">@color/light_purple</item>
@@ -23,6 +29,10 @@
         <item name="android:statusBarColor" tools:targetApi="l">@color/dark_purple_blue</item>
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
 
+    </style>
+
+    <style name="DatePickerDialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/light_purple</item>
     </style>
 
     <style name="ProgressBarTheme" parent="Widget.AppCompat.ProgressBar">
@@ -242,6 +252,7 @@
         <item name="android:background">@color/dark_purple_blue</item>
         <item name="itemTextColor">@color/white_purple</item>
         <item name="itemIconTint">@color/white_purple</item>
+
     </style>
 
     <attr name="secondaryPlayer" format="reference"/>

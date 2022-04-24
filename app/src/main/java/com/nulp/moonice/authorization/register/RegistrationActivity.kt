@@ -14,6 +14,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.nulp.moonice.MainActivity
+import com.nulp.moonice.R
 import com.nulp.moonice.authorization.login.LoginActivity
 import com.nulp.moonice.databinding.ActivityRegistrationBinding
 import com.nulp.moonice.utils.*
@@ -70,7 +71,7 @@ class RegistrationActivity : AppCompatActivity() {
 
         buttonDate!!.setOnClickListener {
             val datePickerDialog = DatePickerDialog(
-                this@RegistrationActivity,
+                this@RegistrationActivity, R.style.DatePickerDialogTheme,
                 dateSetListener,
                 cal.get(Calendar.YEAR),
                 cal.get(Calendar.MONTH),

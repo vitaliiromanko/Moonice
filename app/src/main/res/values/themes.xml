@@ -18,6 +18,11 @@
         <item name="colorSwitchThumbNormal">@color/indigo</item>
         <item name="android:colorForeground">@color/indigo</item>
 
+        <item name="android:textCursorDrawable">@null</item>
+        <item name="android:textSelectHandle">@drawable/ic_star</item>
+        <item name="android:textSelectHandleLeft">@drawable/ic_star</item>
+        <item name="android:textSelectHandleRight">@drawable/ic_star</item>
+
         <item name="android:textColorHighlight">@color/purple_blue</item>
 
         <!-- Status bar color. -->
@@ -25,6 +30,11 @@
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
 
 
+    </style>
+
+    <style name="DatePickerDialogTheme" parent="Theme.AppCompat.DayNight.Dialog">
+        <item name="colorAccent">@color/purple_blue</item>
+        <item name="android:textColor">@color/indigo</item>
     </style>
 
     <style name="ProgressBarTheme" parent="Widget.AppCompat.ProgressBar">
