@@ -35,6 +35,8 @@
     <style name="DatePickerDialogTheme" parent="Theme.AppCompat.DayNight.Dialog">
         <item name="colorAccent">@color/purple_blue</item>
         <item name="android:textColor">@color/indigo</item>
+        <item name="android:textColorSecondary">@color/purple_blue</item>
+        <item name="colorOnPrimary">@color/purple_blue</item>
     </style>
 
     <style name="ProgressBarTheme" parent="Widget.AppCompat.ProgressBar">
@@ -175,11 +177,18 @@
         <item name="tint">@color/indigo</item>
     </style>
 
-    <style name="EditText" parent="Widget.AppCompat.EditText">
+    <style name="EditText" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="android:backgroundTint">@color/additional_purple_2</item>
         <item name="android:selectAllOnFocus">true</item>
         <item name="android:textColor">@color/indigo</item>
         <item name="android:textColorHint">@color/additional_purple_2</item>
+        <item name="background">@color/transparent</item>
+        <item name="passwordToggleTint">@color/white_blue</item>
+        <item name="editTextColor">@color/indigo</item>
+        <item name="startIconTint">@color/indigo</item>
+        <item name="errorIconTint">@color/error</item>
+        <item name="boxStrokeErrorColor">@color/error</item>
+        <item name="errorTextColor">@color/error</item>
     </style>
 
     <style name="AuthorizationSecondaryText">

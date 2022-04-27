@@ -6,10 +6,12 @@ import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.util.Patterns
-import android.widget.ImageButton
+import android.view.View.OnFocusChangeListener
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -21,6 +23,7 @@ import com.nulp.moonice.utils.*
 import com.nulp.moonice.vital_changer.LoadingDialog
 import java.text.SimpleDateFormat
 import java.util.*
+
 
 class RegistrationActivity : AppCompatActivity() {
 
@@ -57,7 +60,7 @@ class RegistrationActivity : AppCompatActivity() {
         }
 
         textviewDate = binding.birthDate
-        buttonDate = binding.birthDateButton
+        buttonDate = binding.birthDate
 
 
         val dateSetListener =
@@ -69,18 +72,20 @@ class RegistrationActivity : AppCompatActivity() {
                 updateDateInView()
             }
 
-        buttonDate!!.setOnClickListener {
-            val datePickerDialog = DatePickerDialog(
-                this@RegistrationActivity, R.style.DatePickerDialogTheme,
-                dateSetListener,
-                cal.get(Calendar.YEAR),
-                cal.get(Calendar.MONTH),
-                cal.get(Calendar.DAY_OF_MONTH)
-            )
-            Log.d("Test", cal.timeInMillis.toString())
-            datePickerDialog.datePicker.minDate = today.timeInMillis - 130 * millieYear
-            datePickerDialog.datePicker.maxDate = today.timeInMillis - 2 * millieYear
-            datePickerDialog.show()
+        buttonDate!!.onFocusChangeListener = OnFocusChangeListener { _, hasFocus ->
+            if (hasFocus) {
+                val datePickerDialog = DatePickerDialog(
+                    this@RegistrationActivity, R.style.DatePickerDialogTheme,
+                    dateSetListener,
+                    cal.get(Calendar.YEAR),
+                    cal.get(Calendar.MONTH),
+                    cal.get(Calendar.DAY_OF_MONTH)
+                )
+                Log.d("Test", cal.timeInMillis.toString())
+                datePickerDialog.datePicker.minDate = today.timeInMillis - 130 * millieYear
+                datePickerDialog.datePicker.maxDate = today.timeInMillis - 2 * millieYear
+                datePickerDialog.show()
+            }
         }
     }
 
@@ -95,8 +100,10 @@ class RegistrationActivity : AppCompatActivity() {
     private var email: String = ""
     private var password: String = ""
     private var birthDate: String = ""
-    private var buttonDate: ImageButton? = null
+    private var buttonDate: TextInputEditText? = null
     private var textviewDate: TextView? = null
+
+
 
 
     private fun register() {
@@ -113,38 +120,38 @@ class RegistrationActivity : AppCompatActivity() {
 
         var mistakeCount = 0
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            binding.email.error = "Invalid email..."
+            binding.emailLayout.error = "Invalid email..."
             mistakeCount++
         }
 
         if (password.isEmpty()) {
-            binding.password.error = "Please enter password..."
+            binding.passwordLayout.error = "Please enter password..."
             mistakeCount++
         }
 
         if (cPassword.isEmpty()) {
-            binding.confirmPassword.error = "Confirm password..."
+            binding.confirmPasswordLayout.error = "Confirm password..."
             mistakeCount++
         }
 
         if (password != cPassword) {
-            binding.confirmPassword.error = "Password doesn't match..."
+            binding.confirmPasswordLayout.error = "Password doesn't match..."
             mistakeCount++
         }
 
         if (birthDate == "--/--/----") {
-            binding.birthDate.error = "Please enter date of birth..."
+            binding.birthDateButton.error = "Please enter date of birth..."
             mistakeCount++
         }
 
         if (username.isEmpty()) {
-            binding.username.error = "Please enter username..."
+            binding.usernameLayout.error = "Please enter username..."
             mistakeCount++
         } else {
             ref.child(NODE_USERNAMES)
                 .addListenerForSingleValueEvent(AppValueEventListener {
                     if (it.hasChild(username)) {
-                        binding.username.error = "The specified user already exists!"
+                        binding.usernameLayout.error = "The specified user already exists!"
                         mistakeCount++
                     } else if (mistakeCount == 0) {
                         createUserAccount()

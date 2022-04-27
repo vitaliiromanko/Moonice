@@ -33,6 +33,9 @@
 
     <style name="DatePickerDialogTheme" parent="Theme.AppCompat.Light.Dialog">
         <item name="colorAccent">@color/light_purple</item>
+        <item name="android:textColor">@color/white_purple</item>
+        <item name="android:textColorSecondary">@color/light_purple</item>
+        <item name="colorOnPrimary">@color/light_purple</item>
     </style>
 
     <style name="ProgressBarTheme" parent="Widget.AppCompat.ProgressBar">
@@ -59,11 +62,18 @@
         <item name="android:textColor">@color/white_purple</item>
     </style>
 
-    <style name="EditText" parent="Widget.AppCompat.EditText">
+    <style name="EditText" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="android:backgroundTint">@color/light_purple</item>
         <item name="android:selectAllOnFocus">true</item>
         <item name="android:textColor">@color/white_purple</item>
         <item name="android:textColorHint">@color/light_purple</item>
+        <item name="background">@color/transparent</item>
+        <item name="passwordToggleTint">@color/additional_purple_3</item>
+        <item name="editTextColor">@color/white_purple</item>
+        <item name="startIconTint">@color/white_purple</item>
+        <item name="errorIconTint">@color/error</item>
+        <item name="boxStrokeErrorColor">@color/error</item>
+        <item name="errorTextColor">@color/error</item>
     </style>
 
     <style name="LayoutBackground" parent="Widget.Support.CoordinatorLayout">
