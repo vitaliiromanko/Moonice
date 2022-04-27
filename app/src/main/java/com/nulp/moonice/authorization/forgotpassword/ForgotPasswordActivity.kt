@@ -51,7 +51,7 @@ class ForgotPasswordActivity : AppCompatActivity() {
         email = binding.activityForgotPasswordEmail.text.toString().trim()
 
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            binding.activityForgotPasswordEmail.error = "Invalid email..."
+            binding.activityForgotPasswordEmailLayout.error = "Invalid email..."
         } else {
             FirebaseAuth.getInstance().sendPasswordResetEmail(email)
                 .addOnCompleteListener { task ->

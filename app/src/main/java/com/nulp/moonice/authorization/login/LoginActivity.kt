@@ -89,12 +89,12 @@ class LoginActivity : AppCompatActivity() {
 
         var mistakeCount = 0
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            binding.userEmail.error = "Invalid email..."
+            binding.userEmailLayout.error = "Invalid email..."
             mistakeCount++
         }
 
         if (password.isEmpty()) {
-            binding.userPassword.error = "Please enter password..."
+            binding.userPasswordLayout.error = "Please enter password..."
             mistakeCount++
         }
 

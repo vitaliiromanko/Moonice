@@ -27,4 +27,5 @@
     <color name="white_blue">#C5CAE9</color>
 
     <color name="test">#7E3D085E</color>
+    <color name="error">#FA5E93</color>
 </resources>
