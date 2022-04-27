@@ -1,278 +1,264 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-style="@style/LayoutBackground"
-tools:context=".fragment.main_ui.bookmarks.BookmarksFragment">
-
-
-<ScrollView
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/LayoutBackground"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".fragment.main_ui.bookmarks.BookmarksFragment">
 
-    <LinearLayout
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-
-        android:paddingHorizontal="20dp"
-        android:paddingTop="15dp">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp">
-
-            <ImageView
-                style="@style/IconMainTitle"
-                />
-
-            <TextView
-                style="@style/TextMainTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="My Bookmarks" />
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
 
+            android:paddingHorizontal="20dp"
+            android:paddingTop="15dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
+
+                <ImageView style="@style/IconMainTitle" />
+
+                <TextView
+                    style="@style/TextMainTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="My Bookmarks" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginBottom="10dp"
-                android:orientation="horizontal">
-
-                <androidx.cardview.widget.CardView
-                    style="@style/ImageButtonStyle">
-
-                    <ImageButton
-                        style="@style/ImageButtonStyle"
-                        android:src="@drawable/book_item_1"
-                        android:scaleType="centerCrop"
-                        />
-                </androidx.cardview.widget.CardView>
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="10dp"
-                    android:orientation="vertical">
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal">
 
-                    <TextView
-                        style="@style/BookTitleItem"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="The Most Beautiful Kite in the World." />
+                    <androidx.cardview.widget.CardView style="@style/ImageButtonStyle">
 
-                    <TextView
-                        style="@style/BookSubTitleItem"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Andrea Spalding, 2003" />
+                        <ImageButton
+                            style="@style/ImageButtonStyle"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/book_item_1" />
+                    </androidx.cardview.widget.CardView>
 
-                    <TextView
-                        style="@style/BookChapterTitleItem"
+
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Ch.2 Jenny wants a store" />
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/BookTitleItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="The Most Beautiful Kite in the World." />
+
+                        <TextView
+                            style="@style/BookSubTitleItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Andrea Spalding, 2003" />
+
+                        <TextView
+                            style="@style/BookChapterTitleItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Ch.2 Jenny wants a store" />
+                    </LinearLayout>
                 </LinearLayout>
-            </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginBottom="10dp"
-                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal">
 
-                <androidx.cardview.widget.CardView
-                    style="@style/ImageButtonStyle">
+                    <androidx.cardview.widget.CardView style="@style/ImageButtonStyle">
 
-                    <ImageButton
-                        style="@style/ImageButtonStyle"
-                        android:src="@drawable/book_item_2"
-                        android:scaleType="centerCrop"
-                        />
-                </androidx.cardview.widget.CardView>
+                        <ImageButton
+                            style="@style/ImageButtonStyle"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/book_item_2" />
+                    </androidx.cardview.widget.CardView>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:layout_marginStart="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/BookTitleItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Throne of glass" />
+
+                        <TextView
+                            style="@style/BookSubTitleItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Sarah J. Maas, 2018" />
+
+                        <TextView
+                            style="@style/BookChapterTitleItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Ch.15" />
+                    </LinearLayout>
+                </LinearLayout>
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="top"
-                    android:layout_marginStart="10dp"
-                    android:orientation="vertical">
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal">
 
-                    <TextView
-                        style="@style/BookTitleItem"
+                    <androidx.cardview.widget.CardView style="@style/ImageButtonStyle">
+
+                        <ImageButton
+                            style="@style/ImageButtonStyle"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/book_item_3" />
+                    </androidx.cardview.widget.CardView>
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Throne of glass" />
+                        android:layout_gravity="top"
+                        android:layout_marginStart="10dp"
+                        android:orientation="vertical">
 
-                    <TextView
-                        style="@style/BookSubTitleItem"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Sarah J. Maas, 2018"/>
+                        <TextView
+                            style="@style/BookTitleItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="The bazaar of bad dreams" />
 
-                    <TextView
-                        style="@style/BookChapterTitleItem"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Ch.15"/>
+                        <TextView
+                            style="@style/BookSubTitleItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Stephen King, 1999" />
+
+                        <TextView
+                            style="@style/BookChapterTitleItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Ch.5" />
+                    </LinearLayout>
                 </LinearLayout>
-            </LinearLayout>
 
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginBottom="10dp"
-                android:orientation="horizontal">
-
-                <androidx.cardview.widget.CardView
-                    style="@style/ImageButtonStyle">
-
-                    <ImageButton
-                        style="@style/ImageButtonStyle"
-                        android:src="@drawable/book_item_3"
-                        android:scaleType="centerCrop"
-                        />
-                </androidx.cardview.widget.CardView>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="top"
-                    android:layout_marginStart="10dp"
-                    android:orientation="vertical">
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal">
 
-                    <TextView
-                        style="@style/BookTitleItem"
+                    <androidx.cardview.widget.CardView style="@style/ImageButtonStyle">
+
+                        <ImageButton
+                            style="@style/ImageButtonStyle"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/book_item_5" />
+                    </androidx.cardview.widget.CardView>
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="The bazaar of bad dreams"/>
+                        android:layout_gravity="top"
+                        android:layout_marginStart="10dp"
+                        android:orientation="vertical">
 
-                    <TextView
-                        style="@style/BookSubTitleItem"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Stephen King, 1999" />
+                        <TextView
+                            style="@style/BookTitleItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="No more pencils, no more books, no more teacher's dirty looks!" />
 
-                    <TextView
-                        style="@style/BookChapterTitleItem"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Ch.5" />
+                        <TextView
+                            style="@style/BookSubTitleItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Diane deGroat, 2009" />
+
+                        <TextView
+                            style="@style/BookChapterTitleItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Ch.89" />
+                    </LinearLayout>
                 </LinearLayout>
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginBottom="10dp"
-                android:orientation="horizontal">
-
-                <androidx.cardview.widget.CardView
-                    style="@style/ImageButtonStyle">
-
-                    <ImageButton
-                        style="@style/ImageButtonStyle"
-                        android:src="@drawable/book_item_5"
-                        android:scaleType="centerCrop"
-                        />
-                </androidx.cardview.widget.CardView>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="top"
-                    android:layout_marginStart="10dp"
-                    android:orientation="vertical">
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal">
 
-                    <TextView
-                        style="@style/BookTitleItem"
+                    <androidx.cardview.widget.CardView style="@style/ImageButtonStyle">
+
+                        <ImageButton
+                            style="@style/ImageButtonStyle"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/book_item_4" />
+                    </androidx.cardview.widget.CardView>
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="No more pencils, no more books, no more teacher's dirty looks!"
-                        />
+                        android:layout_gravity="top"
+                        android:layout_marginStart="10dp"
+                        android:orientation="vertical">
 
-                    <TextView
-                        style="@style/BookSubTitleItem"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Diane deGroat, 2009" />
+                        <TextView
+                            style="@style/BookTitleItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Health Sciences Information Sources" />
 
-                    <TextView
-                        style="@style/BookChapterTitleItem"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Ch.89"/>
-                </LinearLayout>
-            </LinearLayout>
+                        <TextView
+                            style="@style/BookSubTitleItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Ching-Chin Chen, 2000" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginBottom="10dp"
-                android:orientation="horizontal">
+                        <TextView
+                            style="@style/BookChapterTitleItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Ch.13" />
+                    </LinearLayout>
 
-                <androidx.cardview.widget.CardView
-                    style="@style/ImageButtonStyle">
-
-                    <ImageButton
-                        style="@style/ImageButtonStyle"
-                        android:src="@drawable/book_item_4"
-                        android:scaleType="centerCrop"
-                        />
-                </androidx.cardview.widget.CardView>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="top"
-                    android:layout_marginStart="10dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        style="@style/BookTitleItem"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Health Sciences Information Sources" />
-
-                    <TextView
-                        style="@style/BookSubTitleItem"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Ching-Chin Chen, 2000"/>
-
-                    <TextView
-                        style="@style/BookChapterTitleItem"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Ch.13" />
                 </LinearLayout>
 
             </LinearLayout>
 
         </LinearLayout>
 
-    </LinearLayout>
-
-</ScrollView>
+    </ScrollView>
 </FrameLayout>

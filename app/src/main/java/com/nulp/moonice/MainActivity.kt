@@ -21,6 +21,7 @@ import com.nulp.moonice.authorization.login.LoginActivity
 import com.nulp.moonice.databinding.ActivityMainBinding
 import com.nulp.moonice.fragment.main_ui.bookmarks.BookmarksFragment
 import com.nulp.moonice.fragment.main_ui.books.BooksFragment
+import com.nulp.moonice.fragment.main_ui.settings.SettingsFragment
 
 
 class MainActivity : AppCompatActivity() {
@@ -50,11 +51,6 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.appBarMain.toolbar)
 
-//        binding.appBarMain.fab.setOnClickListener { view ->
-//            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                .setAction("Action", null).show()
-//        }
-
         drawerLayout = binding.drawerLayout
         navView = binding.navView
         navController = findNavController(R.id.nav_host_fragment_content_main)
@@ -68,9 +64,9 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        navView.menu.setGroupCheckable(0, false, false)
+        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
 
-//theme changer
+        //theme changer
         appSettingPrefs = getSharedPreferences("AppSettingPrefs", 0)
         sharedPreferences = appSettingPrefs.edit()
         val isDarkThemeOn: Boolean = appSettingPrefs.getBoolean("NightMode", false)
@@ -84,34 +80,7 @@ class MainActivity : AppCompatActivity() {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             switch.isChecked = false
         }
-        ///themechanger
 
-        navView.setNavigationItemSelectedListener {
-            when (it.itemId) {
-                R.id.nav_logout -> {
-                    auth.signOut()
-                    startActivity(Intent(this@MainActivity, LoginActivity::class.java))
-                    finish()
-                }
-                R.id.nav_books -> {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.nav_host_fragment_content_main, BooksFragment()).commit()
-                }
-                R.id.nav_bookmarks -> {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.nav_host_fragment_content_main, BookmarksFragment()).commit()
-                }
-
-            }
-            drawerLayout.closeDrawer(GravityCompat.START)
-            true
-        }
-    }
-
-    override fun onResume() {
-        super.onResume()
-
-        //        theme changer
         switch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
@@ -124,7 +93,14 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
-        //        theme changer
+        //theme changer
+
+        navView.menu.findItem(R.id.nav_logout).setOnMenuItemClickListener {
+            auth.signOut()
+            startActivity(Intent(this@MainActivity, LoginActivity::class.java))
+            finish()
+            true
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -136,9 +112,5 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
-    }
-
-    fun getSwitch(): SwitchCompat {
-        return switch
     }
 }

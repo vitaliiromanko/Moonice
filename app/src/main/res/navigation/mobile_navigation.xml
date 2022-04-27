@@ -16,4 +16,11 @@
         android:name="com.nulp.moonice.fragment.main_ui.bookmarks.BookmarksFragment"
         android:label="@string/menu_bookmarks"
         tools:layout="@layout/fragment_bookmarks" />
+
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.nulp.moonice.fragment.main_ui.settings.SettingsFragment"
+        android:label="@string/menu_settings"
+        tools:layout="@layout/fragment_settings" />
+
 </navigation>

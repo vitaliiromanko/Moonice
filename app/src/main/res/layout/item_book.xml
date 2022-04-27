@@ -12,14 +12,14 @@
         android:id="@+id/book_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="?android:attr/selectableItemBackground">
+        android:background="?android:attr/selectableItemBackground"
+        android:orientation="vertical">
 
         <androidx.cardview.widget.CardView style="@style/ImageButtonStyle">
 
             <ImageButton
-                style="@style/ImageButtonStyle"
                 android:id="@+id/book_image_logo"
+                style="@style/ImageButtonStyle"
                 android:scaleType="centerCrop"
                 android:src="@drawable/universe_button" />
         </androidx.cardview.widget.CardView>
