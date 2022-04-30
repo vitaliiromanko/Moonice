@@ -2,36 +2,39 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-tools:showIn="navigation_view"
-    >
+    tools:showIn="navigation_view">
 
-<group android:checkableBehavior="single">
-    <item
-        android:id="@+id/nav_books"
-        android:icon="@drawable/ic_menu_book"
-        android:title="@string/menu_books" />
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_books"
+            android:icon="@drawable/ic_menu_book"
+            android:title="@string/menu_books" />
 
-    <item
-        android:id="@+id/nav_bookmarks"
-        android:icon="@drawable/ic_bookmarks"
-        android:title="@string/menu_bookmarks" />
+        <item
+            android:id="@+id/nav_bookmarks"
+            android:icon="@drawable/ic_bookmarks"
+            android:title="@string/menu_bookmarks" />
 
-    <item
-        android:id="@+id/settings"
-        android:title="@string/settings">
-        <menu
-            >
-            <item
-                android:id="@+id/nav_dark_theme"
-                android:title="@string/dark_theme"
-                android:icon="@drawable/ic_nights_stay"
-                app:showAsAction="always"
-                app:actionViewClass="androidx.appcompat.widget.SwitchCompat" />
-            <item
-                android:id="@+id/nav_logout"
-                android:icon="@drawable/ic_exit"
-                android:title="@string/log_out" />
-        </menu>
-    </item>
-</group>
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_bookmarks"
+            android:title="@string/menu_settings" />
+
+        <item
+            android:id="@+id/settings"
+            android:title="@string/menu_settings">
+            <menu>
+                <item
+                    android:id="@+id/nav_dark_theme"
+                    android:icon="@drawable/ic_nights_stay"
+                    android:title="@string/dark_theme"
+                    app:actionViewClass="androidx.appcompat.widget.SwitchCompat"
+                    app:showAsAction="always" />
+                <item
+                    android:id="@+id/nav_logout"
+                    android:icon="@drawable/ic_exit"
+                    android:title="@string/log_out" />
+            </menu>
+        </item>
+    </group>
 </menu>

@@ -36,25 +36,11 @@ class BooksFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
-            ViewModelProvider(this)[BooksViewModel::class.java]
-
         _binding = FragmentBooksBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
-//        val textView: TextView = binding.textBooks
-//        homeViewModel.text.observe(viewLifecycleOwner) {
-//            textView.text = it
-//        }
-
-//        binding.testActivity.setOnClickListener {
-//            val intent = Intent(this, PlayerActivity::class.java)
-//            // start your next activity
-//            startActivity(intent)
-//        }
 
         initRecycleView(binding)
-        return root
+        return binding.root
     }
 
     private fun initRecycleView(binding: FragmentBooksBinding) {

@@ -21,15 +21,9 @@ class BookmarksFragment :  Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
-            ViewModelProvider(this)[BookmarksViewModel::class.java]
-
         _binding = FragmentBookmarksBinding.inflate(inflater, container, false)
 
-//        val textView: TextView = binding.textBookmarks
-//        homeViewModel.text.observe(viewLifecycleOwner) {
-//            textView.text = it
-//        }
+
         return binding.root
     }
 
