@@ -14,33 +14,29 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Moonice">
         <activity
+            android:name=".ui.SettingsActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.LikesActivity"
-            android:exported="false"
-            />
+            android:exported="false" />
         <activity
             android:name=".ui.EditProfileActivity"
-            android:exported="false"
-            />
+            android:exported="false" />
         <activity
             android:name=".ui.PlayerActivity"
-            android:exported="false"
-            />
+            android:exported="false" />
         <activity
             android:name=".ui.BookActivity"
-            android:exported="false"
-            />
+            android:exported="false" />
         <activity
             android:name=".authorization.forgotpassword.ForgotPasswordActivity"
-            android:exported="false"
-            />
+            android:exported="false" />
         <activity
             android:name=".authorization.register.RegistrationActivity"
-            android:exported="false"
-            />
+            android:exported="false" />
         <activity
             android:name=".authorization.login.LoginActivity"
-            android:exported="true"
-            >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -49,8 +45,7 @@
         </activity>
         <activity
             android:name=".ui.MainActivity"
-            android:exported="true"
-            />
+            android:exported="true" />
     </application>
 
 </manifest>

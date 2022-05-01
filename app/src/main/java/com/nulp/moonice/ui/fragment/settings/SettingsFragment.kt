@@ -1,4 +1,4 @@
-package com.nulp.moonice.ui.fragment.main.settings
+package com.nulp.moonice.ui.fragment.settings
 
 import android.os.Bundle
 import android.view.LayoutInflater
