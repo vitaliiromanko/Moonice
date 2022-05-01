@@ -1,4 +1,4 @@
-package com.nulp.moonice
+package com.nulp.moonice.ui
 
 import android.os.Bundle
 import android.view.animation.Animation
@@ -6,8 +6,8 @@ import android.view.animation.AnimationUtils
 import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
 import com.google.gson.Gson
+import com.nulp.moonice.R
 import com.nulp.moonice.databinding.ActivityPlayerBinding
 import com.nulp.moonice.model.AudioRecord
 

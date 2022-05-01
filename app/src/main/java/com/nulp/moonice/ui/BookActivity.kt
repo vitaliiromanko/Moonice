@@ -1,11 +1,11 @@
-package com.nulp.moonice
+package com.nulp.moonice.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
+import com.nulp.moonice.App
 import com.nulp.moonice.adapter.AudioRecordsActionListener
 import com.nulp.moonice.adapter.AudioRecordsAdapter
 import com.nulp.moonice.databinding.ActivityBookBinding

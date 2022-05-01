@@ -1,11 +1,10 @@
-package com.nulp.moonice.fragment.main_ui.bookmarks
+package com.nulp.moonice.ui.fragment.main.bookmarks
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.nulp.moonice.databinding.FragmentBookmarksBinding
 
 class BookmarksFragment :  Fragment() {

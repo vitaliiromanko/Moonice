@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/PMD_University/Moonice/app/src/main/res/drawable-v24/ic_corner_decor_light.xml" value="0.144" />
         <entry key="..\:/PMD_University/Moonice/app/src/main/res/drawable-v24/ic_logo_light.xml" value="0.144" />
+        <entry key="..\:/PMD_University/Moonice/app/src/main/res/drawable/ic_arrow_back.xml" value="0.169" />
         <entry key="..\:/PMD_University/Moonice/app/src/main/res/layout/activity_book.xml" value="0.264" />
         <entry key="..\:/PMD_University/Moonice/app/src/main/res/layout/activity_edit_profile.xml" value="0.264" />
         <entry key="..\:/PMD_University/Moonice/app/src/main/res/layout/activity_forgot_password.xml" value="0.264" />
@@ -30,6 +31,7 @@
         <entry key="..\:/PMD_University/Moonice/app/src/main/res/layout/popular_books_fragment.xml" value="0.25416666666666665" />
         <entry key="..\:/PMD_University/Moonice/app/src/main/res/menu/activity_main_drawer.xml" value="0.25025641025641027" />
         <entry key="..\:/PMD_University/Moonice/app/src/main/res/menu/main.xml" value="0.25416666666666665" />
+        <entry key="..\:/PMD_University/Moonice/app/src/main/res/xml/root_preferences.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Downloads/Moonice/app/src/main/res/drawable/ic_skip_previous.xml" value="0.2265" />
         <entry key="..\:/Users/Downloads/Moonice/app/src/main/res/drawable/ic_star.xml" value="0.2265" />
         <entry key="..\:/Users/Downloads/Moonice/app/src/main/res/layout/activity_book.xml" value="0.22826086956521738" />

@@ -11,11 +11,10 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.nulp.moonice.MainActivity
+import com.nulp.moonice.ui.MainActivity
 import com.nulp.moonice.R
 import com.nulp.moonice.authorization.login.LoginActivity
 import com.nulp.moonice.databinding.ActivityRegistrationBinding

@@ -4,7 +4,7 @@
     style="@style/LayoutBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.main_ui.books.BooksFragment">
+    tools:context=".ui.fragment.main.books.BooksFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -16,7 +16,7 @@
             android:orientation="vertical"
             android:paddingHorizontal="20dp"
             android:paddingTop="15dp"
-            tools:context=".fragment.main_ui.home.HomeFragment">
+            tools:context=".ui.fragment.main.home.HomeFragment">
 
             <LinearLayout
                 android:layout_width="match_parent"

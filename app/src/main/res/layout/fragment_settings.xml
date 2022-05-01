@@ -4,7 +4,7 @@
     style="@style/LayoutBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.main_ui.settings.SettingsFragment"
+    tools:context=".ui.fragment.main.settings.SettingsFragment"
     >
 
     <com.google.android.material.appbar.AppBarLayout

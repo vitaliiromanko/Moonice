@@ -1,6 +1,5 @@
-package com.nulp.moonice.fragment.main_ui.settings
+package com.nulp.moonice.ui.fragment.main.settings
 
-import android.app.ActionBar
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View

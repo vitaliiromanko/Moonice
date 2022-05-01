@@ -1,6 +1,5 @@
-package com.nulp.moonice
+package com.nulp.moonice.ui
 
-import android.R.attr.category
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -20,11 +19,9 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.nulp.moonice.R
 import com.nulp.moonice.authorization.login.LoginActivity
 import com.nulp.moonice.databinding.ActivityMainBinding
-import com.nulp.moonice.utils.FIREBASE_URL
-import com.nulp.moonice.utils.NODE_USERS
-import com.nulp.moonice.utils.NODE_USER_DETAILS
 
 
 class MainActivity : AppCompatActivity() {

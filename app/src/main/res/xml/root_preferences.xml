@@ -1,24 +1,22 @@
-<PreferenceScreen
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+
     >
 
     <PreferenceCategory app:title="Account">
 
         <EditTextPreference
-            app:key="editProfile"
-            app:title="Edit Profile"
             app:icon="@drawable/ic_account_circle"
-            />
+            app:key="editProfile"
+            app:title="Edit Profile" />
 
     </PreferenceCategory>
 
     <PreferenceCategory app:title="Customize">
 
         <SwitchPreferenceCompat
+            app:icon="@drawable/ic_nights_stay"
             app:key="changeTheme"
-            app:title="Dark Theme"
-            app:icon="@drawable/ic_nights_stay"/>
+            app:title="Dark Theme" />
     </PreferenceCategory>
 
 </PreferenceScreen>

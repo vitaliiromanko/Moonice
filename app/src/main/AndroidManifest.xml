@@ -14,19 +14,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Moonice">
         <activity
-            android:name=".LikesActivity"
+            android:name=".ui.LikesActivity"
             android:exported="false"
             />
         <activity
-            android:name=".EditProfileActivity"
+            android:name=".ui.EditProfileActivity"
             android:exported="false"
             />
         <activity
-            android:name=".PlayerActivity"
+            android:name=".ui.PlayerActivity"
             android:exported="false"
             />
         <activity
-            android:name=".BookActivity"
+            android:name=".ui.BookActivity"
             android:exported="false"
             />
         <activity
@@ -48,7 +48,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true"
             />
     </application>
