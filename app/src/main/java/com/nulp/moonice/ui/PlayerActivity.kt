@@ -1,5 +1,6 @@
 package com.nulp.moonice.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
@@ -15,6 +16,7 @@ class PlayerActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPlayerBinding
     private lateinit var playButton : ImageButton
+    private lateinit var shareButton : ImageButton
 
     private lateinit var rotateDiskAnimation: Animation
     private lateinit var diskImage : ImageView
@@ -27,6 +29,7 @@ class PlayerActivity : AppCompatActivity() {
         binding = ActivityPlayerBinding.inflate(layoutInflater)
         setContentView(binding.root)
         playButton = findViewById(R.id.playStop)
+        shareButton = findViewById(R.id.activity_player_share)
         setSupportActionBar(binding.myToolbar)
 
         val gson = Gson()
@@ -44,6 +47,14 @@ class PlayerActivity : AppCompatActivity() {
                 isPlaying = true
                 rotateDiskAnimation()
             }
+        }
+
+        shareButton.setOnClickListener {
+            val intent= Intent()
+            intent.action=Intent.ACTION_SEND
+            intent.putExtra(Intent.EXTRA_TEXT,"Hey Check out this Great app: https://vns.lpnu.ua")
+            intent.type="text/plain"
+            startActivity(Intent.createChooser(intent,"Share To:"))
         }
     }
 

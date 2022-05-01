@@ -23,6 +23,7 @@ class BooksFragment : Fragment() {
     private var _binding: FragmentBooksBinding? = null
     private lateinit var adapter: BooksAdapter
 
+
     private val booksService: BooksService
         get() = (requireActivity().applicationContext as App).booksService
 
@@ -51,8 +52,18 @@ class BooksFragment : Fragment() {
                 startActivity(intent)
             }
         })
-        binding.recyclerView.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-        binding.recyclerView.adapter = adapter
+        binding.recyclerView1.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        binding.recyclerView1.adapter = adapter
+        binding.recyclerView2.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        binding.recyclerView2.adapter = adapter
+        binding.recyclerView3.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        binding.recyclerView3.adapter = adapter
+        binding.recyclerView4.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        binding.recyclerView4.adapter = adapter
+        binding.recyclerView5.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        binding.recyclerView5.adapter = adapter
+        binding.recyclerView6.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        binding.recyclerView6.adapter = adapter
         booksService.addListener(booksListener)
     }
 

@@ -76,8 +76,8 @@
 
         <ImageView
             android:id="@+id/disk"
-            android:layout_width="350dp"
-            android:layout_height="350dp"
+            android:layout_width="@dimen/disk_player_size"
+            android:layout_height="@dimen/disk_player_size"
             app:srcCompat="@drawable/ic_drive" />
 
         <ImageView
@@ -174,7 +174,7 @@
                 app:srcCompat="@drawable/ic_playlist_play" />
 
             <ImageButton
-                android:id="@+id/imageButton3"
+                android:id="@+id/activity_player_share"
                 style="@style/PlayerImageButton"
                 android:layout_width="0dp"
                 android:layout_weight="1"

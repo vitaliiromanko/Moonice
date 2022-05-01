@@ -18,6 +18,7 @@
 
     </LinearLayout>
 
+
     <FrameLayout
         android:id="@+id/settings_prefs"
         android:layout_width="match_parent"
