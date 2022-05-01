@@ -29,7 +29,20 @@
         <item name="android:statusBarColor" tools:targetApi="l">@color/dark_purple_blue</item>
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
 
+        <item name="preferenceTheme">@style/SettingsTheme</item>
+
     </style>
+
+
+    <style name="SettingsTheme" parent="Preference.PreferenceScreen">
+        <item name="android:background">@color/dark_purple_blue</item>
+        <item name="android:colorAccent">@color/additional_purple_2</item>
+        <item name="colorSwitchThumbNormal">@color/purple_blue</item>
+        <item name="android:colorForeground">@color/white_purple</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColorSecondary">@color/white_purple</item>
+    </style>
+
 
     <style name="DatePickerDialogTheme" parent="Theme.AppCompat.Light.Dialog">
         <item name="colorAccent">@color/light_purple</item>

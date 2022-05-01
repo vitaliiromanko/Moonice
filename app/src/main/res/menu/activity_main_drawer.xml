@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
+    <group
+        android:checkableBehavior="single">
         <item
             android:id="@+id/nav_books"
             android:icon="@drawable/ic_menu_book"
@@ -16,13 +17,8 @@
             android:title="@string/menu_bookmarks" />
 
         <item
-            android:id="@+id/nav_settings"
-            android:icon="@drawable/ic_bookmarks"
-            android:title="@string/menu_settings" />
-
-        <item
             android:id="@+id/settings"
-            android:title="@string/menu_settings">
+            android:title="@string/preferences">
             <menu>
                 <item
                     android:id="@+id/nav_dark_theme"
@@ -31,10 +27,20 @@
                     app:actionViewClass="androidx.appcompat.widget.SwitchCompat"
                     app:showAsAction="always" />
                 <item
-                    android:id="@+id/nav_logout"
-                    android:icon="@drawable/ic_exit"
-                    android:title="@string/log_out" />
+                    android:id="@+id/nav_settings"
+                    android:icon="@drawable/ic_settings"
+                    android:title="@string/menu_settings" />
+
             </menu>
         </item>
+
+    </group>
+    <group
+        android:id="@+id/logout_group"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_exit"
+            android:title="@string/log_out" />
     </group>
 </menu>

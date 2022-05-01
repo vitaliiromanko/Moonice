@@ -1,13 +1,15 @@
 package com.nulp.moonice
 
+import android.R.attr.category
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.Menu
+import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.SwitchCompat
-import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -17,11 +19,12 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
 import com.nulp.moonice.authorization.login.LoginActivity
 import com.nulp.moonice.databinding.ActivityMainBinding
-import com.nulp.moonice.fragment.main_ui.bookmarks.BookmarksFragment
-import com.nulp.moonice.fragment.main_ui.books.BooksFragment
-import com.nulp.moonice.fragment.main_ui.settings.SettingsFragment
+import com.nulp.moonice.utils.FIREBASE_URL
+import com.nulp.moonice.utils.NODE_USERS
+import com.nulp.moonice.utils.NODE_USER_DETAILS
 
 
 class MainActivity : AppCompatActivity() {
@@ -29,6 +32,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
     private lateinit var auth: FirebaseAuth
+    private lateinit var ref: DatabaseReference
+
 
     private lateinit var navView: NavigationView
     private lateinit var navController: NavController
@@ -39,6 +44,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var appSettingPrefs: SharedPreferences
     private lateinit var sharedPreferences: SharedPreferences.Editor
     //        theme changer
+
+    private lateinit var headerView : View
+    private lateinit var usernameText : TextView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,6 +69,19 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_books, R.id.nav_bookmarks
             ), drawerLayout
         )
+
+        headerView = navView.getHeaderView(0)
+        usernameText = headerView.findViewById(R.id.drawer_username)
+
+
+        val user = auth.currentUser
+
+        if (user != null) {
+            usernameText.text = user.displayName
+        } else {
+            usernameText.text = "Anonymous"
+        }
+
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
