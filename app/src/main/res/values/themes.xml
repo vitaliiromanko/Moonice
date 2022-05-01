@@ -34,6 +34,15 @@
 
     </style>
 
+    <style name="SearchTheme" parent="Widget.AppCompat.Light.SearchView">
+        <item name="android:textColorHint">@color/additional_purple_2</item>
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:textColorPrimary">@color/indigo</item>
+<!--        <item name="android:textColorSecondary">@color/indigo</item>-->
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="SettingsTheme" parent="Preference.PreferenceScreen">
         <item name="android:background">@color/white_cyan</item>
         <item name="android:colorAccent">@color/additional_purple_2</item>

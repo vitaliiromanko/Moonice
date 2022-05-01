@@ -65,22 +65,25 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/Moonice/app/src/main/res/layout/nav_header_book.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/User24522/AndroidStudioProjects/Moonice/app/src/main/res/drawable/ic_star.xml" value="0.2265" />
         <entry key="..\:/Users/User24522/AndroidStudioProjects/Moonice/app/src/main/res/drawable/ic_star_night.xml" value="0.2265" />
-        <entry key="..\:/Users/User24522/AndroidStudioProjects/Moonice/app/src/main/res/layout/activity_edit_profile.xml" value="0.12360688956433637" />
+        <entry key="..\:/Users/User24522/AndroidStudioProjects/Moonice/app/src/main/res/layout/activity_edit_profile.xml" value="0.264" />
         <entry key="..\:/Users/User24522/AndroidStudioProjects/Moonice/app/src/main/res/layout/activity_forgot_password.xml" value="0.25" />
         <entry key="..\:/Users/User24522/AndroidStudioProjects/Moonice/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/Users/User24522/AndroidStudioProjects/Moonice/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/User24522/AndroidStudioProjects/Moonice/app/src/main/res/layout/activity_player.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/User24522/AndroidStudioProjects/Moonice/app/src/main/res/layout/activity_registration.xml" value="0.1" />
-        <entry key="..\:/Users/User24522/AndroidStudioProjects/Moonice/app/src/main/res/layout/app_bar_main.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/User24522/AndroidStudioProjects/Moonice/app/src/main/res/layout/app_bar_main.xml" value="0.1" />
         <entry key="..\:/Users/User24522/AndroidStudioProjects/Moonice/app/src/main/res/layout/content_main.xml" value="0.1" />
         <entry key="..\:/Users/User24522/AndroidStudioProjects/Moonice/app/src/main/res/layout/fragment_bookmarks.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/User24522/AndroidStudioProjects/Moonice/app/src/main/res/layout/fragment_books.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User24522/AndroidStudioProjects/Moonice/app/src/main/res/layout/fragment_search_list.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/User24522/AndroidStudioProjects/Moonice/app/src/main/res/layout/fragment_settings.xml" value="0.18432971014492755" />
+        <entry key="..\:/Users/User24522/AndroidStudioProjects/Moonice/app/src/main/res/layout/item_book.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/User24522/AndroidStudioProjects/Moonice/app/src/main/res/layout/loading_item.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/User24522/AndroidStudioProjects/Moonice/app/src/main/res/layout/nav_header_main.xml" value="0.1" />
+        <entry key="..\:/Users/User24522/AndroidStudioProjects/Moonice/app/src/main/res/layout/test_search_fragment.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/User24522/AndroidStudioProjects/Moonice/app/src/main/res/menu/activity_main_drawer.xml" value="0.4" />
         <entry key="..\:/Users/User24522/AndroidStudioProjects/Moonice/app/src/main/res/menu/main.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/User24522/AndroidStudioProjects/Moonice/app/src/main/res/xml/root_preferences.xml" value="0.264" />
+        <entry key="..\:/Users/User24522/AndroidStudioProjects/Moonice/app/src/main/res/xml/root_preferences.xml" value="0.22105263157894736" />
       </map>
     </option>
   </component>

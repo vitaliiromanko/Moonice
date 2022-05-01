@@ -21,7 +21,6 @@
             app:contentInsetStartWithNavigation="0dp"
             app:layout_constraintTop_toTopOf="parent"
             app:popupTheme="@style/Theme.Moonice.PopupOverlay"
-
             >
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -34,7 +33,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:orientation="horizontal"
-                    app:layout_constraintEnd_toStartOf="@+id/imageButton1"
+                    app:layout_constraintEnd_toStartOf="@+id/search_view"
                     app:layout_constraintStart_toStartOf="parent">
 
                     <TextView
@@ -44,26 +43,33 @@
                         android:text="@string/moonice" />
                 </LinearLayout>
 
-                <ImageButton
-
-                    android:id="@+id/imageButton1"
+                <androidx.appcompat.widget.SearchView
+                    android:id="@+id/search_view"
+                    android:theme="@style/SearchTheme"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:backgroundTint="@color/transparent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:srcCompat="@drawable/ic_search" />
+                    />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
 
     <include
+        android:id="@+id/search_list"
+        layout="@layout/fragment_search"
+        app:layout_anchor="@+id/search_list"
+        app:layout_anchorGravity="center"
+        android:visibility="gone"/>
+    <include
         android:id="@+id/content_main"
         layout="@layout/content_main"
         app:layout_anchor="@+id/content_main"
-        app:layout_anchorGravity="center" />
+        app:layout_anchorGravity="center"
+        android:visibility="visible"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

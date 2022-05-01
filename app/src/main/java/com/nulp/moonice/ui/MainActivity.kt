@@ -5,11 +5,16 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.Menu
 import android.view.View
-import android.widget.TextView
+import android.view.ViewGroup.LayoutParams.MATCH_PARENT
+import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.SwitchCompat
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -45,6 +50,14 @@ class MainActivity : AppCompatActivity() {
     private lateinit var headerView : View
     private lateinit var usernameText : TextView
 
+    private lateinit var searchView : SearchView
+    private lateinit var appBarMainTitleLayout: LinearLayout
+    private lateinit var listViewAppBarMain : ListView
+    private lateinit var listAdapter : ArrayAdapter<String>
+    private lateinit var itemNotFound : TextView
+    private lateinit var searchList : View
+    private lateinit var contentMain : View
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,7 +76,7 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_books, R.id.nav_bookmarks
+                R.id.nav_books, R.id.nav_bookmarks, R.id.nav_settings
             ), drawerLayout
         )
 
@@ -77,6 +90,52 @@ class MainActivity : AppCompatActivity() {
             usernameText.text = user.displayName
         } else {
             usernameText.text = "Anonymous"
+        }
+        searchView = binding.appBarMain.searchView
+        appBarMainTitleLayout = binding.appBarMain.fab
+        listViewAppBarMain = findViewById(R.id.list_view_app_bar_main)
+        val books = arrayOf("Nikita running on my beach", "Vitalya rainy dancing",
+            "Boss of the gym", "My yaoi friend")
+        listAdapter = ArrayAdapter(this@MainActivity, android.R.layout.simple_list_item_1, books)
+        listViewAppBarMain.adapter = listAdapter
+        itemNotFound = findViewById(R.id.item_not_found)
+        searchList = findViewById(R.id.search_list)
+        contentMain = findViewById(R.id.content_main)
+
+        searchView.setOnSearchClickListener {
+            itemNotFound.visibility = View.GONE
+            appBarMainTitleLayout.visibility = View.GONE
+            searchView.layoutParams.width = MATCH_PARENT
+            searchList.visibility = View.VISIBLE
+            contentMain.visibility = View.GONE
+
+        }
+
+        searchView.setOnQueryTextListener(object :SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                itemNotFound.visibility = View.GONE
+                searchView.clearFocus()
+                if(books.contains(query)){
+                    listAdapter.filter.filter(query)
+                }
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                listAdapter.filter.filter(newText)
+                return false
+            }
+
+        })
+
+        searchView.setOnCloseListener {
+            itemNotFound.visibility = View.GONE
+            appBarMainTitleLayout.visibility = View.VISIBLE
+            searchView.layoutParams.width = WRAP_CONTENT
+            searchList.visibility = View.GONE
+            contentMain.visibility = View.VISIBLE
+
+            return@setOnCloseListener false
         }
 
         setupActionBarWithNavController(navController, appBarConfiguration)
