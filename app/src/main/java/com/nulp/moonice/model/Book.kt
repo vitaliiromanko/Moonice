@@ -9,5 +9,5 @@ data class Book(
     val uploadDate: Date,
     val description: String,
     val genre: Genre,
-    val picturePath: Int
+    val pictureLink: Int
 )

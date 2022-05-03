@@ -7,5 +7,5 @@ data class AudioRecord(
     val duration: Long,
     val like: Int,
     val book: Book,
-    val recordPath: String
+    val recordLink: String
 )

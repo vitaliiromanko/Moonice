@@ -28,7 +28,7 @@ class AudioRecordsService {
                 duration = (it * 100).toLong(),
                 like = it + 10,
                 book = book,
-                recordPath = ""
+                recordLink = ""
             )
         }.toMutableList()
     }

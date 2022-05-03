@@ -55,7 +55,7 @@ class BooksAdapter(
             bookGenre.text = book.genre.genreName
             bookTitle.text = book.title
             //bookImageLogo.setImageResource(book.picturePath)
-            bookImageLogo.setImageResource(book.picturePath)
+            bookImageLogo.setImageResource(book.pictureLink)
         }
     }
 

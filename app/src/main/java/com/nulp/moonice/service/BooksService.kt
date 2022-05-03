@@ -24,7 +24,7 @@ class BooksService {
                 uploadDate = Date(1245678955 * 1000),
                 description = faker.book().title(),
                 genre = Genre.values()[4 % it],
-                picturePath = IMAGES[it - 1]
+                pictureLink = IMAGES[it - 1]
             ) }.toMutableList()
     }
 
