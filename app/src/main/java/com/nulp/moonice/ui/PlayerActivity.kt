@@ -2,15 +2,27 @@ package com.nulp.moonice.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCallback
 import com.google.gson.Gson
+import com.nulp.moonice.App
 import com.nulp.moonice.R
+import com.nulp.moonice.adapter.AudioRecordsActionListener
+import com.nulp.moonice.adapter.AudioRecordsAdapter
+import com.nulp.moonice.databinding.ActivityBookBinding
 import com.nulp.moonice.databinding.ActivityPlayerBinding
 import com.nulp.moonice.model.AudioRecord
+import com.nulp.moonice.model.Book
+import com.nulp.moonice.service.AudioRecordsListener
+import com.nulp.moonice.service.AudioRecordsService
 
 class PlayerActivity : AppCompatActivity() {
 
@@ -42,9 +54,11 @@ class PlayerActivity : AppCompatActivity() {
         playButton.setOnClickListener {
             if(isPlaying) {
                 isPlaying = false
+                playButton.setImageResource(R.drawable.ic_play)
                 diskImage.clearAnimation()
             } else {
                 isPlaying = true
+                playButton.setImageResource(R.drawable.ic_pause)
                 rotateDiskAnimation()
             }
         }
@@ -56,6 +70,7 @@ class PlayerActivity : AppCompatActivity() {
             intent.type="text/plain"
             startActivity(Intent.createChooser(intent,"Share To:"))
         }
+
     }
 
     private fun initPage(binding: ActivityPlayerBinding, record: AudioRecord) {
