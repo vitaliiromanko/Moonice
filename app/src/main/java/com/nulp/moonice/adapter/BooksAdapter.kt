@@ -1,11 +1,22 @@
 package com.nulp.moonice.adapter
 
+import android.net.Uri
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.nulp.moonice.R
 import com.nulp.moonice.databinding.ItemBookBinding
 import com.nulp.moonice.model.Book
+import com.nulp.moonice.utils.FIREBASE_URL
+import com.nulp.moonice.utils.NODE_BOOKS
+import com.nulp.moonice.utils.NODE_GENRE
 
 interface BooksActionListener {
     fun onBookClick(book: Book)
@@ -47,15 +58,30 @@ class BooksAdapter(
 
     override fun onBindViewHolder(holder: BooksViewHolder, position: Int) {
         val book = books[position]
+        val genreKey = book.genre
+        val ref = FirebaseDatabase.getInstance(FIREBASE_URL).reference
         with(holder.binding) {
             holder.itemView.tag = book
             bookIcon.tag = book
             bookImageLogo.tag = book
 
-            bookGenre.text = book.genre.genreName
+//            bookGenre.text = genreValue
+            ref.child(NODE_BOOKS).child(NODE_GENRE).child(genreKey.toString()).addValueEventListener( object  : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    bookGenre.text = snapshot.value as String
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Log.d("errorBookGenre", "couldn't retrieve genre from DB")
+                }
+
+            })
             bookTitle.text = book.title
             //bookImageLogo.setImageResource(book.picturePath)
-            bookImageLogo.setImageResource(book.pictureLink)
+//            bookImageLogo.setImageURI(Uri.parse(book.pictureLink))
+            Glide.with(bookIcon)
+                .load("http://via.placeholder.com/300.png")
+                .into(bookImageLogo)
         }
     }
 

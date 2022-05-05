@@ -77,12 +77,12 @@ class PlayerActivity : AppCompatActivity() {
         binding.backToBookActivity.setOnClickListener {
             finish()
         }
-
-        binding.activityPlayerBookTitle.text = record.book.title
-        binding.activityPlayerChapterInfo.text =
-            "Ch. ${record.chapterNumber} ${record.chapterTitle}"
-        binding.activityPlayerBookImage.setImageResource(record.book.pictureLink)
-        binding.activityPlayerLike.text = record.like.toString()
+//vitalyaaaa
+//        binding.activityPlayerBookTitle.text = record.book.title
+//        binding.activityPlayerChapterInfo.text =
+//            "Ch. ${record.chapterNumber} ${record.chapterTitle}"
+//        binding.activityPlayerBookImage.setImageResource(record.book.pictureLink)
+//        binding.activityPlayerLike.text = record.like.toString()
     }
 
     private fun rotateDiskAnimation() {

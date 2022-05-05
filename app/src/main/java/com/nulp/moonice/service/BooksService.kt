@@ -21,10 +21,10 @@ class BooksService {
                 id = it.toLong(),
                 title = faker.book().title(),
                 author = faker.book().author(),
-                uploadDate = Date(1245678955 * 1000),
+                publishDate = 2002,
                 description = faker.book().title(),
-                genre = Genre.values()[4 % it],
-                pictureLink = IMAGES[it - 1]
+                genre = 1,
+                pictureLink = "https://www.kindpng.com/picc/m/660-6602821_transparent-cute-fox-clipart-chibi-fox-anime-girl.png"
             ) }.toMutableList()
     }
 
