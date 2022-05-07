@@ -1,7 +1,6 @@
 package com.nulp.moonice.ui
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -9,20 +8,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
 import com.google.gson.Gson
-import com.nulp.moonice.App
 import com.nulp.moonice.adapter.AudioRecordsActionListener
 import com.nulp.moonice.adapter.AudioRecordsAdapter
-import com.nulp.moonice.adapter.BooksActionListener
-import com.nulp.moonice.adapter.BooksAdapter
 import com.nulp.moonice.databinding.ActivityBookBinding
 import com.nulp.moonice.model.AudioRecord
 import com.nulp.moonice.model.Book
-import com.nulp.moonice.service.AudioRecordsListener
-import com.nulp.moonice.service.AudioRecordsService
 import com.nulp.moonice.utils.*
 import com.squareup.picasso.Picasso
-import java.text.DateFormat
-import java.text.SimpleDateFormat
 
 class BookActivity : AppCompatActivity() {
 
@@ -80,36 +72,65 @@ class BookActivity : AppCompatActivity() {
         }
     }
 
+//    private fun initRecycleView(book: Book, audioRecordRecyclerView: RecyclerView) {
+//        ref.child(NODE_BOOKS).child(NODE_RECORDS)
+//            .addValueEventListener(object : ValueEventListener {
+//                override fun onDataChange(snapshot: DataSnapshot) {
+//                    if (snapshot.exists()) {
+//                        for (audioRecordSnapshot in snapshot.children) {
+//                            val audioRecord = audioRecordSnapshot.getValue(AudioRecord::class.java)
+//                            if (audioRecord != null) {
+//                                audioRecord.id = audioRecordSnapshot.key?.toLong() ?: 1
+//                                audioRecordArrayList.add(audioRecord)
+//                            }
+//                        }
+//                        audioRecordArrayList =
+//                            audioRecordArrayList.filter { it.book == book.id } as ArrayList<AudioRecord>
+//                        audioRecordRecyclerView.adapter =
+//                            AudioRecordsAdapter((object : AudioRecordsActionListener {
+//                                override fun onRecordClick(record: AudioRecord) {
+//                                    val gson = Gson()
+//                                    val intent =
+//                                        Intent(this@BookActivity, PlayerActivity::class.java)
+//                                    intent.putExtra("record", gson.toJson(record))
+//                                    startActivity(intent)
+//                                }
+//
+//                            }), audioRecordArrayList)
+//                    }
+//                }
+//
+//                override fun onCancelled(error: DatabaseError) {
+//                    TODO("Not yet implemented")
+//                }
+//
+//            })
+//    }
+
     private fun initRecycleView(book: Book, audioRecordRecyclerView: RecyclerView) {
         ref.child(NODE_BOOKS).child(NODE_RECORDS)
-            .addValueEventListener(object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    if (snapshot.exists()) {
-                        for (audioRecordSnapshot in snapshot.children) {
-                            val audioRecord = audioRecordSnapshot.getValue(AudioRecord::class.java)
-                            if (audioRecord != null) {
-                                audioRecord.id = audioRecordSnapshot.key?.toLong() ?: 1
-                                audioRecordArrayList.add(audioRecord)
-                            }
+            .addValueEventListener(AppValueEventListener { it ->
+                if (it.exists()) {
+                    for (audioRecordSnapshot in it.children) {
+                        val audioRecord = audioRecordSnapshot.getValue(AudioRecord::class.java)
+                        if (audioRecord != null) {
+                            audioRecord.id = audioRecordSnapshot.key?.toLong() ?: 1
+                            audioRecordArrayList.add(audioRecord)
                         }
-                        audioRecordArrayList =
-                            audioRecordArrayList.filter { it.book == book.id } as ArrayList<AudioRecord>
-                        audioRecordRecyclerView.adapter =
-                            AudioRecordsAdapter((object : AudioRecordsActionListener {
-                                override fun onRecordClick(record: AudioRecord) {
-                                    val gson = Gson()
-                                    val intent =
-                                        Intent(this@BookActivity, PlayerActivity::class.java)
-                                    intent.putExtra("record", gson.toJson(record))
-                                    startActivity(intent)
-                                }
-
-                            }), audioRecordArrayList)
                     }
-                }
+                    audioRecordArrayList =
+                        audioRecordArrayList.filter { it.book == book.id } as ArrayList<AudioRecord>
+                    audioRecordRecyclerView.adapter =
+                        AudioRecordsAdapter((object : AudioRecordsActionListener {
+                            override fun onRecordClick(record: AudioRecord) {
+                                val gson = Gson()
+                                val intent =
+                                    Intent(this@BookActivity, PlayerActivity::class.java)
+                                intent.putExtra("record", gson.toJson(record))
+                                startActivity(intent)
+                            }
 
-                override fun onCancelled(error: DatabaseError) {
-                    TODO("Not yet implemented")
+                        }), audioRecordArrayList)
                 }
 
             })
