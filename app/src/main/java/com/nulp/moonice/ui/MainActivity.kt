@@ -99,8 +99,7 @@ class MainActivity : AppCompatActivity() {
                 usernameText.text = snapshot.child(userId).child(USER_DETAILS_USERNAME).value as String
                val pictureLink = snapshot.child(userId).child(USER_DETAILS_PROFILE_IMAGE).value as String
                 if (pictureLink != "") {
-                    Picasso.get().load(pictureLink)
-                        .into(profilePicture)
+                    Picasso.get().load(pictureLink).into(profilePicture)
                 }
             }
 
