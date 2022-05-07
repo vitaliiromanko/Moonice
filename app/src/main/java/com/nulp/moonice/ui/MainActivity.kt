@@ -95,12 +95,13 @@ class MainActivity : AppCompatActivity() {
         val userInfo = ref.child(NODE_USERS).child(NODE_USER_DETAILS)
 
         userInfo.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val value = dataSnapshot.child(userId).child(USER_DETAILS_USERNAME).value as String
-                usernameText.text = value
-                Picasso.get()
-                    .load(dataSnapshot.child(userId).child(USER_DETAILS_PROFILE_IMAGE).value as String)
-                    .into(profilePicture)
+            override fun onDataChange(snapshot: DataSnapshot) {
+                usernameText.text = snapshot.child(userId).child(USER_DETAILS_USERNAME).value as String
+                val pictureLink = snapshot.child(userId).child(USER_DETAILS_PROFILE_IMAGE).value as String
+                if (pictureLink != "") {
+                    Picasso.get().load(pictureLink)
+                        .into(profilePicture)
+                }
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
