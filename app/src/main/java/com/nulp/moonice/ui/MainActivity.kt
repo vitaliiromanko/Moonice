@@ -2,9 +2,7 @@ package com.nulp.moonice.ui
 
 import android.content.Intent
 import android.content.SharedPreferences
-import android.media.Image
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.View
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
@@ -23,7 +21,8 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.*
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.nulp.moonice.R
 import com.nulp.moonice.authorization.login.LoginActivity
 import com.nulp.moonice.databinding.ActivityMainBinding
@@ -49,17 +48,17 @@ class MainActivity : AppCompatActivity() {
     private lateinit var sharedPreferences: SharedPreferences.Editor
     //        theme changer
 
-    private lateinit var headerView : View
-    private lateinit var usernameText : TextView
+    private lateinit var headerView: View
+    private lateinit var usernameText: TextView
 
-    private lateinit var searchView : SearchView
+    private lateinit var searchView: SearchView
     private lateinit var appBarMainTitleLayout: LinearLayout
-    private lateinit var listViewAppBarMain : ListView
-    private lateinit var listAdapter : ArrayAdapter<String>
-    private lateinit var itemNotFound : TextView
-    private lateinit var searchList : View
-    private lateinit var contentMain : View
-    private lateinit var profilePicture : ImageView
+    private lateinit var listViewAppBarMain: ListView
+    private lateinit var listAdapter: ArrayAdapter<String>
+    private lateinit var itemNotFound: TextView
+    private lateinit var searchList: View
+    private lateinit var contentMain: View
+    private lateinit var profilePicture: ImageView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -94,19 +93,27 @@ class MainActivity : AppCompatActivity() {
 //        child(userId).child("username").toString()
         val userInfo = ref.child(NODE_USERS).child(NODE_USER_DETAILS)
 
-        userInfo.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val value = dataSnapshot.child(userId).child(USER_DETAILS_USERNAME).value as String
-                usernameText.text = value
-                Picasso.get()
-                    .load(dataSnapshot.child(userId).child(USER_DETAILS_PROFILE_IMAGE).value as String)
-                    .into(profilePicture)
-            }
+//        userInfo.addValueEventListener(object : ValueEventListener {
+//            override fun onDataChange(dataSnapshot: DataSnapshot) {
+//                val value = dataSnapshot.child(userId).child(USER_DETAILS_USERNAME).value as String
+//                usernameText.text = value
+//                Picasso.get()
+//                    .load(dataSnapshot.child(userId).child(USER_DETAILS_PROFILE_IMAGE).value as String)
+//                    .into(profilePicture)
+//            }
+//
+//            override fun onCancelled(databaseError: DatabaseError) {
+//                Toast.makeText(this@MainActivity, "Error fetching data", Toast.LENGTH_LONG)
+//                    .show()
+//            }
+//        })
 
-            override fun onCancelled(databaseError: DatabaseError) {
-                Toast.makeText(this@MainActivity, "Error fetching data", Toast.LENGTH_LONG)
-                    .show()
-            }
+        userInfo.addValueEventListener(AppValueEventListener {
+            val value = it.child(userId).child(USER_DETAILS_USERNAME).value as String
+            usernameText.text = value
+            Picasso.get()
+                .load(it.child(userId).child(USER_DETAILS_PROFILE_IMAGE).value as String)
+                .into(profilePicture)
         })
 
 //        username.addOnSuccessListener {
@@ -132,8 +139,10 @@ class MainActivity : AppCompatActivity() {
         searchView = binding.appBarMain.searchView
         appBarMainTitleLayout = binding.appBarMain.fab
         listViewAppBarMain = findViewById(R.id.list_view_app_bar_main)
-        val books = arrayOf("Nikita running on my beach", "Vitalya rainy dancing",
-            "Boss of the gym", "My yaoi friend")
+        val books = arrayOf(
+            "Nikita running on my beach", "Vitalya rainy dancing",
+            "Boss of the gym", "My yaoi friend"
+        )
         listAdapter = ArrayAdapter(this@MainActivity, android.R.layout.simple_list_item_1, books)
         listViewAppBarMain.adapter = listAdapter
         itemNotFound = findViewById(R.id.item_not_found)
@@ -149,11 +158,11 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        searchView.setOnQueryTextListener(object :SearchView.OnQueryTextListener{
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 itemNotFound.visibility = View.GONE
                 searchView.clearFocus()
-                if(books.contains(query)){
+                if (books.contains(query)) {
                     listAdapter.filter.filter(query)
                 }
                 return false
