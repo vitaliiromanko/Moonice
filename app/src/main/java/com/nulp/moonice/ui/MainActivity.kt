@@ -2,7 +2,9 @@ package com.nulp.moonice.ui
 
 import android.content.Intent
 import android.content.SharedPreferences
+import android.media.Image
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.View
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
@@ -12,9 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.SwitchCompat
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -27,6 +27,8 @@ import com.google.firebase.database.*
 import com.nulp.moonice.R
 import com.nulp.moonice.authorization.login.LoginActivity
 import com.nulp.moonice.databinding.ActivityMainBinding
+import com.nulp.moonice.utils.*
+import com.squareup.picasso.Picasso
 
 
 class MainActivity : AppCompatActivity() {
@@ -57,6 +59,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var itemNotFound : TextView
     private lateinit var searchList : View
     private lateinit var contentMain : View
+    private lateinit var profilePicture : ImageView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,6 +68,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        ref = FirebaseDatabase.getInstance(FIREBASE_URL).reference
         auth = FirebaseAuth.getInstance()
 
         setSupportActionBar(binding.appBarMain.toolbar)
@@ -82,15 +86,49 @@ class MainActivity : AppCompatActivity() {
 
         headerView = navView.getHeaderView(0)
         usernameText = headerView.findViewById(R.id.drawer_username)
-
+        profilePicture = headerView.findViewById(R.id.profile_picture)
 
         val user = auth.currentUser
+        val userId = user?.uid ?: "0"
+//        usernameText.text = ref.child("Users").child("UsersInfo").
+//        child(userId).child("username").toString()
+        val userInfo = ref.child(NODE_USERS).child(NODE_USER_DETAILS)
 
-        if (user != null) {
-            usernameText.text = user.displayName
-        } else {
-            usernameText.text = "Anonymous"
-        }
+        userInfo.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val value = dataSnapshot.child(userId).child(USER_DETAILS_USERNAME).value as String
+                usernameText.text = value
+                Picasso.get()
+                    .load(dataSnapshot.child(userId).child(USER_DETAILS_PROFILE_IMAGE).value as String)
+                    .into(profilePicture)
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                Toast.makeText(this@MainActivity, "Error fetching data", Toast.LENGTH_LONG)
+                    .show()
+            }
+        })
+
+//        username.addOnSuccessListener {
+//            usernameText.text = "${it.value}"
+//        }.addOnFailureListener{
+//            usernameText.text = "Vita"
+//        }
+//        username.addValueEventListener(object : ValueEventListener {
+//            override fun onDataChange(dataSnapshot: DataSnapshot) {
+//                val value = dataSnapshot.getValue(String::class.java)
+//                usernameText.text = value
+//            }
+//
+//            override fun onCancelled(error: DatabaseError) {
+//                usernameText.text = "Anonymous"
+//            }
+//        })
+//        if (user != null) {
+//            usernameText.text =
+//        } else {
+//            usernameText.text = "Anonymous"
+//        }
         searchView = binding.appBarMain.searchView
         appBarMainTitleLayout = binding.appBarMain.fab
         listViewAppBarMain = findViewById(R.id.list_view_app_bar_main)
@@ -176,6 +214,10 @@ class MainActivity : AppCompatActivity() {
             auth.signOut()
             startActivity(Intent(this@MainActivity, LoginActivity::class.java))
             finish()
+            true
+        }
+        navView.menu.findItem(R.id.nav_edit_profile).setOnMenuItemClickListener {
+            startActivity(Intent(this@MainActivity, EditProfileActivity::class.java))
             true
         }
     }

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/LayoutBackground"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".ui.EditProfileActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/my_toolbar"
@@ -34,7 +35,7 @@
                 android:text="Edit Profile" />
 
             <ImageButton
-                android:id="@+id/imageButton1"
+                android:id="@+id/save_button"
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
                 app:srcCompat="@drawable/ic_save" />
@@ -63,17 +64,18 @@
                 android:layout_marginVertical="20dp">
 
                 <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/profile_picture_edit_profile"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:layout_gravity="center_horizontal"
                     android:contentDescription="@string/nav_header_desc"
-                    android:src="@mipmap/ic_launcher_round"
+                    android:src="@drawable/pink_space"
                     android:tintMode="src_over"
+                    android:scaleType="centerCrop"
                     app:tint="#A8563D7C" />
 
                 <ImageView
-                    android:id="@+id/imageView1"
+                    android:id="@+id/profile_picture_camera_edit_profile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -95,6 +97,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/username"
+                    android:text="Anonymous"
                     android:importantForAutofill="no"
                     android:inputType="text" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -113,6 +116,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/prompt_email"
+                    android:text="anonymous@gmail.com"
                     android:importantForAutofill="no"
                     android:inputType="textEmailAddress" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -174,7 +178,7 @@
                     android:editable="false"
                     android:hint="@string/birth_date"
                     android:inputType="date"
-                    android:text="@string/emptyDate" />
+                    android:text="01/01/2001" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
