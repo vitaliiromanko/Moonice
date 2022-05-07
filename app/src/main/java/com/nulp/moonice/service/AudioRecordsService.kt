@@ -25,7 +25,7 @@ class AudioRecordsService {
                 id = it.toLong(),
                 chapterNumber = it,
                 chapterTitle = faker.book().title(),
-                duration = (it * 100).toLong(),
+                duration = it.toLong(),
                 like = it + 10,
                 book = book.id,
                 recordLink = ""

@@ -16,13 +16,18 @@ class SettingsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        requireActivity().supportFragmentManager
-            .beginTransaction()
-            .replace(
-                R.id.settings_prefs,
-                TestSettings()
-            )
-            .commit()
+
+        if (savedInstanceState == null) {
+            requireActivity().supportFragmentManager
+                .beginTransaction()
+                .replace(
+                    R.id.settings_prefs,
+                    TestSettings()
+                )
+                .commit()
+        }
+
+
     }
 
     override fun onCreateView(
@@ -30,6 +35,7 @@ class SettingsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
         _binding = FragmentSettingsBinding.inflate(inflater, container, false)
 
         return binding.root

@@ -1,14 +1,11 @@
 package com.nulp.moonice.model
 
-import java.net.URL
-import java.util.*
-
 data class Book(
-    val id: Long,
-    val title: String,
-    val author: String,
-    val publishDate: Int,
-    val description: String,
-    val genre: Long,
-    val pictureLink: String
+    var id: Long ?= null,
+    var title: String ?= null,
+    var author: String ?= null,
+    var publishDate: Int ?= null,
+    var description: String ?= null,
+    var genre: Int ?= null,
+    var pictureLink: String ?= null
 )

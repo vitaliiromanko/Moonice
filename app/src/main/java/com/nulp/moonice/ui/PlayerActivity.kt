@@ -2,6 +2,7 @@ package com.nulp.moonice.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
@@ -12,6 +13,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCallback
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.gson.Gson
 import com.nulp.moonice.App
 import com.nulp.moonice.R
@@ -23,6 +28,8 @@ import com.nulp.moonice.model.AudioRecord
 import com.nulp.moonice.model.Book
 import com.nulp.moonice.service.AudioRecordsListener
 import com.nulp.moonice.service.AudioRecordsService
+import com.nulp.moonice.utils.*
+import com.squareup.picasso.Picasso
 
 class PlayerActivity : AppCompatActivity() {
 
@@ -78,11 +85,23 @@ class PlayerActivity : AppCompatActivity() {
             finish()
         }
 //vitalyaaaa
-//        binding.activityPlayerBookTitle.text = record.book.title
-//        binding.activityPlayerChapterInfo.text =
-//            "Ch. ${record.chapterNumber} ${record.chapterTitle}"
-//        binding.activityPlayerBookImage.setImageResource(record.book.pictureLink)
-//        binding.activityPlayerLike.text = record.like.toString()
+        val bookId = record.book
+        val ref = FirebaseDatabase.getInstance(FIREBASE_URL).reference
+        ref.child(NODE_BOOKS).child(NODE_BOOK_DETAILS).child(bookId.toString())
+            .addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    binding.activityPlayerBookTitle.text = snapshot.child(BOOK_DETAILS_TITLE).value as String
+                    Picasso.get().load(snapshot.child(BOOK_DETAILS_PICTURE_LINK).value as String).into(binding.activityPlayerBookImage);
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Log.d("errorBookGenre", "couldn't retrieve genre from DB")
+                }
+
+            })
+        binding.activityPlayerChapterInfo.text =
+            "Ch. ${record.chapterNumber} ${record.chapterTitle}"
+        binding.activityPlayerLike.text = record.like.toString()
     }
 
     private fun rotateDiskAnimation() {

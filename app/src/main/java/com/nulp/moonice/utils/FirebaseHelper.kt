@@ -1,6 +1,7 @@
 package com.nulp.moonice.utils
 
 const val FIREBASE_URL = "https://moonicedatabase-default-rtdb.europe-west1.firebasedatabase.app"
+const val FIREBASE_STORAGE_URL = "https://firebasestorage.googleapis.com/v0/b/moonicedatabase.appspot.com/o/"
 
 const val NODE_USERS = "Users"
 const val NODE_USER_DETAILS = "UsersInfo"
@@ -27,10 +28,10 @@ const val BOOK_DETAILS_PICTURE_LINK = "pictureLink"
 
 const val NODE_RECORDS = "BooksRecords"
 
-const val BOOK_DETAILS_AID = "aid"
-const val BOOK_DETAILS_CHAPTER_NUMBER = "chapterNumber"
-const val BOOK_DETAILS_CHAPTER_TITLE = "chapterTitle"
-const val BOOK_DETAILS_DURATION = "duration"
-const val BOOK_DETAILS_LIKE = "like"
-const val BOOK_DETAILS_BOOK = "book"
-const val BOOK_DETAILS_RECORD_LINK = "recordLink"
+const val RECORD_DETAILS_AID = "aid"
+const val RECORD_DETAILS_CHAPTER_NUMBER = "chapterNumber"
+const val RECORD_DETAILS_CHAPTER_TITLE = "chapterTitle"
+const val RECORD_DETAILS_DURATION = "duration"
+const val RECORD_DETAILS_LIKE = "like"
+const val RECORD_DETAILS_BOOK = "book"
+const val RECORD_DETAILS_RECORD_LINK = "recordLink"
