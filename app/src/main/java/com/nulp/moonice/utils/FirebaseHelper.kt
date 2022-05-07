@@ -17,6 +17,7 @@ const val USER_DETAILS_TIMESTAMP = "timestamp"
 
 const val NODE_BOOKS = "Books"
 const val NODE_BOOK_DETAILS = "BooksInfo"
+const val NODE_RECORDS_LIKES = "RecordsLikes"
 const val NODE_GENRE = "Genre"
 
 const val BOOK_DETAILS_BID = "bid"
@@ -35,3 +36,4 @@ const val RECORD_DETAILS_DURATION = "duration"
 const val RECORD_DETAILS_LIKE = "like"
 const val RECORD_DETAILS_BOOK = "book"
 const val RECORD_DETAILS_RECORD_LINK = "recordLink"
+

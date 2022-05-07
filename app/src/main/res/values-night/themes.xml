@@ -55,6 +55,13 @@
         <item name="android:indeterminateTint">@color/light_purple</item>
     </style>
 
+    <style name="AlertDialogCustom" parent="Theme.AppCompat.DayNight.Dialog.Alert">
+        <item name="android:textColor">@color/white_purple</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:background">@color/dark_purple_blue</item>
+        <item name="colorOnPrimary">@color/white_purple</item>
+    </style>
+
     <style name="AlertDialogStyle" parent="Theme.AppCompat.DayNight.Dialog.Alert">
         <item name="android:background">@color/transparent</item>
         <item name="android:windowBackground">@color/transparent</item>
@@ -216,6 +223,16 @@
         <item name="backgroundTint">@color/transparent</item>
     </style>
 
+    <style name="LikesToolbarTheme" parent="ThemeOverlay.AppCompat.ActionBar">
+        <item name="android:background">@color/white_purple</item>
+        <item name="android:textColor">@color/indigo</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+        <item name="tint">@color/indigo</item>
+        <item name="backgroundTint">@color/transparent</item>
+    </style>
+
     <style name="LikesUsername">
         <item name="android:textColor">@color/white_purple</item>
         <item name="android:textSize">17sp</item>
@@ -226,6 +243,14 @@
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginStart">20dp</item>
+    </style>
+
+    <style name="LikeAvatarStyle" parent="Widget.AppCompat.ImageButton">
+        <item name="android:layout_width">80dp</item>
+        <item name="android:layout_height">80dp</item>
+        <item name="android:background">@color/white_purple</item>
+        <item name="android:scaleType">centerCrop</item>
+        <item name="cardCornerRadius">50dp</item>
     </style>
 
     <style name="PlayerToolbarTheme" parent="ThemeOverlay.AppCompat.ActionBar">

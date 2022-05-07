@@ -74,11 +74,11 @@
 
         <ImageButton
             android:id="@+id/like"
-            android:layout_width="30dp"
+            android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_gravity="center"
             android:backgroundTint="@color/transparent"
-            android:src="@drawable/ic_heart_border"
+            android:src="@drawable/ic_like"
             app:tint="@color/light_purple" />
 
         <TextView

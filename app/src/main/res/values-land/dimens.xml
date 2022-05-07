@@ -1,4 +1,5 @@
 <resources>
     <dimen name="fab_margin">48dp</dimen>
     <dimen name="disk_player_size">200dp</dimen>
+    <dimen name="nav_header_book_height">200dp</dimen>
 </resources>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/loginContainer"
@@ -9,149 +10,119 @@
     android:padding="@dimen/activity_padding"
     tools:context=".authorization.login.LoginActivity">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="@dimen/activity_login_container_padding">
-
-        <ImageView
-            android:id="@+id/logoLogin"
-            style="@style/LogoStyle" />
-
-        <TextView
-            android:id="@+id/appNameLogin"
-            style="@style/LogoTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:text="@string/app_name"
-            android:textSize="36sp" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/user_email_layout"
-            style="@style/EditText"
+        >
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp">
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/activity_login_container_padding">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/user_email"
+            <ImageView
+                android:id="@+id/logoLogin"
+                style="@style/LogoStyle" />
+
+            <TextView
+                android:id="@+id/appNameLogin"
+                style="@style/LogoTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="@string/app_name"
+                android:textSize="36sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/user_email_layout"
                 style="@style/EditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/prompt_email"
-                android:importantForAutofill="no"
-                android:inputType="textEmailAddress" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginBottom="20dp">
 
-        <!--            <EditText-->
-        <!--                android:id="@+id/user_email"-->
-        <!--                style="@style/EditText"-->
-        <!--                android:layout_width="match_parent"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:hint="@string/prompt_email"-->
-        <!--                android:importantForAutofill="no"-->
-        <!--                android:inputType="textEmailAddress" />-->
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/user_email"
+                    style="@style/EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/prompt_email"
+                    android:importantForAutofill="no"
+                    android:inputType="textEmailAddress" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <!--            <EditText-->
-        <!--                android:id="@+id/user_password"-->
-        <!--                style="@style/EditText"-->
-        <!--                android:layout_width="match_parent"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:hint="@string/prompt_password"-->
-        <!--                android:imeActionLabel="@string/action_sign_in_short"-->
-        <!--                android:imeOptions="actionDone"-->
-        <!--                android:importantForAutofill="no"-->
-        <!--                android:inputType="textPassword" />-->
+            <!--            <EditText-->
+            <!--                android:id="@+id/user_email"-->
+            <!--                style="@style/EditText"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:hint="@string/prompt_email"-->
+            <!--                android:importantForAutofill="no"-->
+            <!--                android:inputType="textEmailAddress" />-->
+
+            <!--            <EditText-->
+            <!--                android:id="@+id/user_password"-->
+            <!--                style="@style/EditText"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:hint="@string/prompt_password"-->
+            <!--                android:imeActionLabel="@string/action_sign_in_short"-->
+            <!--                android:imeOptions="actionDone"-->
+            <!--                android:importantForAutofill="no"-->
+            <!--                android:inputType="textPassword" />-->
 
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/user_password_layout"
-            style="@style/EditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:passwordToggleEnabled="true">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/user_password"
-
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/user_password_layout"
                 style="@style/EditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/prompt_password"
-                android:imeActionLabel="@string/action_sign_in_short"
-                android:importantForAutofill="no"
-                android:inputType="textPassword" />
-        </com.google.android.material.textfield.TextInputLayout>
+                app:passwordToggleEnabled="true">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/login_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
-            android:backgroundTint="@color/purple_blue"
-            android:paddingHorizontal="60dp"
-            android:text="@string/log_in"
-            android:textColor="@color/indigo"
-            android:textSize="16sp" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/user_password"
 
-        <TextView
-            android:id="@+id/sign_up_button"
-            style="@style/AuthorizationSecondaryText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
-            android:text="@string/sign_up"
-            android:textAllCaps="true" />
+                    style="@style/EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/prompt_password"
+                    android:imeActionLabel="@string/action_sign_in_short"
+                    android:importantForAutofill="no"
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/login_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:backgroundTint="@color/purple_blue"
+                android:paddingHorizontal="60dp"
+                android:text="@string/log_in"
+                android:textColor="@color/indigo"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/sign_up_button"
+                style="@style/AuthorizationSecondaryText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:text="@string/sign_up"
+                android:textAllCaps="true" />
 
 
-        <TextView
-            android:id="@+id/forgot_password_button"
-            style="@style/AuthorizationSecondaryText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/forgot_password" />
+            <TextView
+                android:id="@+id/forgot_password_button"
+                style="@style/AuthorizationSecondaryText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/forgot_password" />
 
 
-    </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
-    <ImageView
-        android:id="@+id/loginCornerImage1"
-        style="@style/IconCorner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/loginCornerImage2"
-        style="@style/IconCorner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleY="-1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
-        android:id="@+id/loginCornerImage3"
-        style="@style/IconCorner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleX="-1"
-        android:scaleY="-1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <ImageView
-        android:id="@+id/loginCornerImage4"
-        style="@style/IconCorner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleX="-1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
