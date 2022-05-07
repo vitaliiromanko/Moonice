@@ -49,17 +49,17 @@ class MainActivity : AppCompatActivity() {
     private lateinit var sharedPreferences: SharedPreferences.Editor
     //        theme changer
 
-    private lateinit var headerView : View
-    private lateinit var usernameText : TextView
+    private lateinit var headerView: View
+    private lateinit var usernameText: TextView
 
-    private lateinit var searchView : SearchView
+    private lateinit var searchView: SearchView
     private lateinit var appBarMainTitleLayout: LinearLayout
-    private lateinit var listViewAppBarMain : ListView
-    private lateinit var listAdapter : ArrayAdapter<String>
-    private lateinit var itemNotFound : TextView
-    private lateinit var searchList : View
-    private lateinit var contentMain : View
-    private lateinit var profilePicture : ImageView
+    private lateinit var listViewAppBarMain: ListView
+    private lateinit var listAdapter: ArrayAdapter<String>
+    private lateinit var itemNotFound: TextView
+    private lateinit var searchList: View
+    private lateinit var contentMain: View
+    private lateinit var profilePicture: ImageView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -94,19 +94,12 @@ class MainActivity : AppCompatActivity() {
 //        child(userId).child("username").toString()
         val userInfo = ref.child(NODE_USERS).child(NODE_USER_DETAILS)
 
-        userInfo.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                usernameText.text = snapshot.child(userId).child(USER_DETAILS_USERNAME).value as String
-                val pictureLink = snapshot.child(userId).child(USER_DETAILS_PROFILE_IMAGE).value as String
-                if (pictureLink != "") {
-                    Picasso.get().load(pictureLink)
-                        .into(profilePicture)
-                }
-            }
-
-            override fun onCancelled(databaseError: DatabaseError) {
-                Toast.makeText(this@MainActivity, "Error fetching data", Toast.LENGTH_LONG)
-                    .show()
+        userInfo.addValueEventListener(AppValueEventListener {
+            usernameText.text = it.child(userId).child(USER_DETAILS_USERNAME).value as String
+            val pictureLink = it.child(userId).child(USER_DETAILS_PROFILE_IMAGE).value as String
+            if (pictureLink != "") {
+                Picasso.get().load(pictureLink)
+                    .into(profilePicture)
             }
         })
 
@@ -133,8 +126,10 @@ class MainActivity : AppCompatActivity() {
         searchView = binding.appBarMain.searchView
         appBarMainTitleLayout = binding.appBarMain.fab
         listViewAppBarMain = findViewById(R.id.list_view_app_bar_main)
-        val books = arrayOf("Nikita running on my beach", "Vitalya rainy dancing",
-            "Boss of the gym", "My yaoi friend")
+        val books = arrayOf(
+            "Nikita running on my beach", "Vitalya rainy dancing",
+            "Boss of the gym", "My yaoi friend"
+        )
         listAdapter = ArrayAdapter(this@MainActivity, android.R.layout.simple_list_item_1, books)
         listViewAppBarMain.adapter = listAdapter
         itemNotFound = findViewById(R.id.item_not_found)
@@ -150,11 +145,11 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        searchView.setOnQueryTextListener(object :SearchView.OnQueryTextListener{
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 itemNotFound.visibility = View.GONE
                 searchView.clearFocus()
-                if(books.contains(query)){
+                if (books.contains(query)) {
                     listAdapter.filter.filter(query)
                 }
                 return false
