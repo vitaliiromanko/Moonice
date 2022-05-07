@@ -16,14 +16,12 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.github.javafaker.Faker
-import com.google.android.gms.auth.api.signin.internal.Storage
-import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.*
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import com.google.firebase.storage.UploadTask
 import com.nulp.moonice.R
 import com.nulp.moonice.databinding.ActivityEditProfileBinding
 import com.nulp.moonice.utils.*
@@ -128,24 +126,16 @@ class EditProfileActivity : AppCompatActivity() {
 
     private fun initPage(binding: ActivityEditProfileBinding, userRef: DatabaseReference) {
 
-        userRef.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                binding.usernameEditProfile.setText(snapshot.child(USER_DETAILS_USERNAME).value as String)
-                usernameOld = snapshot.child(USER_DETAILS_USERNAME).value as String
-                binding.emailEditProfile.setText(snapshot.child(USER_DETAILS_EMAIL).value as String)
-                textviewDate!!.text = snapshot.child(USER_DETAILS_BIRTH_DATE).value as String
-                val pictureLink = snapshot.child(USER_DETAILS_PROFILE_IMAGE).value as String
-                if (pictureLink != "") {
-                    Picasso.get().load(pictureLink)
-                        .into(binding.profilePictureEditProfile)
-                }
-
+        userRef.addValueEventListener(AppValueEventListener {
+            binding.usernameEditProfile.setText(it.child(USER_DETAILS_USERNAME).value as String)
+            usernameOld = it.child(USER_DETAILS_USERNAME).value as String
+            binding.emailEditProfile.setText(it.child(USER_DETAILS_EMAIL).value as String)
+            textviewDate!!.text = it.child(USER_DETAILS_BIRTH_DATE).value as String
+            val pictureLink = it.child(USER_DETAILS_PROFILE_IMAGE).value as String
+            if (pictureLink != "") {
+                Picasso.get().load(pictureLink)
+                    .into(binding.profilePictureEditProfile)
             }
-
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-
         })
 
         binding.backToMainActivityBtn.setOnClickListener {
@@ -219,18 +209,18 @@ class EditProfileActivity : AppCompatActivity() {
                 .addOnSuccessListener {
                     success++
                 }.addOnFailureListener { e ->
-                Toast.makeText(
-                    this,
-                    "Failed updating user info due to ${e.message}",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
+                    Toast.makeText(
+                        this,
+                        "Failed updating user info. ${e.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             userRef.child(USER_DETAILS_USERNAME).setValue(username).addOnSuccessListener {
                 success++
             }.addOnFailureListener { e ->
                 Toast.makeText(
                     this,
-                    "Failed updating user info due to ${e.message}",
+                    "Failed updating user info. ${e.message}",
                     Toast.LENGTH_SHORT
                 ).show()
             }
@@ -238,12 +228,12 @@ class EditProfileActivity : AppCompatActivity() {
                 .addOnSuccessListener {
                     success++
                 }.addOnFailureListener { e ->
-                Toast.makeText(
-                    this,
-                    "Failed updating user info due to ${e.message}",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
+                    Toast.makeText(
+                        this,
+                        "Failed updating user info. ${e.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             if (success != 3) {
                 failure++
             }
@@ -255,7 +245,7 @@ class EditProfileActivity : AppCompatActivity() {
             }?.addOnFailureListener { e ->
                 Toast.makeText(
                     this,
-                    "Failed updating user info due to ${e.message}",
+                    "Failed updating user info. ${e.message}",
                     Toast.LENGTH_SHORT
                 ).show()
             }
@@ -264,7 +254,7 @@ class EditProfileActivity : AppCompatActivity() {
             }.addOnFailureListener { e ->
                 Toast.makeText(
                     this,
-                    "Failed updating user info due to ${e.message}",
+                    "Failed updating user info. ${e.message}",
                     Toast.LENGTH_SHORT
                 ).show()
             }
@@ -277,7 +267,7 @@ class EditProfileActivity : AppCompatActivity() {
             failure++
             Toast.makeText(
                 this,
-                "Failed updating user info due to ${e.message}",
+                "Failed updating user info. ${e.message}",
                 Toast.LENGTH_SHORT
             ).show()
         }
@@ -287,14 +277,14 @@ class EditProfileActivity : AppCompatActivity() {
                 failure++
                 Toast.makeText(
                     this,
-                    "Failed updating user info due to ${e.message}",
+                    "Failed updating user info. ${e.message}",
                     Toast.LENGTH_LONG
                 ).show()
             }
         }
 
         if (profilePictureChanged) {
-            if(!uploadProfilePictureToFirebaseStorage(userRef)){
+            if (!uploadProfilePictureToFirebaseStorage(userRef)) {
                 failure++
             }
         }
@@ -321,22 +311,6 @@ class EditProfileActivity : AppCompatActivity() {
             }
             success = true
         }
-
-//        Log.d("ProfilePicUrl", storageRef.toString())
-
-
-//        userRef.child(USER_DETAILS_PROFILE_IMAGE)
-//            .setValue(storageRef.toString())
-//            .addOnSuccessListener {
-//                success = true
-//            }
-//            .addOnFailureListener{ e ->
-//                Toast.makeText(
-//                    this,
-//                    "Failed updating updating profile picture due to ${e.message}",
-//                    Toast.LENGTH_SHORT
-//                ).show()
-//            }
         return success
     }
 }

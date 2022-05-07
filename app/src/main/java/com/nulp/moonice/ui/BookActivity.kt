@@ -2,11 +2,11 @@ package com.nulp.moonice.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.database.*
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.google.gson.Gson
 import com.nulp.moonice.adapter.AudioRecordsActionListener
 import com.nulp.moonice.adapter.AudioRecordsAdapter
@@ -54,7 +54,7 @@ class BookActivity : AppCompatActivity() {
         binding.navHeaderBook.bookDescriptionHeaderBar.text = book.description
         ref.child(NODE_BOOKS).child(NODE_GENRE).child(genreKey.toString())
             .addValueEventListener(AppValueEventListener {
-                    binding.navHeaderBook.bookGenreHeaderBar.text = it.value as String
+                binding.navHeaderBook.bookGenreHeaderBar.text = it.value as String
             })
 //        binding.navHeaderBook.bookGenreHeaderBar.text = genreValue.toString()
         Picasso.get().load(book.pictureLink).into(binding.navHeaderBook.navHeaderBookBookImage)

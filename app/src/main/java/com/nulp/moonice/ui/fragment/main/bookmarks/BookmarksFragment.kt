@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.nulp.moonice.databinding.FragmentBookmarksBinding
 
-class BookmarksFragment :  Fragment() {
+class BookmarksFragment : Fragment() {
 
     private var _binding: FragmentBookmarksBinding? = null
 

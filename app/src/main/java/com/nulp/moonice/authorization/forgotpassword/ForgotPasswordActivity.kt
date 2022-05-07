@@ -33,15 +33,12 @@ class ForgotPasswordActivity : AppCompatActivity() {
             val loading = LoadingDialog(this)
             loading.startLoading()
             val handler = Handler()
-            handler.postDelayed(object :Runnable{
-                override fun run() {
-                    Log.d("Load", "Ing")
-                    loading.isDismiss()
-                    validateData()
-                    Log.d("Validate", "Data")
-                }
-
-            },3000)
+            handler.postDelayed({
+                Log.d("Load", "Ing")
+                loading.isDismiss()
+                validateData()
+                Log.d("Validate", "Data")
+            }, 3000)
         }
     }
 

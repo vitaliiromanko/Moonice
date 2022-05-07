@@ -2,9 +2,7 @@ package com.nulp.moonice.ui
 
 import android.content.Intent
 import android.content.SharedPreferences
-import android.media.Image
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.View
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
@@ -23,7 +21,8 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.*
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.nulp.moonice.R
 import com.nulp.moonice.authorization.login.LoginActivity
 import com.nulp.moonice.databinding.ActivityMainBinding
@@ -90,8 +89,6 @@ class MainActivity : AppCompatActivity() {
 
         val user = auth.currentUser
         val userId = user?.uid ?: "0"
-//        usernameText.text = ref.child("Users").child("UsersInfo").
-//        child(userId).child("username").toString()
         val userInfo = ref.child(NODE_USERS).child(NODE_USER_DETAILS)
 
         userInfo.addValueEventListener(AppValueEventListener {

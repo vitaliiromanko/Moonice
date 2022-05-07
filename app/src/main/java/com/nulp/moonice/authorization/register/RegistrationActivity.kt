@@ -14,10 +14,10 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.nulp.moonice.ui.MainActivity
 import com.nulp.moonice.R
 import com.nulp.moonice.authorization.login.LoginActivity
 import com.nulp.moonice.databinding.ActivityRegistrationBinding
+import com.nulp.moonice.ui.MainActivity
 import com.nulp.moonice.utils.*
 import com.nulp.moonice.vital_changer.LoadingDialog
 import java.text.SimpleDateFormat
@@ -50,7 +50,7 @@ class RegistrationActivity : AppCompatActivity() {
                 loading.isDismiss()
                 register()
                 Log.d("Register", "User")
-            },3000)
+            }, 3000)
         }
 
         binding.backToLogin.setOnClickListener {
@@ -101,8 +101,6 @@ class RegistrationActivity : AppCompatActivity() {
     private var birthDate: String = ""
     private var buttonDate: TextInputEditText? = null
     private var textviewDate: TextView? = null
-
-
 
 
     private fun register() {
@@ -167,7 +165,7 @@ class RegistrationActivity : AppCompatActivity() {
             .addOnFailureListener { e ->
                 Toast.makeText(
                     this,
-                    "Failed creating account due to ${e.message}",
+                    "Failed creating account. ${e.message}",
                     Toast.LENGTH_SHORT
                 ).show()
             }
@@ -210,7 +208,7 @@ class RegistrationActivity : AppCompatActivity() {
                         .addOnFailureListener { e ->
                             Toast.makeText(
                                 this,
-                                "Failed saving user info due to ${e.message}",
+                                "Failed saving user info. ${e.message}",
                                 Toast.LENGTH_SHORT
                             ).show()
                         }

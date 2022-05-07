@@ -1,22 +1,17 @@
 package com.nulp.moonice.adapter
 
-import android.graphics.BitmapFactory
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 import com.nulp.moonice.databinding.ItemBookBinding
 import com.nulp.moonice.model.Book
+import com.nulp.moonice.utils.AppValueEventListener
 import com.nulp.moonice.utils.FIREBASE_URL
 import com.nulp.moonice.utils.NODE_BOOKS
 import com.nulp.moonice.utils.NODE_GENRE
 import com.squareup.picasso.Picasso
-import java.net.URL
 
 
 interface BooksActionListener {
@@ -67,15 +62,8 @@ class BooksAdapter(
             bookIcon.tag = book
             bookImageLogo.tag = book
             ref.child(NODE_BOOKS).child(NODE_GENRE).child(genreKey.toString())
-                .addValueEventListener(object : ValueEventListener {
-                    override fun onDataChange(snapshot: DataSnapshot) {
-                        bookGenre.text = snapshot.value as String
-                    }
-
-                    override fun onCancelled(error: DatabaseError) {
-                        Log.d("errorBookGenre", "couldn't retrieve genre from DB")
-                    }
-
+                .addValueEventListener(AppValueEventListener {
+                    bookGenre.text = it.value as String
                 })
             bookTitle.text = book.title
             Picasso.get().load(book.pictureLink).into(bookImageLogo);

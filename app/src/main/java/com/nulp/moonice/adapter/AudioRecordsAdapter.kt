@@ -5,17 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.database.FirebaseDatabase
 import com.nulp.moonice.databinding.ItemChapterBinding
 import com.nulp.moonice.model.AudioRecord
-import com.nulp.moonice.utils.FIREBASE_URL
-import java.sql.Time
 import java.text.DateFormat
 import java.text.SimpleDateFormat
-import java.time.LocalTime
 import java.util.*
-import java.util.concurrent.TimeUnit
-import kotlin.collections.ArrayList
 
 interface AudioRecordsActionListener {
     fun onRecordClick(record: AudioRecord)

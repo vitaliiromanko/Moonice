@@ -11,10 +11,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
-import com.nulp.moonice.ui.MainActivity
 import com.nulp.moonice.authorization.forgotpassword.ForgotPasswordActivity
 import com.nulp.moonice.authorization.register.RegistrationActivity
 import com.nulp.moonice.databinding.ActivityLoginBinding
+import com.nulp.moonice.ui.MainActivity
 import com.nulp.moonice.utils.AppValueEventListener
 import com.nulp.moonice.utils.FIREBASE_URL
 import com.nulp.moonice.utils.NODE_USERS
@@ -107,7 +107,7 @@ class LoginActivity : AppCompatActivity() {
             .addOnFailureListener { e ->
                 Toast.makeText(
                     this,
-                    "Login failed due to ${e.message}",
+                    "Login failed. ${e.message}",
                     Toast.LENGTH_SHORT
                 ).show()
             }

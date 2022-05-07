@@ -8,16 +8,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.database.*
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.google.gson.Gson
-import com.nulp.moonice.*
 import com.nulp.moonice.adapter.BooksActionListener
 import com.nulp.moonice.adapter.BooksAdapter
 import com.nulp.moonice.databinding.FragmentBooksBinding
 import com.nulp.moonice.model.Book
-import com.nulp.moonice.service.BooksListener
-import com.nulp.moonice.service.BooksService
 import com.nulp.moonice.ui.BookActivity
+import com.nulp.moonice.utils.AppValueEventListener
 import com.nulp.moonice.utils.FIREBASE_URL
 import com.nulp.moonice.utils.NODE_BOOKS
 import com.nulp.moonice.utils.NODE_BOOK_DETAILS
@@ -59,30 +58,24 @@ class BooksFragment : Fragment() {
     private fun initRecycleView(recyclerView: RecyclerView) {
         ref = FirebaseDatabase.getInstance(FIREBASE_URL).reference
         ref.child(NODE_BOOKS).child(NODE_BOOK_DETAILS)
-            .addValueEventListener(object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    if (snapshot.exists()) {
-                        for (bookSnapshot in snapshot.children) {
+            .addValueEventListener(AppValueEventListener {
+                if (it.exists()) {
+                    for (bookSnapshot in it.children) {
                         val book = bookSnapshot.getValue(Book::class.java)
-                            if (book != null) {
-                                book.id = bookSnapshot.key?.toLong() ?: 1
-                                bookArrayList.add(book)
-                            }
+                        if (book != null) {
+                            book.id = bookSnapshot.key?.toLong() ?: 1
+                            bookArrayList.add(book)
                         }
-//                        bookArrayList = bookArrayList.filter { it.genre == 1 } as ArrayList<Book>
-                        recyclerView.adapter = BooksAdapter((object : BooksActionListener {
-                            override fun onBookClick(book: Book) {
-                                val gson = Gson()
-                                val intent = Intent(activity, BookActivity::class.java)
-                                intent.putExtra("book", gson.toJson(book))
-                                startActivity(intent)
-                            }
-                        }), bookArrayList)
                     }
-                }
-
-                override fun onCancelled(error: DatabaseError) {
-                    TODO("Not yet implemented")
+//                        bookArrayList = bookArrayList.filter { it.genre == 1 } as ArrayList<Book>
+                    recyclerView.adapter = BooksAdapter((object : BooksActionListener {
+                        override fun onBookClick(book: Book) {
+                            val gson = Gson()
+                            val intent = Intent(activity, BookActivity::class.java)
+                            intent.putExtra("book", gson.toJson(book))
+                            startActivity(intent)
+                        }
+                    }), bookArrayList)
                 }
 
             })
