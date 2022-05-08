@@ -55,7 +55,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var appBarMainTitleLayout: LinearLayout
     private lateinit var listViewAppBarMain: ListView
     private lateinit var listAdapter: ArrayAdapter<String>
-    private lateinit var itemNotFound: TextView
     private lateinit var searchList: View
     private lateinit var contentMain: View
     private lateinit var profilePicture: ImageView
@@ -109,22 +108,18 @@ class MainActivity : AppCompatActivity() {
         )
         listAdapter = ArrayAdapter(this@MainActivity, android.R.layout.simple_list_item_1, books)
         listViewAppBarMain.adapter = listAdapter
-        itemNotFound = findViewById(R.id.item_not_found)
         searchList = findViewById(R.id.search_list)
         contentMain = findViewById(R.id.content_main)
 
         searchView.setOnSearchClickListener {
-            itemNotFound.visibility = View.GONE
             appBarMainTitleLayout.visibility = View.GONE
             searchView.layoutParams.width = MATCH_PARENT
             searchList.visibility = View.VISIBLE
             contentMain.visibility = View.GONE
-
         }
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                itemNotFound.visibility = View.GONE
                 searchView.clearFocus()
                 if (books.contains(query)) {
                     listAdapter.filter.filter(query)
@@ -140,7 +135,6 @@ class MainActivity : AppCompatActivity() {
         })
 
         searchView.setOnCloseListener {
-            itemNotFound.visibility = View.GONE
             appBarMainTitleLayout.visibility = View.VISIBLE
             searchView.layoutParams.width = WRAP_CONTENT
             searchList.visibility = View.GONE

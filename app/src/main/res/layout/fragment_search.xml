@@ -14,12 +14,4 @@
         android:layout_height="wrap_content"
         />
 
-    <TextView
-        android:id="@+id/item_not_found"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Book is not found"
-        android:visibility="gone"
-        />
-
 </FrameLayout>
