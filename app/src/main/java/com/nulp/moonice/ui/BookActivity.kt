@@ -2,12 +2,15 @@ package com.nulp.moonice.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
 import com.google.gson.Gson
+import com.nulp.moonice.R
 import com.nulp.moonice.adapter.AudioRecordsActionListener
 import com.nulp.moonice.adapter.AudioRecordsAdapter
 import com.nulp.moonice.databinding.ActivityBookBinding
@@ -39,6 +42,8 @@ class BookActivity : AppCompatActivity() {
         audioRecordRecyclerView.layoutManager = LinearLayoutManager(this)
         audioRecordArrayList = arrayListOf()
 
+        binding.navHeaderBook.bookDescriptionHeaderBar.movementMethod = ScrollingMovementMethod()
+
         initPage(binding, book)
 
         initRecycleView(book, audioRecordRecyclerView)
@@ -69,6 +74,7 @@ class BookActivity : AppCompatActivity() {
         ref.child(NODE_BOOKS).child(NODE_RECORDS)
             .addValueEventListener(AppValueEventListener { it ->
                 if (it.exists()) {
+                    audioRecordArrayList.clear()
                     for (audioRecordSnapshot in it.children) {
                         val audioRecord = audioRecordSnapshot.getValue(AudioRecord::class.java)
                         if (audioRecord != null) {

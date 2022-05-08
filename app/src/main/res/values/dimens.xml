@@ -9,4 +9,5 @@
     <dimen name="activity_login_container_padding">20dp</dimen>
     <dimen name="login_app_name_size">36sp</dimen>
     <dimen name="disk_player_size">350dp</dimen>
+    <dimen name="nav_header_book_height">300dp</dimen>
 </resources>

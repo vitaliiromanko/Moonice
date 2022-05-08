@@ -157,10 +157,10 @@
                         android:id="@+id/like"
                         style="@style/PlayerImageButton"
                         android:layout_width="30dp"
-                        app:srcCompat="@drawable/ic_round_favorite_border_24" />
+                        app:srcCompat="@drawable/ic_like" />
 
                     <TextView
-                        android:id="@+id/activity_player_like"
+                        android:id="@+id/like_text"
                         style="@style/PlayerLikeText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

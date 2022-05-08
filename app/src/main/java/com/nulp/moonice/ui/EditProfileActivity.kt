@@ -14,7 +14,9 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.view.ContextThemeWrapper
 import com.github.javafaker.Faker
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
@@ -89,7 +91,17 @@ class EditProfileActivity : AppCompatActivity() {
         initPage(binding, userReference)
 
         saveButton.setOnClickListener {
-            checkUserInfo(binding, userReference, userId)
+            val builder = AlertDialog.Builder(ContextThemeWrapper(this, R.style.AlertDialogCustom))
+            builder.setMessage("Do you want to save changes to your account?")
+                .setCancelable(false)
+                .setPositiveButton("Yes") { _, _ ->
+                    checkUserInfo(binding, userReference, userId)
+                }
+                .setNegativeButton("No") { dialog, _ ->
+                    dialog.dismiss()
+                }
+            val alert = builder.create()
+            alert.show()
         }
 
         uploadProfilePicture.setOnClickListener {
@@ -242,16 +254,16 @@ class EditProfileActivity : AppCompatActivity() {
             var success = 0
             auth.currentUser?.updateEmail(email)?.addOnSuccessListener {
                 success++
+                userRef.child(USER_DETAILS_EMAIL).setValue(email).addOnSuccessListener {
+                    success++
+                }.addOnFailureListener { e ->
+                    Toast.makeText(
+                        this,
+                        "Failed updating user info. ${e.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }?.addOnFailureListener { e ->
-                Toast.makeText(
-                    this,
-                    "Failed updating user info. ${e.message}",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-            userRef.child(USER_DETAILS_EMAIL).setValue(email).addOnSuccessListener {
-                success++
-            }.addOnFailureListener { e ->
                 Toast.makeText(
                     this,
                     "Failed updating user info. ${e.message}",

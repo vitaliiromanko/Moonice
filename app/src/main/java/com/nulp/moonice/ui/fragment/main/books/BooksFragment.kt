@@ -68,6 +68,7 @@ class BooksFragment : Fragment() {
                         }
                     }
 //                        bookArrayList = bookArrayList.filter { it.genre == 1 } as ArrayList<Book>
+                    bookArrayList = bookArrayList.take(10) as ArrayList<Book>
                     recyclerView.adapter = BooksAdapter((object : BooksActionListener {
                         override fun onBookClick(book: Book) {
                             val gson = Gson()
