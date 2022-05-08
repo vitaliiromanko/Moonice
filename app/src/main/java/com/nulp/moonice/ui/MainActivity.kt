@@ -100,26 +100,6 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-//        username.addOnSuccessListener {
-//            usernameText.text = "${it.value}"
-//        }.addOnFailureListener{
-//            usernameText.text = "Vita"
-//        }
-//        username.addValueEventListener(object : ValueEventListener {
-//            override fun onDataChange(dataSnapshot: DataSnapshot) {
-//                val value = dataSnapshot.getValue(String::class.java)
-//                usernameText.text = value
-//            }
-//
-//            override fun onCancelled(error: DatabaseError) {
-//                usernameText.text = "Anonymous"
-//            }
-//        })
-//        if (user != null) {
-//            usernameText.text =
-//        } else {
-//            usernameText.text = "Anonymous"
-//        }
         searchView = binding.appBarMain.searchView
         appBarMainTitleLayout = binding.appBarMain.fab
         listViewAppBarMain = findViewById(R.id.list_view_app_bar_main)

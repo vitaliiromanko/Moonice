@@ -1,19 +1,14 @@
 package com.nulp.moonice.ui
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.database.*
-import com.google.gson.Gson
-import com.nulp.moonice.adapter.BooksActionListener
-import com.nulp.moonice.adapter.BooksAdapter
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.nulp.moonice.adapter.LikesAdapter
 import com.nulp.moonice.databinding.ActivityLikesBinding
-import com.nulp.moonice.model.AudioRecord
-import com.nulp.moonice.model.Book
 import com.nulp.moonice.model.LikeItem
 import com.nulp.moonice.utils.*
 
@@ -79,7 +74,6 @@ class LikesActivity : AppCompatActivity() {
             }.addOnFailureListener {
                 Log.e("firebase", "Error getting likeItem", it)
             }
-
 
         return likeItem
     }

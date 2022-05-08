@@ -23,23 +23,9 @@ class BooksAdapter(
     private val actionListener: BooksActionListener, private val bookList: ArrayList<Book>
 ) : RecyclerView.Adapter<BooksAdapter.BooksViewHolder>(), View.OnClickListener {
 
-//    var books: List<Book> = emptyList()
-//        set(newValue) {
-//            field = newValue
-//            notifyDataSetChanged()
-//        }
-
     override fun onClick(v: View) {
         val book = v.tag as Book
         actionListener.onBookClick(book)
-//        when (v.id) {
-//            R.id.book_icon -> {
-//                actionListener.onBookClick(book)
-//            }
-//            R.id.book_image_logo -> {
-//                actionListener.onBookClick(book)
-//            }
-//        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BooksViewHolder {

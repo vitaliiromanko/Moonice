@@ -22,10 +22,6 @@ import com.squareup.picasso.Picasso
 class BookActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityBookBinding
-    private lateinit var adapter: AudioRecordsAdapter
-
-    //    private val recordsService: AudioRecordsService
-//        get() = (applicationContext as App).audioRecordsService
     private lateinit var ref: DatabaseReference
     private lateinit var audioRecordArrayList: ArrayList<AudioRecord>
     private lateinit var audioRecordRecyclerView: RecyclerView
@@ -47,8 +43,6 @@ class BookActivity : AppCompatActivity() {
         initPage(binding, book)
 
         initRecycleView(book, audioRecordRecyclerView)
-
-//        initRecycleView(binding, book)
     }
 
     private fun initPage(binding: ActivityBookBinding, book: Book) {
@@ -99,31 +93,4 @@ class BookActivity : AppCompatActivity() {
 
             })
     }
-
-
-//    private fun initRecycleView(binding: ActivityBookBinding, book: Book) {
-////        recordsService.setRecords(book)
-//
-//        adapter = AudioRecordsAdapter(object : AudioRecordsActionListener {
-//            override fun onRecordClick(record: AudioRecord) {
-//                val gson = Gson()
-//                val intent = Intent(this@BookActivity, PlayerActivity::class.java)
-//                intent.putExtra("record", gson.toJson(record))
-//                startActivity(intent)
-//            }
-//        })
-//        binding.chapterList.listOfRecords.layoutManager = LinearLayoutManager(this)
-//        binding.chapterList.listOfRecords.adapter = adapter
-//
-////        recordsService.addListener(recordsListener)
-//    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-//        recordsService.removeListener(recordsListener)
-    }
-
-//    private val recordsListener: AudioRecordsListener = {
-//        adapter.records = it
-//    }
 }

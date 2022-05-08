@@ -25,17 +25,10 @@ import com.nulp.moonice.utils.NODE_BOOK_DETAILS
 class BooksFragment : Fragment() {
 
     private var _binding: FragmentBooksBinding? = null
-    private lateinit var adapter: BooksAdapter
     private lateinit var bookArrayList: ArrayList<Book>
     private lateinit var bookRecyclerView: RecyclerView
     private lateinit var ref: DatabaseReference
 
-
-//    private val booksService: BooksService
-//        get() = (requireActivity().applicationContext as App).booksService
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -51,7 +44,6 @@ class BooksFragment : Fragment() {
         bookArrayList = arrayListOf<Book>()
 
         initRecycleView(bookRecyclerView)
-//        initRecycleView(binding)
         return binding.root
     }
 
@@ -82,38 +74,8 @@ class BooksFragment : Fragment() {
             })
     }
 
-//    private fun initRecycleView(binding: FragmentBooksBinding) {
-//        adapter = BooksAdapter(object : BooksActionListener {
-//            override fun onBookClick(book: Book) {
-//                val gson = Gson()
-//                val intent = Intent(activity, BookActivity::class.java)
-//                intent.putExtra("book", gson.toJson(book))
-//                startActivity(intent)
-//            }
-//        })
-//        binding.recyclerView1.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-//        binding.recyclerView1.adapter = adapter
-//        binding.recyclerView2.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-//        binding.recyclerView2.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-//        binding.recyclerView2.adapter = adapter
-//        binding.recyclerView3.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-//        binding.recyclerView3.adapter = adapter
-//        binding.recyclerView4.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-//        binding.recyclerView4.adapter = adapter
-//        binding.recyclerView5.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-//        binding.recyclerView5.adapter = adapter
-//        binding.recyclerView6.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-//        binding.recyclerView6.adapter = adapter
-////        booksService.addListener(booksListener)
-//    }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-//        booksService.removeListener(booksListener)
     }
-
-//    private val booksListener: BooksListener = {
-//        adapter.books = it
-//    }
 }
