@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1065206639517-lenjulv2tnhqtjrf8gf8jpbl11e4ia6h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nulp.moonice",
+            "certificate_hash": "573e24c19dbb5ad4f13a633f621ef3e0c03ac075"
+          }
+        },
+        {
           "client_id": "1065206639517-lvqj6cjqe978rtt1cogdqn7t5mohlnrc.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
