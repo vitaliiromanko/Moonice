@@ -14,9 +14,11 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.gson.Gson
 import com.nulp.moonice.R
 import com.nulp.moonice.authorization.login.LoginActivity
 import com.nulp.moonice.databinding.ActivityRegistrationBinding
+import com.nulp.moonice.ui.BookActivity
 import com.nulp.moonice.ui.MainActivity
 import com.nulp.moonice.utils.*
 import com.nulp.moonice.vital_changer.LoadingDialog
@@ -116,23 +118,28 @@ class RegistrationActivity : AppCompatActivity() {
                 .getReference(NODE_USERS)
 
         var mistakeCount = 0
+        if (username.isEmpty()) {
+            binding.username.error = "Please enter username..."
+            mistakeCount++
+        }
+
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            binding.emailLayout.error = "Invalid email..."
+            binding.email.error = "Invalid email..."
             mistakeCount++
         }
 
         if (password.isEmpty()) {
-            binding.passwordLayout.error = "Please enter password..."
+            binding.password.error = "Please enter password..."
             mistakeCount++
         }
 
         if (cPassword.isEmpty()) {
-            binding.confirmPasswordLayout.error = "Confirm password..."
+            binding.confirmPassword.error = "Confirm password..."
             mistakeCount++
         }
 
         if (password != cPassword) {
-            binding.confirmPasswordLayout.error = "Password doesn't match..."
+            binding.confirmPassword.error = "Password doesn't match..."
             mistakeCount++
         }
 
@@ -141,19 +148,8 @@ class RegistrationActivity : AppCompatActivity() {
             mistakeCount++
         }
 
-        if (username.isEmpty()) {
-            binding.usernameLayout.error = "Please enter username..."
-            mistakeCount++
-        } else {
-            ref.child(NODE_USERNAMES)
-                .addListenerForSingleValueEvent(AppValueEventListener {
-                    if (it.hasChild(username)) {
-                        binding.usernameLayout.error = "The specified user already exists!"
-                        mistakeCount++
-                    } else if (mistakeCount == 0) {
-                        createUserAccount()
-                    }
-                })
+        if (mistakeCount == 0) {
+            createUserAccount()
         }
     }
 
@@ -172,12 +168,10 @@ class RegistrationActivity : AppCompatActivity() {
     }
 
     private fun updateUserInfo() {
-
         val timestamp = System.currentTimeMillis()
 
         val uid = auth.uid
         val hashMap: HashMap<String, Any?> = HashMap()
-        hashMap[USER_DETAILS_UID] = uid
         hashMap[USER_DETAILS_USERNAME] = username
         hashMap[USER_DETAILS_EMAIL] = email
         hashMap[USER_DETAILS_BIRTH_DATE] = birthDate
@@ -185,34 +179,42 @@ class RegistrationActivity : AppCompatActivity() {
         hashMap[USER_DETAILS_TIMESTAMP] = timestamp
 
 
-        ref.child(NODE_USERNAMES).child(username).setValue(uid)
-            .addOnCompleteListener {
-                if (it.isSuccessful) {
-                    ref.child(NODE_USER_DETAILS).child(uid!!)
-                        .setValue(hashMap)
-                        .addOnSuccessListener {
-                            Toast.makeText(
-                                this,
-                                "Account created...",
-                                Toast.LENGTH_SHORT
-                            ).show()
+        ref.child(NODE_USER_DETAILS).child(uid!!)
+            .setValue(hashMap)
+            .addOnSuccessListener {
 
-                            startActivity(
-                                Intent(
-                                    this@RegistrationActivity,
-                                    MainActivity::class.java
-                                )
-                            )
-                            finish()
-                        }
-                        .addOnFailureListener { e ->
-                            Toast.makeText(
-                                this,
-                                "Failed saving user info. ${e.message}",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                }
+                auth.currentUser!!.sendEmailVerification()
+                    .addOnSuccessListener {
+                        Toast.makeText(
+                            this,
+                            "Account created. Verify the specified mail.",
+                            Toast.LENGTH_SHORT
+                        ).show()
+
+                        val intent = Intent(
+                            this@RegistrationActivity,
+                            LoginActivity::class.java
+                        )
+                        intent.putExtra("registration", "validation")
+                        startActivity(intent)
+
+                        finish()
+                    }
+                    .addOnFailureListener { e ->
+                        Toast.makeText(
+                            this,
+                            "Failed send email verification. ${e.message}",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
             }
+            .addOnFailureListener { e ->
+                Toast.makeText(
+                    this,
+                    "Failed saving user info. ${e.message}",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+
     }
 }

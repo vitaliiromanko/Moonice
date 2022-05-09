@@ -5,7 +5,6 @@ const val FIREBASE_STORAGE_URL = "https://firebasestorage.googleapis.com/v0/b/mo
 
 const val NODE_USERS = "Users"
 const val NODE_USER_DETAILS = "UsersInfo"
-const val NODE_USERNAMES = "Usernames"
 
 const val USER_DETAILS_UID = "uid"
 const val USER_DETAILS_USERNAME = "username"

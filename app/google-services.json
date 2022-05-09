@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "1065206639517",
+    "firebase_url": "https://moonicedatabase-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "moonicedatabase",
     "storage_bucket": "moonicedatabase.appspot.com"
   },
@@ -13,6 +14,22 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "1065206639517-lvqj6cjqe978rtt1cogdqn7t5mohlnrc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nulp.moonice",
+            "certificate_hash": "900b34774fb83395b90ff2f4ae450984337f9f9b"
+          }
+        },
+        {
+          "client_id": "1065206639517-v19mjkhnekgqu6bl2vh3cqbgjbth9qgf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nulp.moonice",
+            "certificate_hash": "f3c4aac4a10ecd9ee97f7744a0d18c8369d55f82"
+          }
+        },
         {
           "client_id": "1065206639517-ll8pnsktpno44038um7ts4jguormkue8.apps.googleusercontent.com",
           "client_type": 3

@@ -95,7 +95,7 @@ class EditProfileActivity : AppCompatActivity() {
             builder.setMessage("Do you want to save changes to your account?")
                 .setCancelable(false)
                 .setPositiveButton("Yes") { _, _ ->
-                    checkUserInfo(binding, userReference, userId)
+                    checkUserInfo(binding, userReference)
                 }
                 .setNegativeButton("No") { dialog, _ ->
                     dialog.dismiss()
@@ -160,7 +160,6 @@ class EditProfileActivity : AppCompatActivity() {
     private fun checkUserInfo(
         binding: ActivityEditProfileBinding,
         userRef: DatabaseReference,
-        uid: String
     ) {
         username = binding.usernameEditProfile.text.toString().trim()
         email = binding.emailEditProfile.text.toString().trim()
@@ -168,9 +167,13 @@ class EditProfileActivity : AppCompatActivity() {
         birthDate = textviewDate!!.text.toString().trim()
         val cPassword = binding.confirmPasswordEditProfile.text.toString().trim()
 
-        val allUsers = ref.child(NODE_USERS)
 
         var mistakeCount = 0
+        if (username.isEmpty()) {
+            binding.usernameEditProfileLayout.error = "Please enter username..."
+            mistakeCount++
+        }
+
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             binding.emailEditProfileLayout.error = "Invalid email..."
             mistakeCount++
@@ -193,62 +196,23 @@ class EditProfileActivity : AppCompatActivity() {
             mistakeCount++
         }
 
-        if (username.isEmpty()) {
-            binding.usernameEditProfileLayout.error = "Please enter username..."
-            mistakeCount++
-        } else {
-            allUsers.child(NODE_USERNAMES)
-                .addListenerForSingleValueEvent(AppValueEventListener {
-                    if (it.hasChild(username) && it.child(username).value != uid) {
-                        binding.usernameEditProfileLayout.error =
-                            "The specified user already exists!"
-                        mistakeCount++
-                    } else if (mistakeCount == 0) {
-                        updateUserInfo(userRef, uid)
-                    }
-                })
+        if (mistakeCount == 0) {
+            updateUserInfo(userRef)
         }
     }
 
     private fun updateUserInfo(
         userRef: DatabaseReference,
-        uid: String
     ) {
         var failure = 0
-        if (usernameOld != username) {
-            var success = 0
-            ref.child(NODE_USERS).child(NODE_USERNAMES).child(usernameOld).removeValue()
-                .addOnSuccessListener {
-                    success++
-                }.addOnFailureListener { e ->
-                    Toast.makeText(
-                        this,
-                        "Failed updating user info. ${e.message}",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-            userRef.child(USER_DETAILS_USERNAME).setValue(username).addOnSuccessListener {
-                success++
-            }.addOnFailureListener { e ->
-                Toast.makeText(
-                    this,
-                    "Failed updating user info. ${e.message}",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-            ref.child(NODE_USERS).child(NODE_USERNAMES).child(username).setValue(uid)
-                .addOnSuccessListener {
-                    success++
-                }.addOnFailureListener { e ->
-                    Toast.makeText(
-                        this,
-                        "Failed updating user info. ${e.message}",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-            if (success != 3) {
-                failure++
-            }
+        userRef.child(USER_DETAILS_USERNAME).setValue(username)
+            .addOnFailureListener { e ->
+            Toast.makeText(
+                this,
+                "Failed updating user info. ${e.message}",
+                Toast.LENGTH_SHORT
+            ).show()
+            failure++
         }
         if (auth.currentUser?.email != email) {
             var success = 0
