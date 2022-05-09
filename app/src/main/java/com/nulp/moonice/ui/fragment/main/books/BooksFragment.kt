@@ -16,17 +16,18 @@ import com.nulp.moonice.adapter.BooksAdapter
 import com.nulp.moonice.databinding.FragmentBooksBinding
 import com.nulp.moonice.model.Book
 import com.nulp.moonice.ui.BookActivity
-import com.nulp.moonice.utils.AppValueEventListener
-import com.nulp.moonice.utils.FIREBASE_URL
-import com.nulp.moonice.utils.NODE_BOOKS
-import com.nulp.moonice.utils.NODE_BOOK_DETAILS
+import com.nulp.moonice.utils.*
 
 
 class BooksFragment : Fragment() {
 
     private var _binding: FragmentBooksBinding? = null
-    private lateinit var bookArrayList: ArrayList<Book>
-    private lateinit var bookRecyclerView: RecyclerView
+    private lateinit var popularBooksRecyclerView: RecyclerView
+    private lateinit var topComedyRecyclerView: RecyclerView
+    private lateinit var topDramaRecyclerView: RecyclerView
+    private lateinit var topFantasyRecyclerView: RecyclerView
+    private lateinit var topRomanceRecyclerView: RecyclerView
+
     private lateinit var ref: DatabaseReference
 
     private val binding get() = _binding!!
@@ -37,29 +38,163 @@ class BooksFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentBooksBinding.inflate(inflater, container, false)
+        ref = FirebaseDatabase.getInstance(FIREBASE_URL).reference
 
-        bookRecyclerView = binding.recyclerView1
-        bookRecyclerView.layoutManager =
+        popularBooksRecyclerView = binding.popularBooksRecyclerView
+        popularBooksRecyclerView.layoutManager =
             LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-        bookArrayList = arrayListOf<Book>()
+        initPopularBooksRecycleView(popularBooksRecyclerView)
 
-        initRecycleView(bookRecyclerView)
+        topComedyRecyclerView = binding.topComedyRecyclerView
+        topComedyRecyclerView.layoutManager =
+            LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        initTopComedyRecycleView(topComedyRecyclerView)
+
+        topDramaRecyclerView = binding.topDramaRecyclerView
+        topDramaRecyclerView.layoutManager =
+            LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        initTopDramaRecycleView(topDramaRecyclerView)
+
+        topFantasyRecyclerView = binding.topFantasyRecyclerView
+        topFantasyRecyclerView.layoutManager =
+            LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        initTopFantasyRecycleView(topFantasyRecyclerView)
+
+        topRomanceRecyclerView = binding.topRomanceRecyclerView
+        topRomanceRecyclerView.layoutManager =
+            LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        initTopRomanceRecycleView(topRomanceRecyclerView)
+
+
         return binding.root
     }
 
-    private fun initRecycleView(recyclerView: RecyclerView) {
-        ref = FirebaseDatabase.getInstance(FIREBASE_URL).reference
-        ref.child(NODE_BOOKS).child(NODE_BOOK_DETAILS)
+    private fun initPopularBooksRecycleView(recyclerView: RecyclerView) {
+        var bookArrayList = arrayListOf<Book>()
+        ref.child(NODE_BOOKS)
             .addValueEventListener(AppValueEventListener {
                 if (it.exists()) {
-                    for (bookSnapshot in it.children) {
-                        val book = bookSnapshot.getValue(Book::class.java)
-                        if (book != null) {
-                            book.id = bookSnapshot.key?.toLong() ?: 1
-                            bookArrayList.add(book)
+                    for (bookSnapshot in it.child(NODE_BOOK_DETAILS).children) {
+                        if (it.child(NODE_BOOKS_TOP).child(TOP_POPULAR_BOOKS).hasChild(bookSnapshot.key!!)) {
+                            val book = bookSnapshot.getValue(Book::class.java)
+                            if (book != null) {
+                                book.id = bookSnapshot.key?.toLong() ?: 1
+                                bookArrayList.add(book)
+                            }
                         }
                     }
-//                        bookArrayList = bookArrayList.filter { it.genre == 1 } as ArrayList<Book>
+                    bookArrayList = bookArrayList.take(10) as ArrayList<Book>
+                    recyclerView.adapter = BooksAdapter((object : BooksActionListener {
+                        override fun onBookClick(book: Book) {
+                            val gson = Gson()
+                            val intent = Intent(activity, BookActivity::class.java)
+                            intent.putExtra("book", gson.toJson(book))
+                            startActivity(intent)
+                        }
+                    }), bookArrayList)
+                }
+
+            })
+    }
+
+    private fun initTopComedyRecycleView(recyclerView: RecyclerView) {
+        var bookArrayList = arrayListOf<Book>()
+        ref.child(NODE_BOOKS)
+            .addValueEventListener(AppValueEventListener {
+                if (it.exists()) {
+                    for (bookSnapshot in it.child(NODE_BOOK_DETAILS).children) {
+                        if (it.child(NODE_BOOKS_TOP).child(TOP_COMEDY).hasChild(bookSnapshot.key!!)) {
+                            val book = bookSnapshot.getValue(Book::class.java)
+                            if (book != null) {
+                                book.id = bookSnapshot.key?.toLong() ?: 1
+                                bookArrayList.add(book)
+                            }
+                        }
+                    }
+                    bookArrayList = bookArrayList.take(10) as ArrayList<Book>
+                    recyclerView.adapter = BooksAdapter((object : BooksActionListener {
+                        override fun onBookClick(book: Book) {
+                            val gson = Gson()
+                            val intent = Intent(activity, BookActivity::class.java)
+                            intent.putExtra("book", gson.toJson(book))
+                            startActivity(intent)
+                        }
+                    }), bookArrayList)
+                }
+
+            })
+    }
+
+    private fun initTopDramaRecycleView(recyclerView: RecyclerView) {
+        var bookArrayList = arrayListOf<Book>()
+        ref.child(NODE_BOOKS)
+            .addValueEventListener(AppValueEventListener {
+                if (it.exists()) {
+                    for (bookSnapshot in it.child(NODE_BOOK_DETAILS).children) {
+                        if (it.child(NODE_BOOKS_TOP).child(TOP_DRAMA).hasChild(bookSnapshot.key!!)) {
+                            val book = bookSnapshot.getValue(Book::class.java)
+                            if (book != null) {
+                                book.id = bookSnapshot.key?.toLong() ?: 1
+                                bookArrayList.add(book)
+                            }
+                        }
+                    }
+                    bookArrayList = bookArrayList.take(10) as ArrayList<Book>
+                    recyclerView.adapter = BooksAdapter((object : BooksActionListener {
+                        override fun onBookClick(book: Book) {
+                            val gson = Gson()
+                            val intent = Intent(activity, BookActivity::class.java)
+                            intent.putExtra("book", gson.toJson(book))
+                            startActivity(intent)
+                        }
+                    }), bookArrayList)
+                }
+
+            })
+    }
+
+    private fun initTopFantasyRecycleView(recyclerView: RecyclerView) {
+        var bookArrayList = arrayListOf<Book>()
+        ref.child(NODE_BOOKS)
+            .addValueEventListener(AppValueEventListener {
+                if (it.exists()) {
+                    for (bookSnapshot in it.child(NODE_BOOK_DETAILS).children) {
+                        if (it.child(NODE_BOOKS_TOP).child(TOP_FANTASY).hasChild(bookSnapshot.key!!)) {
+                            val book = bookSnapshot.getValue(Book::class.java)
+                            if (book != null) {
+                                book.id = bookSnapshot.key?.toLong() ?: 1
+                                bookArrayList.add(book)
+                            }
+                        }
+                    }
+                    bookArrayList = bookArrayList.take(10) as ArrayList<Book>
+                    recyclerView.adapter = BooksAdapter((object : BooksActionListener {
+                        override fun onBookClick(book: Book) {
+                            val gson = Gson()
+                            val intent = Intent(activity, BookActivity::class.java)
+                            intent.putExtra("book", gson.toJson(book))
+                            startActivity(intent)
+                        }
+                    }), bookArrayList)
+                }
+
+            })
+    }
+
+    private fun initTopRomanceRecycleView(recyclerView: RecyclerView) {
+        var bookArrayList = arrayListOf<Book>()
+        ref.child(NODE_BOOKS)
+            .addValueEventListener(AppValueEventListener {
+                if (it.exists()) {
+                    for (bookSnapshot in it.child(NODE_BOOK_DETAILS).children) {
+                        if (it.child(NODE_BOOKS_TOP).child(TOP_ROMANCE).hasChild(bookSnapshot.key!!)) {
+                            val book = bookSnapshot.getValue(Book::class.java)
+                            if (book != null) {
+                                book.id = bookSnapshot.key?.toLong() ?: 1
+                                bookArrayList.add(book)
+                            }
+                        }
+                    }
                     bookArrayList = bookArrayList.take(10) as ArrayList<Book>
                     recyclerView.adapter = BooksAdapter((object : BooksActionListener {
                         override fun onBookClick(book: Book) {

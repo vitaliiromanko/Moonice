@@ -37,3 +37,11 @@ const val RECORD_DETAILS_LIKE = "like"
 const val RECORD_DETAILS_BOOK = "book"
 const val RECORD_DETAILS_RECORD_LINK = "recordLink"
 
+const val NODE_BOOKS_TOP = "BooksTop"
+
+const val TOP_POPULAR_BOOKS = "PopularBooks"
+const val TOP_COMEDY = "TopComedy"
+const val TOP_DRAMA = "TopDrama"
+const val TOP_FANTASY = "TopFantasy"
+const val TOP_ROMANCE = "TopRomance"
+
