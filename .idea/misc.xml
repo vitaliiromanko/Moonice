@@ -6,6 +6,11 @@
         <entry key="..\:/PMD_University/Moonice/app/src/main/res/drawable-v24/ic_corner_decor_light.xml" value="0.144" />
         <entry key="..\:/PMD_University/Moonice/app/src/main/res/drawable-v24/ic_logo_light.xml" value="0.144" />
         <entry key="..\:/PMD_University/Moonice/app/src/main/res/drawable/ic_arrow_back.xml" value="0.169" />
+        <entry key="..\:/PMD_University/Moonice/app/src/main/res/drawable/ic_bookmark.xml" value="0.1575" />
+        <entry key="..\:/PMD_University/Moonice/app/src/main/res/drawable/ic_bookmark_border.xml" value="0.1575" />
+        <entry key="..\:/PMD_University/Moonice/app/src/main/res/drawable/ic_bookmark_fill.xml" value="0.1575" />
+        <entry key="..\:/PMD_University/Moonice/app/src/main/res/drawable/ic_bookmarks.xml" value="0.1575" />
+        <entry key="..\:/PMD_University/Moonice/app/src/main/res/drawable/ic_calendar.xml" value="0.1575" />
         <entry key="..\:/PMD_University/Moonice/app/src/main/res/layout/activity_book.xml" value="0.264" />
         <entry key="..\:/PMD_University/Moonice/app/src/main/res/layout/activity_edit_profile.xml" value="0.264" />
         <entry key="..\:/PMD_University/Moonice/app/src/main/res/layout/activity_forgot_password.xml" value="0.264" />
@@ -25,6 +30,7 @@
         <entry key="..\:/PMD_University/Moonice/app/src/main/res/layout/fragment_settings.xml" value="0.25416666666666665" />
         <entry key="..\:/PMD_University/Moonice/app/src/main/res/layout/fragment_slideshow.xml" value="0.25416666666666665" />
         <entry key="..\:/PMD_University/Moonice/app/src/main/res/layout/item_book.xml" value="0.25416666666666665" />
+        <entry key="..\:/PMD_University/Moonice/app/src/main/res/layout/item_bookmarks.xml" value="0.25416666666666665" />
         <entry key="..\:/PMD_University/Moonice/app/src/main/res/layout/item_chapter.xml" value="0.25416666666666665" />
         <entry key="..\:/PMD_University/Moonice/app/src/main/res/layout/loading_item.xml" value="0.17685185185185184" />
         <entry key="..\:/PMD_University/Moonice/app/src/main/res/layout/nav_header_book.xml" value="0.25416666666666665" />

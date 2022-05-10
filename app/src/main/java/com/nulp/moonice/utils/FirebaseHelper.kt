@@ -13,6 +13,7 @@ const val USER_DETAILS_BIRTH_DATE = "birthDate"
 const val USER_DETAILS_PROFILE_IMAGE = "profileImage"
 const val USER_DETAILS_TIMESTAMP = "timestamp"
 
+const val NODE_BOOKMARKS = "Bookmarks"
 
 const val NODE_BOOKS = "Books"
 const val NODE_BOOK_DETAILS = "BooksInfo"

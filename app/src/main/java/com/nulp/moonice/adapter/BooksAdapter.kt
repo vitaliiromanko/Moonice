@@ -52,7 +52,7 @@ class BooksAdapter(
                     bookGenre.text = it.value as String
                 })
             bookTitle.text = book.title
-            Picasso.get().load(book.pictureLink).into(bookImageLogo);
+            Picasso.get().load(book.pictureLink).into(bookImageLogo)
         }
     }
 
