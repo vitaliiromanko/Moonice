@@ -22,7 +22,6 @@ class LikesAdapter(private val likeList: ArrayList<LikeItem>
     override fun onBindViewHolder(holder: LikesViewHolder, position: Int) {
         val likeItem = likeList[position]
         with(holder.binding) {
-            Log.d("onBindViewHolder LIKE", "${likeItem.username} and ${likeItem.profileImage}")
             holder.itemView.tag = likeItem
             usernameLike.text = likeItem.username
             if (likeItem.profileImage != null && likeItem.profileImage != "") {

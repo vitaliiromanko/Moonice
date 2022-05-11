@@ -34,6 +34,11 @@
 
     </style>
 
+    <style name="UploadImageButtonStyle" parent="TextAppearance.AppCompat.Widget.Button">
+        <item name="backgroundTint">@color/indigo</item>
+        <item name="android:textColor">@color/white_cyan</item>
+    </style>
+
     <style name="SearchTheme" parent="Widget.AppCompat.Light.SearchView">
         <item name="android:textColorHint">@color/additional_purple_2</item>
         <item name="fontFamily">sans-serif</item>
@@ -269,7 +274,7 @@
         <item name="android:layout_height">80dp</item>
         <item name="android:background">@color/indigo</item>
         <item name="android:scaleType">centerCrop</item>
-        <item name="cardCornerRadius">50dp</item>
+        <item name="cardCornerRadius">40dp</item>
     </style>
 
     <style name="PlayerToolbarTheme" parent="ThemeOverlay.AppCompat.ActionBar">
