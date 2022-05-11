@@ -94,6 +94,10 @@ class BookmarksFragment : Fragment() {
                         bookmarksArrayList.add(cBookmark)
                     }
                 }
+                val covertList = arrayListOf<Bookmark>()
+                for (i in bookmarksArrayList.indices.reversed()) {
+                    covertList.add(bookmarksArrayList[i])
+                }
                 recyclerView.adapter = BookmarkAdapter((object : BookmarkActionListener {
                     override fun onBookmarkClick(bookmark: Bookmark) {
                         val gson = Gson()
@@ -101,7 +105,7 @@ class BookmarksFragment : Fragment() {
                         intent.putExtra("record", gson.toJson(bookmark.record))
                         startActivity(intent)
                     }
-                }), bookmarksArrayList)
+                }), covertList)
             })
     }
 

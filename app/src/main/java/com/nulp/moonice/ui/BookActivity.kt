@@ -1,5 +1,6 @@
 package com.nulp.moonice.ui
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
@@ -110,6 +111,18 @@ class BookActivity : AppCompatActivity() {
                     record!!.id = recordSnapshot.key?.toLong()
                     if (record.book == book.id && record.chapterNumber == minChapterNumber) {
 
+                        for (markSnapshot in userBookmarks.children) {
+                            val mark = markSnapshot.getValue(Long::class.java)
+                            val nRecord = records.child(mark!!.toString())
+                                .getValue(AudioRecord::class.java)
+                            nRecord!!.id = recordSnapshot.key?.toLong()
+                            if (nRecord.book == book.id) {
+                                bookmarkRef.child(user.uid)
+                                    .child(markSnapshot.key.toString()).removeValue()
+                                break
+                            }
+                        }
+
                         Log.d("Test", record.toString())
 
                         bookmarkRef.child(user.uid)
@@ -123,6 +136,7 @@ class BookActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun initPage(binding: ActivityBookBinding) {
         val genreKey = book.genre
         binding.bookTitleMain.text = book.title

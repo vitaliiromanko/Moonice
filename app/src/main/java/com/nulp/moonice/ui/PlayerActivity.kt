@@ -1,5 +1,6 @@
 package com.nulp.moonice.ui
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -45,6 +46,7 @@ class PlayerActivity : AppCompatActivity() {
 
     private var hasBookmark = false
     private lateinit var userBookmarks: DataSnapshot
+    private lateinit var records: DataSnapshot
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,6 +62,10 @@ class PlayerActivity : AppCompatActivity() {
         likeButton = findViewById(R.id.like)
         likeText = findViewById(R.id.like_text)
         setSupportActionBar(binding.myToolbar)
+
+        recordRef.addValueEventListener(AppValueEventListener {
+            records = it
+        })
 
         val gson = Gson()
         thisRecord = gson.fromJson(intent.getStringExtra("record"), AudioRecord::class.java)
@@ -120,6 +126,20 @@ class PlayerActivity : AppCompatActivity() {
                 }
             }
         } else {
+            for (recordSnapshot in records.children) {
+                for (markSnapshot in userBookmarks.children) {
+                    val mark = markSnapshot.getValue(Long::class.java)
+                    val nRecord = records.child(mark!!.toString())
+                        .getValue(AudioRecord::class.java)
+                    nRecord!!.id = recordSnapshot.key?.toLong()
+                    if (nRecord.book == thisRecord.book) {
+                        bookmarkRef.child(user.uid)
+                            .child(markSnapshot.key.toString()).removeValue()
+                        break
+                    }
+                }
+            }
+
             bookmarkRef.child(user.uid)
                 .child(Date().time.toString())
                 .setValue(thisRecord.id)
@@ -127,6 +147,7 @@ class PlayerActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun initPage(binding: ActivityPlayerBinding) {
         binding.backToBookActivity.setOnClickListener {
             finish()
@@ -137,7 +158,7 @@ class PlayerActivity : AppCompatActivity() {
                 binding.activityPlayerBookTitle.text =
                     it.child(BOOK_DETAILS_TITLE).value as String
                 Picasso.get().load(it.child(BOOK_DETAILS_PICTURE_LINK).value as String)
-                    .into(binding.activityPlayerBookImage);
+                    .into(binding.activityPlayerBookImage)
             })
         binding.activityPlayerChapterInfo.text =
             "Ch. ${thisRecord.chapterNumber} ${thisRecord.chapterTitle}"
