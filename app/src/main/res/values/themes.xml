@@ -12,7 +12,7 @@
         <item name="android:textColorPrimary">@color/indigo</item>
         <item name="android:textColorSecondary">@color/additional_purple_1</item>
         <item name="android:listDivider">@color/white_blue</item>
-        <item name="statusBarScrim" tools:targetApi="l">@color/indigo</item>
+        <item name="statusBarScrim" >@color/indigo</item>
 
         <item name="colorAccent">@color/white_purple</item>
         <item name="colorSwitchThumbNormal">@color/indigo</item>
@@ -26,7 +26,7 @@
         <item name="android:textColorHighlight">@color/purple_blue</item>
 
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">@color/indigo</item>
+        <item name="android:statusBarColor" >@color/indigo</item>
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
 
         <item name="preferenceTheme">@style/SettingsTheme</item>
@@ -294,8 +294,10 @@
         <item name="android:background">@color/dark_purple_blue</item>
         <item name="android:thumbTint">@color/sky_blue</item>
         <item name="android:progressTint">@color/sky_blue</item>
+    </style>
 
-
+    <style name="PlayerSeekBarLayout">
+        <item name="android:background">@color/dark_purple_blue</item>
     </style>
 
     <style name="PlayerControl">
@@ -309,6 +311,14 @@
         <item name="android:layout_weight">1</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="PlayerTimeText">
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textColor">@color/purple_blue</item>
+        <item name="android:lines">1</item>
     </style>
 
     <style name="PlayerImageButton" parent="Widget.AppCompat.ImageButton">

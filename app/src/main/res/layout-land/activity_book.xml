@@ -54,10 +54,15 @@
 
     <include
         android:id="@+id/nav_header_book"
-        layout="@layout/nav_header_book" />
+        layout="@layout/nav_header_book"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
     <include
         android:id="@+id/chapter_list"
-        layout="@layout/chapter_list" />
-
+        layout="@layout/chapter_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 </LinearLayout>
