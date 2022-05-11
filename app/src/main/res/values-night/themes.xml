@@ -33,6 +33,10 @@
 
     </style>
 
+    <style name="UploadImageButtonStyle" parent="TextAppearance.AppCompat.Widget.Button">
+        <item name="backgroundTint">@color/white_purple</item>
+        <item name="android:textColor">@color/indigo</item>
+    </style>
 
     <style name="SettingsTheme" parent="Preference.PreferenceScreen">
         <item name="android:background">@color/dark_purple_blue</item>

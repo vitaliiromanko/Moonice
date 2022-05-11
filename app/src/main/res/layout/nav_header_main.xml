@@ -22,15 +22,16 @@
         <androidx.cardview.widget.CardView
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:paddingTop="@dimen/nav_header_vertical_spacing"
-            app:cardCornerRadius="70dp">
+            android:layout_marginTop="@dimen/nav_header_vertical_spacing"
+            app:cardCornerRadius="50dp">
 
             <ImageView
                 android:id="@+id/profile_picture"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:contentDescription="@string/nav_header_desc"
                 android:scaleType="centerCrop"
+                android:adjustViewBounds="true"
                 android:src="@drawable/pink_space" />
         </androidx.cardview.widget.CardView>
 

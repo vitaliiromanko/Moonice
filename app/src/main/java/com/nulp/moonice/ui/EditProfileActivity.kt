@@ -2,21 +2,24 @@ package com.nulp.moonice.ui
 
 import android.app.Activity
 import android.app.DatePickerDialog
+import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
 import android.util.Patterns
 import android.view.View
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.view.ContextThemeWrapper
+import androidx.core.content.FileProvider
 import com.github.javafaker.Faker
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
@@ -28,8 +31,11 @@ import com.nulp.moonice.R
 import com.nulp.moonice.databinding.ActivityEditProfileBinding
 import com.nulp.moonice.utils.*
 import com.squareup.picasso.Picasso
+import java.io.File
+import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
+import java.util.jar.Manifest
 
 
 class EditProfileActivity : AppCompatActivity() {
@@ -43,10 +49,22 @@ class EditProfileActivity : AppCompatActivity() {
     private var textviewDate: TextView? = null
     private lateinit var saveButton: ImageButton
     private lateinit var usernameOld: String
-    private lateinit var uploadProfilePicture: ImageView
-    private var profilePictureChanged: Boolean = false
+    private lateinit var uploadProfilePicture: Button
+    private lateinit var takeProfilePicture: ImageView
+    private var profilePictureTaken: Boolean = false
+    private var profilePictureUploaded: Boolean = false
+    private lateinit var capturedPictureUri: Uri
     private lateinit var selectedPictureUri: Uri
     private lateinit var storageRef: StorageReference
+
+    private val REQUEST_IMAGE_CAPTURE = 1
+    private val REQUEST_IMAGE_UPLOAD = 0
+    private val PERMISSION_CODE_CAMERA = 1000
+    private val PERMISSION_CODE_GALLERY = 1
+
+    private lateinit var photoFile: File
+    private lateinit var currentPhotoPath: String
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,7 +76,8 @@ class EditProfileActivity : AppCompatActivity() {
         textviewDate = binding.birthDateEditProfile
         buttonDate = binding.birthDateEditProfile
         saveButton = binding.saveButton
-        uploadProfilePicture = binding.profilePictureCameraEditProfile
+        takeProfilePicture = binding.profilePictureCameraEditProfile
+        uploadProfilePicture = binding.profilePictureUploadEditProfile
 
 
         val dateSetListener =
@@ -104,11 +123,54 @@ class EditProfileActivity : AppCompatActivity() {
             alert.show()
         }
 
+        takeProfilePicture.setOnClickListener {
+            // if os is Marshmallow or above we'll ask permission
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                // if we don't have enough permissions to perform a task
+                if (checkSelfPermission(android.Manifest.permission.CAMERA)
+                    == PackageManager.PERMISSION_DENIED ||
+                    checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    == PackageManager.PERMISSION_DENIED
+                ) {
+                    val permission = arrayOf(
+                        android.Manifest.permission.CAMERA,
+                        android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+                    )
+                    requestPermissions(permission, PERMISSION_CODE_CAMERA)
+                }
+                // if we have enough permissions, we continue
+                else {
+                    takePicture()
+                }
+            }
+            // permission is not needed
+            else {
+                takePicture()
+            }
+        }
+
         uploadProfilePicture.setOnClickListener {
-            val intent = Intent()
-            intent.type = "image/*"
-            intent.action = Intent.ACTION_PICK
-            startActivityForResult(intent, 0)
+            uploadPictureFromGallery()
+            // if os is Marshmallow or above we'll ask permission
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                // if we don't have enough permissions to perform a task
+                if (checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE)
+                    == PackageManager.PERMISSION_DENIED
+                ) {
+                    val permission = arrayOf(
+                        android.Manifest.permission.READ_EXTERNAL_STORAGE
+                    )
+                    requestPermissions(permission, PERMISSION_CODE_GALLERY)
+                }
+                // if we have enough permissions, we continue
+                else {
+                    uploadPictureFromGallery()
+                }
+            }
+            // permission is not needed
+            else {
+                uploadPictureFromGallery()
+            }
         }
     }
 
@@ -116,12 +178,57 @@ class EditProfileActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (requestCode == 0 && resultCode == Activity.RESULT_OK && data != null) {
+        if (requestCode == REQUEST_IMAGE_UPLOAD && resultCode == Activity.RESULT_OK && data != null) {
             selectedPictureUri = data.data!!
-            val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, selectedPictureUri)
-            val bitmapDrawable = BitmapDrawable(bitmap)
-            binding.profilePictureEditProfile.setImageDrawable(bitmapDrawable)
-            profilePictureChanged = true
+//            val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, selectedPictureUri)
+//            val bitmapDrawable = BitmapDrawable(bitmap)
+//            binding.profilePictureEditProfile.setImageDrawable(bitmapDrawable)
+            binding.profilePictureEditProfile.setImageURI(selectedPictureUri)
+            profilePictureTaken = false
+            profilePictureUploaded = true
+        }
+
+        if (requestCode == REQUEST_IMAGE_CAPTURE) {
+            capturedPictureUri =
+                FileProvider.getUriForFile(this, "com.nulp.moonice.fileprovider", photoFile)
+            binding.profilePictureEditProfile.setImageURI(capturedPictureUri)
+            profilePictureTaken = true
+            profilePictureUploaded = false
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        // executes when user pressed ALLOW or DENY permission
+        when (requestCode) {
+            // user pressed ALLOW or DENY on CAMERA permission popup
+            PERMISSION_CODE_CAMERA -> {
+                // if user pressed ALLOW
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    takePicture()
+                }
+                // if user pressed DENY
+                else {
+                    Toast.makeText(this, "Permission denied", Toast.LENGTH_LONG).show()
+                }
+            }
+
+            // user pressed ALLOW or DENY on READ_EXTERNAL_STORAGE permission popup
+            PERMISSION_CODE_GALLERY -> {
+                // if user pressed ALLOW
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    uploadPictureFromGallery()
+                }
+                // if user pressed DENY
+                else {
+                    Toast.makeText(this, "Permission denied", Toast.LENGTH_LONG).show()
+                }
+            }
         }
     }
 
@@ -207,13 +314,13 @@ class EditProfileActivity : AppCompatActivity() {
         var failure = 0
         userRef.child(USER_DETAILS_USERNAME).setValue(username)
             .addOnFailureListener { e ->
-            Toast.makeText(
-                this,
-                "Failed updating user info. ${e.message}",
-                Toast.LENGTH_SHORT
-            ).show()
-            failure++
-        }
+                Toast.makeText(
+                    this,
+                    "Failed updating user info. ${e.message}",
+                    Toast.LENGTH_SHORT
+                ).show()
+                failure++
+            }
         if (auth.currentUser?.email != email) {
             var success = 0
             auth.currentUser?.updateEmail(email)?.addOnSuccessListener {
@@ -259,8 +366,14 @@ class EditProfileActivity : AppCompatActivity() {
             }
         }
 
-        if (profilePictureChanged) {
-            if (!uploadProfilePictureToFirebaseStorage(userRef)) {
+        if (profilePictureUploaded) {
+            if (!uploadProfilePictureToFirebaseStorage(userRef, selectedPictureUri)) {
+                failure++
+            }
+        }
+
+        if (profilePictureTaken) {
+            if (!uploadProfilePictureToFirebaseStorage(userRef, capturedPictureUri)) {
                 failure++
             }
         }
@@ -269,17 +382,20 @@ class EditProfileActivity : AppCompatActivity() {
             Toast.makeText(
                 this,
                 "Account updated successfully...",
-                Toast.LENGTH_SHORT
+                Toast.LENGTH_LONG
             ).show()
         }
     }
 
-    private fun uploadProfilePictureToFirebaseStorage(userRef: DatabaseReference): Boolean {
+    private fun uploadProfilePictureToFirebaseStorage(
+        userRef: DatabaseReference,
+        pictureUri: Uri
+    ): Boolean {
         var success = false
         val faker = Faker.instance()
         val filename = faker.leagueOfLegends().champion() + faker.space().star() + ".jpg"
         storageRef = FirebaseStorage.getInstance().getReference("/UserAvatars/$filename")
-        storageRef.putFile(selectedPictureUri).addOnSuccessListener {
+        storageRef.putFile(pictureUri).addOnSuccessListener {
             storageRef.downloadUrl.addOnSuccessListener {
                 Log.d("ProfilePicUrl", it.toString())
                 userRef.child(USER_DETAILS_PROFILE_IMAGE)
@@ -288,5 +404,46 @@ class EditProfileActivity : AppCompatActivity() {
             success = true
         }
         return success
+    }
+
+    private fun uploadPictureFromGallery() {
+        val uploadPictureIntent = Intent(Intent.ACTION_PICK)
+        uploadPictureIntent.type = "image/*"
+        try {
+            startActivityForResult(uploadPictureIntent, REQUEST_IMAGE_UPLOAD)
+        } catch (e: ActivityNotFoundException) {
+            //TODO() display error state to the user
+        }
+    }
+
+    private fun takePicture() {
+        // function for camera click listener
+        val pictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        photoFile = createImageFile()
+
+        // fileprovider changes along with fileprovider in manifest
+        val uri = FileProvider.getUriForFile(this, "com.nulp.moonice.fileprovider", photoFile)
+        pictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, uri)
+
+        // continue to onActivityResult
+        try {
+            startActivityForResult(pictureIntent, REQUEST_IMAGE_CAPTURE)
+        } catch (e: ActivityNotFoundException) {
+            //TODO() display error state to the user
+        }
+    }
+
+    private fun createImageFile(): File {
+        // Create an image file name
+        val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+        val storageDir: File? = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+        return File.createTempFile(
+            "JPEG_${timeStamp}_",
+            ".jpg",
+            storageDir
+        ).apply {
+            // Save a file: path for use with ACTION_VIEW intents
+            currentPhotoPath = absolutePath
+        }
     }
 }
