@@ -43,6 +43,7 @@ class LikesActivity : AppCompatActivity() {
     private fun initRecycleView(recyclerView: RecyclerView) {
         ref.addValueEventListener(AppValueEventListener {
             if (it.child(NODE_BOOKS).child(NODE_RECORDS_LIKES).child(likeRecordId).exists()) {
+                likeArrayList.clear()
                 for (likeSnapshot in it.child(NODE_BOOKS).child(NODE_RECORDS_LIKES)
                     .child(likeRecordId).children) {
                     val likeUserID = likeSnapshot.key as String
@@ -61,21 +62,6 @@ class LikesActivity : AppCompatActivity() {
 
             }
         })
-    }
-
-    private fun getLikeItem(userId: String): LikeItem {
-        var likeItem = LikeItem()
-        var refFinished = false
-        ref.child(NODE_USERS).child(NODE_USER_DETAILS).child(userId)
-            .get().addOnSuccessListener { snapshot ->
-                likeItem = snapshot.getValue(LikeItem::class.java)!!
-                Log.d("LikeActivity.addToList", "${likeItem.username}")
-                refFinished = true
-            }.addOnFailureListener {
-                Log.e("firebase", "Error getting likeItem", it)
-            }
-
-        return likeItem
     }
 
 }
