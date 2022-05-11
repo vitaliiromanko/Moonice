@@ -119,22 +119,22 @@ class RegistrationActivity : AppCompatActivity() {
 
         var mistakeCount = 0
         if (username.isEmpty()) {
-            binding.username.error = "Please enter username..."
+            binding.usernameLayout.error = "Please enter username..."
             mistakeCount++
         }
 
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            binding.email.error = "Invalid email..."
+            binding.emailLayout.error = "Invalid email..."
             mistakeCount++
         }
 
         if (password.isEmpty()) {
-            binding.password.error = "Please enter password..."
+            binding.passwordLayout.error = "Please enter password..."
             mistakeCount++
         }
 
         if (cPassword.isEmpty()) {
-            binding.confirmPassword.error = "Confirm password..."
+            binding.confirmPasswordLayout.error = "Confirm password..."
             mistakeCount++
         }
 
