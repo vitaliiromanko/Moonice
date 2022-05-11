@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/LayoutBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.PlayerActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -14,6 +14,7 @@
         android:layout_height="?attr/actionBarSize"
         android:elevation="4dp"
         android:theme="@style/PlayerToolbarTheme"
+        app:contentInsetStart="0dp"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
         <LinearLayout
@@ -63,123 +64,141 @@
         </LinearLayout>
     </androidx.appcompat.widget.Toolbar>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <FrameLayout
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="5dp">
+
+        <ImageView
+            android:id="@+id/disk"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/ic_drive" />
+
+        <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@+id/bottom_toolbar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="?attr/actionBarSize"
-            app:layout_constraintVertical_bias="0.5">
-
-            <ImageView
-                android:id="@+id/disk"
-                android:layout_width="@dimen/disk_player_size"
-                android:layout_height="@dimen/disk_player_size"
-                app:srcCompat="@drawable/ic_drive" />
+            android:layout_gravity="center"
+            android:layout_marginVertical="10dp"
+            app:cardBackgroundColor="@color/transparent"
+            app:cardCornerRadius="5dp">
 
             <ImageView
                 android:id="@+id/activity_player_book_image"
-                android:layout_width="170dp"
-                android:layout_height="170dp"
-                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxHeight="200dp"
+                android:adjustViewBounds="true"
+                android:background="@color/transparent"
                 app:srcCompat="@drawable/book_item_2" />
-        </FrameLayout>
+        </androidx.cardview.widget.CardView>
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/bottom_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/indigo"
+        android:orientation="vertical">
+
         <LinearLayout
-            android:id="@+id/bottom_toolbar"
+            style="@style/PlayerControl"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/indigo"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent">
+            android:layout_height="40dp"
+            android:orientation="horizontal">
 
-            <LinearLayout
-                style="@style/PlayerControl"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:orientation="horizontal">
+            <ImageButton
+                android:id="@+id/previousChapter"
+                style="@style/PlayerControlButton"
+                app:srcCompat="@drawable/ic_skip_previous" />
 
-                <ImageButton
-                    android:id="@+id/previousChapter"
-                    style="@style/PlayerControlButton"
-                    app:srcCompat="@drawable/ic_skip_previous" />
+            <ImageButton
+                android:id="@+id/fiveSecAgo"
+                style="@style/PlayerControlButton"
+                app:srcCompat="@drawable/ic_fast_rewind" />
 
-                <ImageButton
-                    android:id="@+id/fiveSecAgo"
-                    style="@style/PlayerControlButton"
-                    app:srcCompat="@drawable/ic_fast_rewind" />
+            <ImageButton
+                android:id="@+id/playStop"
+                style="@style/PlayerControlButton"
+                app:srcCompat="@drawable/ic_play" />
 
-                <ImageButton
-                    android:id="@+id/playStop"
-                    style="@style/PlayerControlButton"
-                    app:srcCompat="@drawable/ic_play" />
+            <ImageButton
+                android:id="@+id/fiveSecForward"
+                style="@style/PlayerControlButton"
+                app:srcCompat="@drawable/ic_fast_forward" />
 
-                <ImageButton
-                    android:id="@+id/fiveSecForward"
-                    style="@style/PlayerControlButton"
-                    app:srcCompat="@drawable/ic_fast_forward" />
+            <ImageButton
+                android:id="@+id/nextChapter"
+                style="@style/PlayerControlButton"
+                app:srcCompat="@drawable/ic_skip_next" />
+        </LinearLayout>
 
-                <ImageButton
-                    android:id="@+id/nextChapter"
-                    style="@style/PlayerControlButton"
-                    app:srcCompat="@drawable/ic_skip_next" />
+        <LinearLayout
+            style="@style/PlayerSeekBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal">
 
-            </LinearLayout>
+            <TextView
+                android:id="@+id/current_time"
+                style="@style/PlayerTimeText"
+                android:text="0:00" />
 
             <SeekBar
                 android:id="@+id/seekBar"
                 style="@style/PlayerSeekBar"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
 
-                />
+            <TextView
+                android:id="@+id/finish_time"
+                style="@style/PlayerTimeText"
+                android:text="59:59" />
+        </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/indigo"
+            android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@color/indigo"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:orientation="horizontal">
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <ImageButton
-                        android:id="@+id/like"
-                        style="@style/PlayerImageButton"
-                        android:layout_width="30dp"
-                        app:srcCompat="@drawable/ic_like" />
-
-                    <TextView
-                        android:id="@+id/like_text"
-                        style="@style/PlayerLikeText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:text="1098" />
-                </LinearLayout>
-
                 <ImageButton
-                    android:id="@+id/activity_player_share"
+                    android:id="@+id/like"
                     style="@style/PlayerImageButton"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/ic_share" />
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/ic_like" />
 
+                <TextView
+                    android:id="@+id/like_text"
+                    style="@style/PlayerLikeText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:text="@string/LEON" />
             </LinearLayout>
 
+            <ImageButton
+                android:id="@+id/activity_player_share"
+                style="@style/PlayerImageButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_share" />
+
         </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
+    </LinearLayout>
 
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</LinearLayout>
