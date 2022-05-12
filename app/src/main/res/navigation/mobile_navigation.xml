@@ -17,4 +17,10 @@
         android:label="@string/menu_bookmarks"
         tools:layout="@layout/fragment_bookmarks" />
 
+    <fragment
+        android:id="@+id/nav_search"
+        android:name="com.nulp.moonice.ui.fragment.main.search.SearchFragment"
+        android:label="Search"
+        tools:layout="@layout/fragment_search" />
+
 </navigation>

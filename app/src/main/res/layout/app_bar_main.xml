@@ -57,12 +57,12 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include
-        android:id="@+id/search_list"
-        layout="@layout/fragment_search"
-        android:visibility="gone"
-        app:layout_anchor="@+id/search_list"
-        app:layout_anchorGravity="center" />
+<!--    <include-->
+<!--        android:id="@+id/search_list"-->
+<!--        layout="@layout/fragment_search"-->
+<!--        android:visibility="gone"-->
+<!--        app:layout_anchor="@+id/search_list"-->
+<!--        app:layout_anchorGravity="center" />-->
 
     <include
         android:id="@+id/content_main"
