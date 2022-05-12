@@ -15,7 +15,6 @@
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:contentInsetStart="0dp"
-        app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
         <LinearLayout
@@ -28,6 +27,7 @@
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:backgroundTint="#00FFFFFF"
+                android:contentDescription="@string/back_arrow"
                 app:srcCompat="@drawable/ic_arrow_back"
                 app:tint="@color/white_cyan" />
 
@@ -38,7 +38,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
                 android:paddingHorizontal="10dp"
-                android:text="Throne of glass"
+                android:text="@string/throne_of_glass"
                 android:textColor="@color/white_purple"
                 android:textStyle="bold" />
 
@@ -47,6 +47,7 @@
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:backgroundTint="@color/transparent"
+                android:contentDescription="@string/bookmark"
                 app:srcCompat="@drawable/ic_bookmark_border"
                 app:tint="@color/white_cyan" />
         </LinearLayout>
