@@ -1,40 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_profile"
     android:layout_width="match_parent"
     android:layout_height="@dimen/nav_header_height"
     android:background="@drawable/universe_button"
     android:backgroundTint="#B23D085E"
     android:backgroundTintMode="src_atop"
-    android:orientation="vertical"
+    android:fitsSystemWindows="false"
     android:gravity="center"
-    android:fitsSystemWindows="true"
-    android:id="@+id/drawer_profile">
+    android:orientation="vertical">
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="@dimen/nav_header_vertical_spacing"
-            app:cardCornerRadius="50dp">
+    <androidx.cardview.widget.CardView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="@dimen/nav_header_vertical_spacing"
+        app:cardCornerRadius="50dp">
 
-            <ImageView
-                android:id="@+id/profile_picture"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:contentDescription="@string/nav_header_desc"
-                android:scaleType="centerCrop"
-                android:adjustViewBounds="true"
-                android:src="@drawable/pink_space" />
-        </androidx.cardview.widget.CardView>
+        <ImageView
+            android:id="@+id/profile_picture"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/nav_header_desc"
+            android:scaleType="centerCrop"
+            android:src="@drawable/pink_space" />
+    </androidx.cardview.widget.CardView>
 
-        <TextView
-            android:id="@+id/drawer_username"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
-            android:text="@string/moonice_user"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="@color/white_cyan"
-            android:textStyle="bold" />
+    <TextView
+        android:id="@+id/drawer_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
+        android:text="@string/moonice_user"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/white_cyan"
+        android:textStyle="bold" />
 
 </LinearLayout>
