@@ -67,6 +67,7 @@
     </androidx.appcompat.widget.Toolbar>
 
     <FrameLayout
+        android:id="@+id/logo_frame"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -209,5 +210,11 @@
                 android:contentDescription="@string/share"
                 app:srcCompat="@drawable/ic_share" />
         </LinearLayout>
+
     </LinearLayout>
+
+    <include
+        android:id="@+id/fragment_lost_network"
+        layout="@layout/fragment_lost_network" />
+
 </LinearLayout>

@@ -53,4 +53,8 @@
         tools:context=".activity.LikesActivity"
         tools:listitem="@layout/item_like" />
 
+    <include
+        android:id="@+id/fragment_lost_network"
+        layout="@layout/fragment_lost_network" />
+
 </LinearLayout>

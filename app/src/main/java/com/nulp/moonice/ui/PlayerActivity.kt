@@ -5,8 +5,10 @@ import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
@@ -107,6 +109,28 @@ class PlayerActivity : AppCompatActivity() {
             val intent = Intent(this@PlayerActivity, LikesActivity::class.java)
             intent.putExtra("recordId", thisRecord.id.toString().trim())
             startActivity(intent)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        drawLayout()
+
+        val tryAgainButton = findViewById<Button>(R.id.fragment_lost_network_try_again_button)
+        tryAgainButton.setOnClickListener{
+            drawLayout()
+        }
+    }
+
+    private fun drawLayout() {
+        if (NetworkHelper.isNetworkConnected(this)) {
+            binding.fragmentLostNetwork.root.visibility = View.GONE
+            binding.logoFrame.visibility = View.VISIBLE
+            binding.bottomToolbar.visibility = View.VISIBLE
+        } else {
+            binding.fragmentLostNetwork.root.visibility = View.VISIBLE
+            binding.logoFrame.visibility = View.GONE
+            binding.bottomToolbar.visibility = View.GONE
         }
     }
 

@@ -2,11 +2,14 @@ package com.nulp.moonice.ui
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.nulp.moonice.R
 import com.nulp.moonice.adapter.LikesAdapter
 import com.nulp.moonice.databinding.ActivityLikesBinding
 import com.nulp.moonice.model.LikeItem
@@ -36,7 +39,26 @@ class LikesActivity : AppCompatActivity() {
         binding.backToPlayerActivityButton.setOnClickListener {
             finish()
         }
+    }
 
+    override fun onResume() {
+        super.onResume()
+        drawLayout()
+
+        val tryAgainButton = findViewById<Button>(R.id.fragment_lost_network_try_again_button)
+        tryAgainButton.setOnClickListener{
+            drawLayout()
+        }
+    }
+
+    private fun drawLayout() {
+        if (NetworkHelper.isNetworkConnected(this)) {
+            binding.fragmentLostNetwork.root.visibility = View.GONE
+            binding.likeRecyclerView.visibility = View.VISIBLE
+        } else {
+            binding.fragmentLostNetwork.root.visibility = View.VISIBLE
+            binding.likeRecyclerView.visibility = View.GONE
+        }
     }
 
     private fun initRecycleView(recyclerView: RecyclerView) {

@@ -5,6 +5,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import android.util.Log
+import android.view.View
+import android.widget.Button
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,6 +26,7 @@ import com.nulp.moonice.model.Book
 import com.nulp.moonice.utils.*
 import com.squareup.picasso.Picasso
 import java.util.*
+
 
 class BookActivity : AppCompatActivity() {
 
@@ -80,6 +83,28 @@ class BookActivity : AppCompatActivity() {
 
         binding.bookmark.setOnClickListener {
             bookmark(binding.bookmark)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        drawLayout()
+
+        val tryAgainButton = findViewById<Button>(R.id.fragment_lost_network_try_again_button)
+        tryAgainButton.setOnClickListener{
+            drawLayout()
+        }
+    }
+
+    private fun drawLayout() {
+        if (NetworkHelper.isNetworkConnected(this)) {
+            binding.fragmentLostNetwork!!.root.visibility = View.GONE
+            binding.navHeaderBook.root.visibility = View.VISIBLE
+            binding.chapterList.root.visibility = View.VISIBLE
+        } else {
+            binding.fragmentLostNetwork!!.root.visibility = View.VISIBLE
+            binding.navHeaderBook.root.visibility = View.GONE
+            binding.chapterList.root.visibility = View.GONE
         }
     }
 
