@@ -409,7 +409,7 @@ class EditProfileActivity : AppCompatActivity() {
         try {
             startActivityForResult(uploadPictureIntent, REQUEST_IMAGE_UPLOAD)
         } catch (e: ActivityNotFoundException) {
-            //TODO() display error state to the user
+            Log.d("Exception", "ActivityNotFoundException")
         }
     }
 
@@ -426,7 +426,7 @@ class EditProfileActivity : AppCompatActivity() {
         try {
             startActivityForResult(pictureIntent, REQUEST_IMAGE_CAPTURE)
         } catch (e: ActivityNotFoundException) {
-            //TODO() display error state to the user
+            Log.d("Exception", "ActivityNotFoundException")
         }
     }
 
