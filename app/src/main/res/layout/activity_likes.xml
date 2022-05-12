@@ -41,7 +41,7 @@
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:contentDescription="@string/like"
-                app:srcCompat="@drawable/ic_favorite_border" />
+                app:srcCompat="@drawable/ic_like" />
         </LinearLayout>
     </androidx.appcompat.widget.Toolbar>
 

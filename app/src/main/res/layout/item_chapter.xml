@@ -12,11 +12,12 @@
         android:layout_height="match_parent"
         android:layout_gravity="center_vertical"
         android:layout_marginStart="20dp"
+        android:contentDescription="@string/play_chapter_icon"
         android:src="@drawable/ic_play_button" />
 
     <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_weight="1"
         android:orientation="vertical"
         android:paddingHorizontal="20dp"
@@ -33,25 +34,28 @@
 
             <TextView
                 android:id="@+id/item_chapter_number"
-                style="@style/TextAppearanceListItem"
+                style="@style/ItemChapterNumberStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@string/ch_1"
                 android:layout_marginHorizontal="10dp" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="10dp"
                 android:layout_gravity="center_vertical"
+                android:contentDescription="@string/star_divider"
                 android:src="@drawable/ic_star"
                 app:tint="@color/light_purple" />
 
             <TextView
                 android:id="@+id/item_chapter_title"
-                style="@style/TextAppearanceListSubitem"
+                style="@style/ItemChapterTitleStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
                 android:ellipsize="end"
+                android:text="@string/mystical_dream"
                 android:lines="1"
                 android:scrollHorizontally="false" />
         </LinearLayout>
@@ -61,23 +65,24 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="10dp"
-            android:text="59h 59m 59s"
+            android:text="@string/time_record"
             android:textColor="@color/light_purple" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
         android:gravity="center"
-        android:orientation="horizontal"
-        android:paddingEnd="30dp">
+        android:orientation="horizontal">
 
         <ImageButton
             android:id="@+id/like"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="50dp"
             android:layout_gravity="center"
             android:backgroundTint="@color/transparent"
+            android:contentDescription="@string/like"
             android:src="@drawable/ic_like"
             app:tint="@color/light_purple" />
 
@@ -86,7 +91,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:text="666"
+            android:text="@string/LEON"
             android:textColor="@color/light_purple" />
     </LinearLayout>
 

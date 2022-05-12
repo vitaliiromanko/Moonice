@@ -46,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:maxLines="2"
                 android:scrollHorizontally="false"
-                android:text="Throne of glass"
+                android:text="@string/throne_of_glass"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="@color/white_cyan"
                 android:textSize="18sp"
@@ -62,7 +62,7 @@
                 android:lines="1"
                 android:paddingTop="@dimen/nav_header_vertical_spacing"
                 android:scrollHorizontally="true"
-                android:text="Sarah J. Maas, 2018"
+                android:text="@string/sarah_j_maas_2018"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="@color/light_purple"
                 android:textStyle="bold"
@@ -83,7 +83,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="5dp"
-            android:text="Description"
+            android:text="@string/description"
             android:textColor="@color/light_purple"
             android:textStyle="bold" />
 
@@ -93,7 +93,7 @@
             android:layout_height="wrap_content"
             android:maxLines="5"
             android:scrollbars="vertical"
-            android:text="Throne of Glass follows Celaena Sardothien, a 18-year-old assassin in the Kingdom of Adarlan. After a year of suffering for her crimes in a slave camp called Endovier, she accepts the offer of Crown Prince Dorian, the King of Adarlan's son, to compete with other assassins. More more more more more more more more more more more"
+            android:text="@string/description_throne_of_glass"
             android:textColor="@color/purple_blue" />
     </LinearLayout>
 
@@ -109,7 +109,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="5dp"
-            android:text="Genre"
+            android:text="@string/genre"
             android:textColor="@color/light_purple"
             android:textStyle="bold" />
 
@@ -118,7 +118,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:lines="1"
-            android:text="Drama"
+            android:text="@string/drama"
             android:textColor="@color/purple_blue" />
     </LinearLayout>
 </LinearLayout>

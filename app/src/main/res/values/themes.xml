@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Theme.Moonice" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
@@ -102,15 +102,21 @@
         <item name="icon">@drawable/ic_menu</item>
     </style>
 
-    <style name="ImageButtonStyle" parent="Widget.AppCompat.ImageButton">
+    <style name="ItemBookCoverButtonStyle" parent="Widget.AppCompat.ImageButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/indigo</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+
+    <style name="ItemBookCoverCardStyle" parent="CardView">
         <item name="android:layout_width">105dp</item>
         <item name="android:layout_height">130dp</item>
         <item name="android:background">@color/indigo</item>
-        <item name="android:scaleType">centerCrop</item>
         <item name="cardCornerRadius">4dp</item>
     </style>
 
-    <style name="BookTitleItem" parent="Widget.AppCompat.TextView">
+    <style name="ItemBookTitleStyle" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/indigo</item>
         <item name="android:ellipsize">end</item>
         <item name="android:maxLines">2</item>
@@ -119,7 +125,7 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="BookSubTitleItem" parent="Widget.AppCompat.TextView">
+    <style name="ItemBookSubTitleStyle" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/additional_purple_2</item>
         <item name="android:ellipsize">end</item>
         <item name="android:maxLines">1</item>
@@ -127,7 +133,7 @@
         <item name="android:padding">2dp</item>
     </style>
 
-    <style name="BookChapterTitleItem" parent="Widget.AppCompat.TextView">
+    <style name="ItemBookChapterTitleStyle" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/additional_purple_2</item>
         <item name="android:ellipsize">end</item>
         <item name="android:maxLines">2</item>
@@ -162,12 +168,12 @@
         <item name="backgroundTint">@color/transparent</item>
     </style>
 
-    <style name="TextAppearanceListItem">
+    <style name="ItemChapterNumberStyle">
         <item name="android:textColor">@color/indigo</item>
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="TextAppearanceListSubitem">
+    <style name="ItemChapterTitleStyle">
         <item name="android:textColor">@color/additional_purple_3</item>
     </style>
 
@@ -181,7 +187,7 @@
     </style>
 
     <style name="LogoStyle">
-        <item name="android:src">@drawable/ic_logolight</item>
+        <item name="android:src">@drawable/ic_logo_light</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">150dp</item>
     </style>
@@ -191,11 +197,6 @@
         <item name="android:textAllCaps">true</item>
         <item name="android:textSize">32sp</item>
         <item name="fontFamily">@font/bauhaus_93</item>
-    </style>
-
-    <style name="IconCorner">
-        <item name="android:src">@drawable/ic_corner_decor_light</item>
-        <item name="tint">@color/indigo</item>
     </style>
 
     <style name="EditText" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
@@ -297,7 +298,7 @@
         <item name="android:tint">@color/white_cyan</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_weight">1</item>
-        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">match_parent</item>
     </style>
 

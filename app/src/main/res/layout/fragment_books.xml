@@ -21,16 +21,19 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                tools:ignore="UseCompoundDrawables">
 
-                <ImageView style="@style/IconMainTitle" />
+                <ImageView
+                    style="@style/IconMainTitle"
+                    android:contentDescription="@string/moon" />
 
                 <TextView
                     style="@style/TextMainTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="10dp"
-                    android:text="Popular Books" />
+                    android:text="@string/popular_books" />
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
@@ -42,16 +45,19 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                tools:ignore="UseCompoundDrawables">
 
-                <ImageView style="@style/IconMainTitle" />
+                <ImageView
+                    style="@style/IconMainTitle"
+                    android:contentDescription="@string/moon" />
 
                 <TextView
                     style="@style/TextMainTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="10dp"
-                    android:text="Top Comedy" />
+                    android:text="@string/top_comedy" />
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
@@ -64,16 +70,19 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                tools:ignore="UseCompoundDrawables">
 
-                <ImageView style="@style/IconMainTitle" />
+                <ImageView
+                    style="@style/IconMainTitle"
+                    android:contentDescription="@string/moon" />
 
                 <TextView
                     style="@style/TextMainTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="10dp"
-                    android:text="Top Drama" />
+                    android:text="@string/top_drama" />
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
@@ -86,16 +95,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                >
+                tools:ignore="UseCompoundDrawables">
 
-                <ImageView style="@style/IconMainTitle" />
+                <ImageView
+                    style="@style/IconMainTitle"
+                    android:contentDescription="@string/moon" />
 
                 <TextView
                     style="@style/TextMainTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="10dp"
-                    android:text="Top Fantasy" />
+                    android:text="@string/top_fantasy" />
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
@@ -109,24 +120,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                >
+                tools:ignore="UseCompoundDrawables">
 
-                <ImageView style="@style/IconMainTitle" />
+                <ImageView
+                    style="@style/IconMainTitle"
+                    android:contentDescription="@string/moon" />
 
                 <TextView
                     style="@style/TextMainTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="10dp"
-                    android:text="Top Romance" />
+                    android:text="@string/top_romance" />
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/top_romance_recycler_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:context=".activity.MainActivity"
-                android:layout_marginBottom="20dp"/>
+                android:layout_marginBottom="20dp"
+                tools:context=".activity.MainActivity" />
 
         </LinearLayout>
     </ScrollView>

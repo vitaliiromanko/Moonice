@@ -18,16 +18,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="20dp"
+            tools:ignore="UseCompoundDrawables">
 
-            <ImageView style="@style/IconMainTitle" />
+            <ImageView
+                style="@style/IconMainTitle"
+                android:contentDescription="@string/moon" />
 
             <TextView
                 style="@style/TextMainTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="10dp"
-                android:text="My Bookmarks" />
+                android:text="@string/my_bookmarks" />
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -35,8 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:context=".activity.MainActivity"
-            tools:listitem="@layout/item_bookmarks"
-            />
+            tools:listitem="@layout/item_bookmark" />
 
     </LinearLayout>
 </FrameLayout>
