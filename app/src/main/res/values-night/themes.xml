@@ -117,14 +117,21 @@
     </style>
 
 
-    <style name="ImageButtonStyle" parent="Widget.AppCompat.ImageButton">
+    <style name="ItemBookCoverButtonStyle" parent="Widget.AppCompat.ImageButton">
         <item name="android:layout_width">105dp</item>
         <item name="android:layout_height">130dp</item>
         <item name="android:background">@color/white_purple</item>
         <item name="android:scaleType">centerCrop</item>
     </style>
 
-    <style name="BookTitleItem" parent="Widget.AppCompat.TextView">
+    <style name="ItemBookCoverCardStyle" parent="CardView">
+        <item name="android:layout_width">105dp</item>
+        <item name="android:layout_height">130dp</item>
+        <item name="android:background">@color/white_purple</item>
+        <item name="cardCornerRadius">4dp</item>
+    </style>
+
+    <style name="ItemBookTitleStyle" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/white_purple</item>
         <item name="android:ellipsize">end</item>
         <item name="android:maxLines">2</item>
@@ -133,7 +140,7 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="BookSubTitleItem" parent="Widget.AppCompat.TextView">
+    <style name="ItemBookSubTitleStyle" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/light_purple</item>
         <item name="android:ellipsize">end</item>
         <item name="android:maxLines">1</item>
