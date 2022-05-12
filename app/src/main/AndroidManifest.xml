@@ -51,6 +51,7 @@
         </activity>
         <activity
             android:name=".ui.MainActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
             android:exported="true" />
 
 <!--        fileprovider changes along with fileprovider in EditProfileActivity-->

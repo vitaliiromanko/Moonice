@@ -7,7 +7,11 @@ import android.view.Menu
 import android.view.View
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
-import android.widget.*
+import android.widget.ArrayAdapter
+import android.widget.ImageView
+import android.widget.ListView
+import android.widget.TextView
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.SearchView
@@ -26,6 +30,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.nulp.moonice.R
 import com.nulp.moonice.authorization.login.LoginActivity
 import com.nulp.moonice.databinding.ActivityMainBinding
+import com.nulp.moonice.ui.fragment.main.search.SearchFragment
 import com.nulp.moonice.utils.*
 import com.squareup.picasso.Picasso
 
@@ -46,19 +51,14 @@ class MainActivity : AppCompatActivity() {
     private lateinit var switch: SwitchCompat
     private lateinit var appSettingPrefs: SharedPreferences
     private lateinit var sharedPreferences: SharedPreferences.Editor
-    //        theme changer
 
+    // user info in drawer
     private lateinit var headerView: View
     private lateinit var usernameText: TextView
-
-    private lateinit var searchView: SearchView
-    private lateinit var appBarMainTitleLayout: LinearLayout
-    private lateinit var listViewAppBarMain: ListView
-    private lateinit var listAdapter: ArrayAdapter<String>
-    private lateinit var searchList: View
-    private lateinit var contentMain: View
     private lateinit var profilePicture: ImageView
 
+    // search button on toolbar
+    private lateinit var searchView: SearchView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,9 +69,16 @@ class MainActivity : AppCompatActivity() {
         ref = FirebaseDatabase.getInstance(FIREBASE_URL).reference
         auth = FirebaseAuth.getInstance()
 
+        drawerLayout = binding.drawerLayout
+        val toggle = ActionBarDrawerToggle(
+            this, drawerLayout, binding.appBarMain.toolbar,
+            R.string.app_name, R.string.app_name
+        )
+
         setSupportActionBar(binding.appBarMain.toolbar)
 
-        drawerLayout = binding.drawerLayout
+        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+
         navView = binding.navView
         navController = findNavController(R.id.nav_host_fragment_content_main)
         // Passing each menu ID as a set of Ids because each
@@ -82,6 +89,10 @@ class MainActivity : AppCompatActivity() {
             ), drawerLayout
         )
 
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        navView.setupWithNavController(navController)
+
+        // show user info in drawer
         headerView = navView.getHeaderView(0)
         usernameText = headerView.findViewById(R.id.drawer_username)
         profilePicture = headerView.findViewById(R.id.profile_picture)
@@ -99,54 +110,32 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-//        searchView = binding.appBarMain.searchView
-//        appBarMainTitleLayout = binding.appBarMain.fab
-//        listViewAppBarMain = findViewById(R.id.list_view_app_bar_main)
-//        val books = arrayOf(
-//            "Nikita running on my beach", "Vitalya rainy dancing",
-//            "Boss of the gym", "My yaoi friend"
-//        )
-//        listAdapter = ArrayAdapter(this@MainActivity, android.R.layout.simple_list_item_1, books)
-//        listViewAppBarMain.adapter = listAdapter
-////        searchList = findViewById(R.id.search_list)
-//        contentMain = findViewById(R.id.content_main)
-//
-//        searchView.setOnSearchClickListener {
-//            appBarMainTitleLayout.visibility = View.GONE
-//            searchView.layoutParams.width = MATCH_PARENT
-//            searchList.visibility = View.VISIBLE
-//            contentMain.visibility = View.GONE
-//        }
-//
-//        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-//            override fun onQueryTextSubmit(query: String?): Boolean {
-//                searchView.clearFocus()
-//                if (books.contains(query)) {
-//                    listAdapter.filter.filter(query)
-//                }
-//                return false
-//            }
-//
-//            override fun onQueryTextChange(newText: String?): Boolean {
-//                listAdapter.filter.filter(newText)
-//                return false
-//            }
-//
-//        })
-//
-//        searchView.setOnCloseListener {
-//            appBarMainTitleLayout.visibility = View.VISIBLE
-//            searchView.layoutParams.width = WRAP_CONTENT
-//            searchList.visibility = View.GONE
-//            contentMain.visibility = View.VISIBLE
-//
-//            return@setOnCloseListener false
-//        }
+        // show user info in drawer
 
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
 
-        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+        // search
+        searchView = binding.appBarMain.searchView
+
+        searchView.setOnSearchClickListener {
+            searchView.layoutParams.width = MATCH_PARENT
+            val navHostFragment = R.id.nav_host_fragment_content_main
+            toggle.isDrawerIndicatorEnabled = false
+            supportFragmentManager.beginTransaction()
+                .replace(navHostFragment, SearchFragment(), "Search").commit()
+
+        }
+
+        searchView.setOnCloseListener {
+            searchView.layoutParams.width = WRAP_CONTENT
+            toggle.isDrawerIndicatorEnabled = true
+            val fragment = supportFragmentManager.findFragmentByTag("Search")
+            if (fragment != null) {
+                supportFragmentManager.beginTransaction().remove(fragment).commit()
+            }
+
+            return@setOnCloseListener false
+        }
+        // search
 
         //theme changer
         appSettingPrefs = getSharedPreferences("AppSettingPrefs", 0)

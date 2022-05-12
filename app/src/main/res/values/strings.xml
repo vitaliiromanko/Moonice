@@ -45,4 +45,17 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="LEON">11037</string>
+    <string name="back_arrow">Back Arrow</string>
+    <string name="throne_of_glass">Throne of glass</string>
+    <string name="bookmark">Bookmark</string>
+    <string name="save">Save</string>
+    <string name="default_birth_date">07/09/2001</string>
+    <string name="moonice_user_gmail_com">moonice_user@gmail.com</string>
+    <string name="moonice_user">Moonice_User</string>
+    <string name="upload_image">Upload Image</string>
+    <string name="remember_password">Remember Password</string>
+    <string name="moonice_logo">Moonice Logo</string>
+    <string name="send">Send</string>
+    <string name="likes">Likes</string>
+    <string name="like">Like</string>
 </resources>
