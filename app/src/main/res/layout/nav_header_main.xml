@@ -8,6 +8,7 @@
     android:backgroundTintMode="src_atop"
     android:orientation="vertical"
     android:gravity="center"
+    android:fitsSystemWindows="true"
     android:id="@+id/drawer_profile">
 
         <androidx.cardview.widget.CardView
