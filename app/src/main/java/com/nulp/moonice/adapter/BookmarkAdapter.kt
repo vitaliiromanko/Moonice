@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.nulp.moonice.databinding.ItemBookmarksBinding
+import com.nulp.moonice.databinding.ItemBookmarkBinding
 import com.nulp.moonice.model.Bookmark
 import com.squareup.picasso.Picasso
 
@@ -28,7 +28,7 @@ class BookmarkAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookmarkViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val binding = ItemBookmarksBinding.inflate(inflater, parent, false)
+        val binding = ItemBookmarkBinding.inflate(inflater, parent, false)
 
         binding.root.setOnClickListener(this)
         binding.bookmarkImageLogo.setOnClickListener(this)
@@ -53,6 +53,6 @@ class BookmarkAdapter(
 
 
     class BookmarkViewHolder(
-        val binding: ItemBookmarksBinding
+        val binding: ItemBookmarkBinding
     ) : RecyclerView.ViewHolder(binding.root)
 }
