@@ -50,13 +50,13 @@ class PlayerActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityPlayerBinding.inflate(layoutInflater)
+        binding = ActivityPlayerBinding.inflate(layoutInflater).also { setContentView(it.root) }
+
         ref = FirebaseDatabase.getInstance(FIREBASE_URL).reference
         bookmarkRef = ref.child(NODE_USERS).child(NODE_BOOKMARKS)
         likeRef = ref.child(NODE_BOOKS).child(NODE_RECORDS_LIKES)
         recordRef = ref.child(NODE_BOOKS).child(NODE_RECORDS)
         user = FirebaseAuth.getInstance().currentUser!!
-        setContentView(binding.root)
         playButton = findViewById(R.id.playStop)
         shareButton = findViewById(R.id.activity_player_share)
         likeButton = findViewById(R.id.like)

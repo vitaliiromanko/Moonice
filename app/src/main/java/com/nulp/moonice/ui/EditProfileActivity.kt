@@ -65,10 +65,10 @@ class EditProfileActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityEditProfileBinding.inflate(layoutInflater)
-        ref = FirebaseDatabase.getInstance(FIREBASE_URL).reference
+        binding =
+            ActivityEditProfileBinding.inflate(layoutInflater).also { setContentView(it.root) }
 
-        setContentView(binding.root)
+        ref = FirebaseDatabase.getInstance(FIREBASE_URL).reference
 
         textviewDate = binding.birthDateEditProfile
         buttonDate = binding.birthDateEditProfile

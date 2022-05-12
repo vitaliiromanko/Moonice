@@ -40,7 +40,6 @@ class BooksAdapter(
     }
 
     override fun onBindViewHolder(holder: BooksViewHolder, position: Int) {
-//        val book = books[position]
         val book = bookList[position]
         val genreKey = book.genre
         val ref = FirebaseDatabase.getInstance(FIREBASE_URL).reference
@@ -57,7 +56,6 @@ class BooksAdapter(
         }
     }
 
-    //    override fun getItemCount(): Int = books.size
     override fun getItemCount(): Int = bookList.size
 
 

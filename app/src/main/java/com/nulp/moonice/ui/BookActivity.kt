@@ -44,8 +44,7 @@ class BookActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityBookBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        binding = ActivityBookBinding.inflate(layoutInflater).also { setContentView(it.root) }
         setSupportActionBar(binding.myToolbar)
 
         user = FirebaseAuth.getInstance().currentUser!!

@@ -22,10 +22,9 @@ class LikesActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityLikesBinding.inflate(layoutInflater)
+        binding = ActivityLikesBinding.inflate(layoutInflater).also { setContentView(it.root) }
         ref = FirebaseDatabase.getInstance(FIREBASE_URL).reference
 
-        setContentView(binding.root)
 
         likeRecyclerView = binding.likeRecyclerView
         likeRecyclerView.layoutManager = LinearLayoutManager(this)
