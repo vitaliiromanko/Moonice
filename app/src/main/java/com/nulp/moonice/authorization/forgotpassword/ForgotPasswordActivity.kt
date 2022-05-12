@@ -19,8 +19,8 @@ class ForgotPasswordActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityForgotPasswordBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        binding =
+            ActivityForgotPasswordBinding.inflate(layoutInflater).also { setContentView(it.root) }
 
         auth = FirebaseAuth.getInstance()
 

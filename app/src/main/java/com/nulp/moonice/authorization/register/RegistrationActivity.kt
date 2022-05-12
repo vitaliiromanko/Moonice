@@ -14,12 +14,9 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.google.gson.Gson
 import com.nulp.moonice.R
 import com.nulp.moonice.authorization.login.LoginActivity
 import com.nulp.moonice.databinding.ActivityRegistrationBinding
-import com.nulp.moonice.ui.BookActivity
-import com.nulp.moonice.ui.MainActivity
 import com.nulp.moonice.utils.*
 import com.nulp.moonice.vital_changer.LoadingDialog
 import java.text.SimpleDateFormat
@@ -38,8 +35,8 @@ class RegistrationActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityRegistrationBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        binding =
+            ActivityRegistrationBinding.inflate(layoutInflater).also { setContentView(it.root) }
 
         auth = FirebaseAuth.getInstance()
 

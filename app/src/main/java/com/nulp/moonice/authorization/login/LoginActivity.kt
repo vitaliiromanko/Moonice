@@ -49,9 +49,11 @@ class LoginActivity : AppCompatActivity() {
         }
 
         super.onCreate(savedInstanceState)
-        binding = ActivityLoginBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        binding = ActivityLoginBinding.inflate(layoutInflater).also { setContentView(it.root) }
 
+        ref =
+            FirebaseDatabase.getInstance(FIREBASE_URL)
+                .getReference(NODE_USERS)
 
         auth = FirebaseAuth.getInstance()
 
@@ -115,7 +117,7 @@ class LoginActivity : AppCompatActivity() {
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
             .build()
-        return GoogleSignIn.getClient(this,gso)
+        return GoogleSignIn.getClient(this, gso)
     }
 
     private fun signInWithGoogle() {
@@ -184,9 +186,6 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun updateGoogleUserInfo(task: Task<GoogleSignInAccount>) {
-        ref =
-            FirebaseDatabase.getInstance(FIREBASE_URL)
-                .getReference(NODE_USERS)
 
         val timestamp = System.currentTimeMillis()
 
@@ -221,9 +220,6 @@ class LoginActivity : AppCompatActivity() {
 
     private fun checkUser() {
         val firebaseUser = auth.currentUser!!
-        val ref =
-            FirebaseDatabase.getInstance(FIREBASE_URL)
-                .getReference(NODE_USERS)
 
         ref.child(NODE_USER_DETAILS).child(firebaseUser.uid)
             .addListenerForSingleValueEvent(AppValueEventListener {
