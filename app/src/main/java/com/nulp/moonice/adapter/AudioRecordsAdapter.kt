@@ -1,6 +1,7 @@
 package com.nulp.moonice.adapter
 
 import android.annotation.SuppressLint
+import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -65,8 +66,11 @@ class AudioRecordsAdapter(
                 if (user != null) {
                     if (it.child(record.id.toString()).hasChild(user.uid)) {
                         like.setImageResource(R.drawable.ic_liked)
+                        itemChapterLike.typeface = Typeface.DEFAULT_BOLD
+
                     } else {
                         like.setImageResource(R.drawable.ic_like)
+                        itemChapterLike.typeface = Typeface.DEFAULT
                     }
                 }
             })

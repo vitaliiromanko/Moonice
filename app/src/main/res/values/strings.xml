@@ -41,7 +41,7 @@
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="preferences">Preferences</string>
     <string name="new_password">New Password</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="LEON">11037</string>
@@ -58,4 +58,34 @@
     <string name="send">Send</string>
     <string name="likes">Likes</string>
     <string name="like">Like</string>
+    <string name="ch_1_mystical_dream">Ch.1 Mystical Dream</string>
+    <string name="disk">Disk</string>
+    <string name="book_cover">Book Cover</string>
+    <string name="previous_chapter_control">Previous Chapter Control</string>
+    <string name="five_seconds_ago_control">Five Seconds Ago Control</string>
+    <string name="play_stop_control">Play Stop Control</string>
+    <string name="five_sec_forward_control">Five Sec Forward Control</string>
+    <string name="next_chapter_control">Next Chapter Control</string>
+    <string name="current_time_record">0:00</string>
+    <string name="end_time_record">59:59</string>
+    <string name="share">Share</string>
+    <string name="registration">Registration</string>
+    <string name="moon">Moon</string>
+    <string name="my_bookmarks">My Bookmarks</string>
+    <string name="popular_books">Popular Books</string>
+    <string name="top_comedy">Top Comedy</string>
+    <string name="top_drama">Top Drama</string>
+    <string name="top_fantasy">Top Fantasy</string>
+    <string name="top_romance">Top Romance</string>
+    <string name="drama">Drama</string>
+    <string name="sarah_j_maas_2018">Sarah J. Maas, 2018</string>
+    <string name="play_chapter_icon">Play Chapter Icon</string>
+    <string name="star_divider">Star Divider</string>
+    <string name="time_record">59h 59m 59s</string>
+    <string name="ch_1">1</string>
+    <string name="mystical_dream">Mystical dream</string>
+    <string name="description">Description</string>
+    <string name="description_throne_of_glass">Throne of Glass follows Celaena Sardothien, a 18-year-old assassin in the Kingdom of Adarlan. After a year of suffering for her crimes in a slave camp called Endovier, she accepts the offer of Crown Prince Dorian, the King of Adarlan\'s son, to compete with other assassins.</string>
+    <string name="genre">Genre</string>
+    <string name="user_avatar">User Avatar</string>
 </resources>

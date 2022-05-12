@@ -1,48 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/book_icon"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:layout_margin="10dp"
+    android:background="?android:attr/selectableItemBackground"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView style="@style/ItemBookCoverCardStyle">
+
+        <ImageButton
+            android:id="@+id/book_image_logo"
+            style="@style/ItemBookCoverButtonStyle"
+            android:contentDescription="@string/book_cover"
+            android:scaleType="centerCrop"
+            android:src="@drawable/book_item_2" />
+    </androidx.cardview.widget.CardView>
 
     <LinearLayout
-        android:id="@+id/book_icon"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="?android:attr/selectableItemBackground"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingHorizontal="2dp">
 
-        <androidx.cardview.widget.CardView style="@style/ImageButtonStyle">
-
-            <ImageButton
-                android:id="@+id/book_image_logo"
-                style="@style/ImageButtonStyle"
-                android:scaleType="centerCrop"
-                android:src="@drawable/universe_button" />
-        </androidx.cardview.widget.CardView>
-
-        <LinearLayout
+        <TextView
+            android:id="@+id/book_genre"
+            style="@style/ItemBookSubTitleStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingHorizontal="2dp">
+            android:text="@string/drama" />
 
-            <TextView
-                android:id="@+id/book_genre"
-                style="@style/BookSubTitleItem"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Romance" />
-
-            <TextView
-                android:id="@+id/book_title"
-                style="@style/BookTitleItem"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:lines="2"
-                android:text="The best book title in the world" />
-        </LinearLayout>
-
+        <TextView
+            android:id="@+id/book_title"
+            style="@style/ItemBookTitleStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lines="2"
+            android:text="@string/throne_of_glass" />
     </LinearLayout>
 
 </LinearLayout>

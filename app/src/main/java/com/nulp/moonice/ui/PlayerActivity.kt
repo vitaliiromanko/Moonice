@@ -2,6 +2,7 @@ package com.nulp.moonice.ui
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Typeface
 import android.os.Bundle
 import android.util.Log
 import android.view.animation.Animation
@@ -167,8 +168,10 @@ class PlayerActivity : AppCompatActivity() {
         likeRef.addValueEventListener(AppValueEventListener {
             if (it.child(thisRecord.id.toString()).hasChild(user.uid)) {
                 binding.like.setImageResource(R.drawable.ic_liked)
+                binding.likeText.typeface = Typeface.DEFAULT_BOLD
             } else {
                 binding.like.setImageResource(R.drawable.ic_like)
+                binding.likeText.typeface = Typeface.DEFAULT
             }
         })
 
@@ -199,6 +202,7 @@ class PlayerActivity : AppCompatActivity() {
                     )
                     likeRef.child(thisRecord.id.toString()).child(user.uid).removeValue()
                     binding.like.setImageResource(R.drawable.ic_like)
+                    binding.likeText.typeface = Typeface.DEFAULT
                     false
                 } else {
                     thisRecord.like = thisRecord.like?.plus(1)
@@ -207,6 +211,7 @@ class PlayerActivity : AppCompatActivity() {
                     )
                     likeRef.child(thisRecord.id.toString()).child(user.uid).setValue("Liked")
                     binding.like.setImageResource(R.drawable.ic_liked)
+                    binding.likeText.typeface = Typeface.DEFAULT_BOLD
                     false
                 }
                 binding.likeText.text = thisRecord.like.toString()
