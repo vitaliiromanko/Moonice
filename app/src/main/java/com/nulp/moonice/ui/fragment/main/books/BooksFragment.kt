@@ -75,7 +75,9 @@ class BooksFragment : Fragment() {
             .addValueEventListener(AppValueEventListener {
                 if (it.exists()) {
                     for (bookSnapshot in it.child(NODE_BOOK_DETAILS).children) {
-                        if (it.child(NODE_BOOKS_TOP).child(TOP_POPULAR_BOOKS).hasChild(bookSnapshot.key!!)) {
+                        if (it.child(NODE_BOOKS_TOP).child(TOP_POPULAR_BOOKS)
+                                .hasChild(bookSnapshot.key!!)
+                        ) {
                             val book = bookSnapshot.getValue(Book::class.java)
                             if (book != null) {
                                 book.id = bookSnapshot.key?.toLong() ?: 1
@@ -103,7 +105,9 @@ class BooksFragment : Fragment() {
             .addValueEventListener(AppValueEventListener {
                 if (it.exists()) {
                     for (bookSnapshot in it.child(NODE_BOOK_DETAILS).children) {
-                        if (it.child(NODE_BOOKS_TOP).child(TOP_COMEDY).hasChild(bookSnapshot.key!!)) {
+                        if (it.child(NODE_BOOKS_TOP).child(TOP_COMEDY)
+                                .hasChild(bookSnapshot.key!!)
+                        ) {
                             val book = bookSnapshot.getValue(Book::class.java)
                             if (book != null) {
                                 book.id = bookSnapshot.key?.toLong() ?: 1
@@ -131,7 +135,9 @@ class BooksFragment : Fragment() {
             .addValueEventListener(AppValueEventListener {
                 if (it.exists()) {
                     for (bookSnapshot in it.child(NODE_BOOK_DETAILS).children) {
-                        if (it.child(NODE_BOOKS_TOP).child(TOP_DRAMA).hasChild(bookSnapshot.key!!)) {
+                        if (it.child(NODE_BOOKS_TOP).child(TOP_DRAMA)
+                                .hasChild(bookSnapshot.key!!)
+                        ) {
                             val book = bookSnapshot.getValue(Book::class.java)
                             if (book != null) {
                                 book.id = bookSnapshot.key?.toLong() ?: 1
@@ -159,7 +165,9 @@ class BooksFragment : Fragment() {
             .addValueEventListener(AppValueEventListener {
                 if (it.exists()) {
                     for (bookSnapshot in it.child(NODE_BOOK_DETAILS).children) {
-                        if (it.child(NODE_BOOKS_TOP).child(TOP_FANTASY).hasChild(bookSnapshot.key!!)) {
+                        if (it.child(NODE_BOOKS_TOP).child(TOP_FANTASY)
+                                .hasChild(bookSnapshot.key!!)
+                        ) {
                             val book = bookSnapshot.getValue(Book::class.java)
                             if (book != null) {
                                 book.id = bookSnapshot.key?.toLong() ?: 1
@@ -187,7 +195,9 @@ class BooksFragment : Fragment() {
             .addValueEventListener(AppValueEventListener {
                 if (it.exists()) {
                     for (bookSnapshot in it.child(NODE_BOOK_DETAILS).children) {
-                        if (it.child(NODE_BOOKS_TOP).child(TOP_ROMANCE).hasChild(bookSnapshot.key!!)) {
+                        if (it.child(NODE_BOOKS_TOP).child(TOP_ROMANCE)
+                                .hasChild(bookSnapshot.key!!)
+                        ) {
                             val book = bookSnapshot.getValue(Book::class.java)
                             if (book != null) {
                                 book.id = bookSnapshot.key?.toLong() ?: 1

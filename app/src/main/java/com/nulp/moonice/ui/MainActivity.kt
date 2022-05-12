@@ -99,49 +99,49 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        searchView = binding.appBarMain.searchView
-        appBarMainTitleLayout = binding.appBarMain.fab
-        listViewAppBarMain = findViewById(R.id.list_view_app_bar_main)
-        val books = arrayOf(
-            "Nikita running on my beach", "Vitalya rainy dancing",
-            "Boss of the gym", "My yaoi friend"
-        )
-        listAdapter = ArrayAdapter(this@MainActivity, android.R.layout.simple_list_item_1, books)
-        listViewAppBarMain.adapter = listAdapter
-        searchList = findViewById(R.id.search_list)
-        contentMain = findViewById(R.id.content_main)
-
-        searchView.setOnSearchClickListener {
-            appBarMainTitleLayout.visibility = View.GONE
-            searchView.layoutParams.width = MATCH_PARENT
-            searchList.visibility = View.VISIBLE
-            contentMain.visibility = View.GONE
-        }
-
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                searchView.clearFocus()
-                if (books.contains(query)) {
-                    listAdapter.filter.filter(query)
-                }
-                return false
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                listAdapter.filter.filter(newText)
-                return false
-            }
-
-        })
-
-        searchView.setOnCloseListener {
-            appBarMainTitleLayout.visibility = View.VISIBLE
-            searchView.layoutParams.width = WRAP_CONTENT
-            searchList.visibility = View.GONE
-            contentMain.visibility = View.VISIBLE
-
-            return@setOnCloseListener false
-        }
+//        searchView = binding.appBarMain.searchView
+//        appBarMainTitleLayout = binding.appBarMain.fab
+//        listViewAppBarMain = findViewById(R.id.list_view_app_bar_main)
+//        val books = arrayOf(
+//            "Nikita running on my beach", "Vitalya rainy dancing",
+//            "Boss of the gym", "My yaoi friend"
+//        )
+//        listAdapter = ArrayAdapter(this@MainActivity, android.R.layout.simple_list_item_1, books)
+//        listViewAppBarMain.adapter = listAdapter
+////        searchList = findViewById(R.id.search_list)
+//        contentMain = findViewById(R.id.content_main)
+//
+//        searchView.setOnSearchClickListener {
+//            appBarMainTitleLayout.visibility = View.GONE
+//            searchView.layoutParams.width = MATCH_PARENT
+//            searchList.visibility = View.VISIBLE
+//            contentMain.visibility = View.GONE
+//        }
+//
+//        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+//            override fun onQueryTextSubmit(query: String?): Boolean {
+//                searchView.clearFocus()
+//                if (books.contains(query)) {
+//                    listAdapter.filter.filter(query)
+//                }
+//                return false
+//            }
+//
+//            override fun onQueryTextChange(newText: String?): Boolean {
+//                listAdapter.filter.filter(newText)
+//                return false
+//            }
+//
+//        })
+//
+//        searchView.setOnCloseListener {
+//            appBarMainTitleLayout.visibility = View.VISIBLE
+//            searchView.layoutParams.width = WRAP_CONTENT
+//            searchList.visibility = View.GONE
+//            contentMain.visibility = View.VISIBLE
+//
+//            return@setOnCloseListener false
+//        }
 
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)

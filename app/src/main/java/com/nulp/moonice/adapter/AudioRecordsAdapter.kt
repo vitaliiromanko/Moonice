@@ -24,7 +24,7 @@ interface AudioRecordsActionListener {
 
 class AudioRecordsAdapter(
     private val actionListener: AudioRecordsActionListener,
-    private val audioRecordList: ArrayList<AudioRecord>
+    private val audioRecordList: List<AudioRecord>
 ) : RecyclerView.Adapter<AudioRecordsAdapter.AudioRecordsViewHolder>(), View.OnClickListener {
 
     override fun onClick(v: View) {

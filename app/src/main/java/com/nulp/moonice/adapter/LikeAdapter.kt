@@ -9,7 +9,7 @@ import com.nulp.moonice.model.LikeItem
 import com.squareup.picasso.Picasso
 
 
-class LikesAdapter(private val likeList: ArrayList<LikeItem>
+class LikesAdapter(private val likeList: List<LikeItem>
 ) : RecyclerView.Adapter<LikesAdapter.LikesViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LikesViewHolder {

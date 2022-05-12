@@ -20,7 +20,8 @@ interface BooksActionListener {
 
 
 class BooksAdapter(
-    private val actionListener: BooksActionListener, private val bookList: ArrayList<Book>
+    private val actionListener: BooksActionListener,
+    private val bookList: List<Book>
 ) : RecyclerView.Adapter<BooksAdapter.BooksViewHolder>(), View.OnClickListener {
 
     override fun onClick(v: View) {

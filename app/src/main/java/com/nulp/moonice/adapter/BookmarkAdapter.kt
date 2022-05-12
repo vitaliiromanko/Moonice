@@ -17,7 +17,7 @@ interface BookmarkActionListener {
 
 class BookmarkAdapter(
     private val actionListener: BookmarkActionListener,
-    private val bookmarkList: ArrayList<Bookmark>
+    private val bookmarkList: List<Bookmark>
 ) : RecyclerView.Adapter<BookmarkAdapter.BookmarkViewHolder>(), View.OnClickListener {
 
     override fun onClick(v: View) {

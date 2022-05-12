@@ -1,12 +1,11 @@
 package com.nulp.moonice.ui
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
-import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -32,10 +31,8 @@ import com.nulp.moonice.databinding.ActivityEditProfileBinding
 import com.nulp.moonice.utils.*
 import com.squareup.picasso.Picasso
 import java.io.File
-import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
-import java.util.jar.Manifest
 
 
 class EditProfileActivity : AppCompatActivity() {
@@ -433,6 +430,7 @@ class EditProfileActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("SimpleDateFormat")
     private fun createImageFile(): File {
         // Create an image file name
         val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
