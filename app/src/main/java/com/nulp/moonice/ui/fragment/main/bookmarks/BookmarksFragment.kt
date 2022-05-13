@@ -64,8 +64,14 @@ class BookmarksFragment : Fragment() {
         })
 
         bookmarksRecyclerView = binding.bookmarksRecyclerView
-        bookmarksRecyclerView.layoutManager =
-            LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+        val bookmarksLayoutManager = object : LinearLayoutManager(activity, VERTICAL, false) {
+            override fun canScrollVertically(): Boolean {
+                return false
+            }
+        }
+
+        bookmarksRecyclerView.layoutManager = bookmarksLayoutManager
+
         initBookmarksRecyclerView(bookmarksRecyclerView)
 
         return binding.root

@@ -4,7 +4,7 @@
     style="@style/LayoutBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:visibility="visible">
+    android:visibility="gone">
 
     <LinearLayout
         android:id="@+id/fragment_lost_network_content"

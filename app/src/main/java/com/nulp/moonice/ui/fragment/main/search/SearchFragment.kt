@@ -1,7 +1,11 @@
 package com.nulp.moonice.ui.fragment.main.search
 
+import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
+import android.util.DisplayMetrics
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,6 +27,7 @@ import com.nulp.moonice.utils.FIREBASE_URL
 import com.nulp.moonice.utils.NODE_BOOKS
 import com.nulp.moonice.utils.NODE_BOOK_DETAILS
 
+
 // performs search operation on all book items from firebase, uses Book and BooksAdapter
 class SearchFragment : Fragment() {
     private var _binding: FragmentSearchBinding? = null
@@ -30,6 +35,8 @@ class SearchFragment : Fragment() {
     private lateinit var searchView: SearchView
     private lateinit var searchRecyclerView: RecyclerView
     private lateinit var bookArrayList: ArrayList<Book>
+    private lateinit var gridLayoutManager: GridLayoutManager
+    private val columnWidthDp = 150
 
     private lateinit var ref: DatabaseReference
 
@@ -47,8 +54,7 @@ class SearchFragment : Fragment() {
         bookArrayList = arrayListOf()
 
         searchRecyclerView = binding.booksRecyclerView
-        val columnCount = resources.getInteger(R.integer.search_columns)
-        val gridLayoutManager = GridLayoutManager(activity, columnCount)
+        gridLayoutManager = GridLayoutManager(activity, calculateNoOfColumns(requireActivity()))
         searchRecyclerView.layoutManager = gridLayoutManager
         initSearchRecycleView(searchRecyclerView)
 
@@ -119,5 +125,20 @@ class SearchFragment : Fragment() {
                 startActivity(intent)
             }
         }), foundList)
+    }
+
+    private fun calculateNoOfColumns(
+        context: Context): Int {
+        val displayMetrics: DisplayMetrics = context.resources.displayMetrics
+        val screenWidthDp = displayMetrics.widthPixels.toFloat() / displayMetrics.density - 20
+        return (screenWidthDp / columnWidthDp.toFloat() + 0.5).toInt()
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        searchRecyclerView = binding.booksRecyclerView
+        gridLayoutManager = GridLayoutManager(activity, calculateNoOfColumns(requireActivity()))
+        searchRecyclerView.layoutManager = gridLayoutManager
+        initSearchRecycleView(searchRecyclerView)
     }
 }

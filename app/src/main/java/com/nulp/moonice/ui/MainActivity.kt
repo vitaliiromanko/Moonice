@@ -3,6 +3,7 @@ package com.nulp.moonice.ui
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.View
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
@@ -55,8 +56,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var usernameText: TextView
     private lateinit var profilePicture: ImageView
 
-    // search button on toolbar
+    // search operations
+    private lateinit var toggle: ActionBarDrawerToggle
     private lateinit var searchView: SearchView
+    private lateinit var toolbarTitle: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,7 +70,7 @@ class MainActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
 
         drawerLayout = binding.drawerLayout
-        val toggle = ActionBarDrawerToggle(
+        toggle = ActionBarDrawerToggle(
             this, drawerLayout, binding.appBarMain.toolbar,
             R.string.app_name, R.string.app_name
         )
@@ -112,9 +115,11 @@ class MainActivity : AppCompatActivity() {
 
         // search
         searchView = binding.appBarMain.searchView
+        toolbarTitle = binding.appBarMain.textView
 
         searchView.setOnSearchClickListener {
             searchView.layoutParams.width = MATCH_PARENT
+            toolbarTitle.visibility = View.GONE
             val navHostFragment = R.id.nav_host_fragment_content_main
             toggle.isDrawerIndicatorEnabled = false
             supportFragmentManager.beginTransaction()
@@ -124,6 +129,7 @@ class MainActivity : AppCompatActivity() {
 
         searchView.setOnCloseListener {
             searchView.layoutParams.width = WRAP_CONTENT
+            toolbarTitle.visibility = View.VISIBLE
             toggle.isDrawerIndicatorEnabled = true
             val fragment = supportFragmentManager.findFragmentByTag("Search")
             if (fragment != null) {
@@ -184,5 +190,20 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+    override fun onBackPressed() {
+        if (!searchView.isIconified) {
+            searchView.isIconified = true
+            searchView.layoutParams.width = WRAP_CONTENT
+            toolbarTitle.visibility = View.VISIBLE
+            toggle.isDrawerIndicatorEnabled = true
+            val fragment = supportFragmentManager.findFragmentByTag("Search")
+            if (fragment != null) {
+                supportFragmentManager.beginTransaction().remove(fragment).commit()
+            }
+        } else {
+            super.onBackPressed()
+        }
     }
 }
