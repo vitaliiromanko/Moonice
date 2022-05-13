@@ -3,15 +3,14 @@ package com.nulp.moonice.ui
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Typeface
+import android.media.MediaPlayer
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -34,7 +33,14 @@ class PlayerActivity : AppCompatActivity() {
     private lateinit var likeRef: DatabaseReference
     private lateinit var recordRef: DatabaseReference
     private lateinit var user: FirebaseUser
+
     private lateinit var playButton: ImageButton
+    private lateinit var seekBar: SeekBar
+    private lateinit var currentTime: TextView
+    private lateinit var endTime: TextView
+    private lateinit var mediaPlayer: MediaPlayer
+    private lateinit var handler: Handler
+
     private lateinit var shareButton: ImageButton
     private lateinit var likeButton: ImageButton
     private lateinit var likeText: TextView
@@ -44,7 +50,6 @@ class PlayerActivity : AppCompatActivity() {
     private lateinit var rotateDiskAnimation: Animation
     private lateinit var diskImage: ImageView
 
-    private var isPlaying: Boolean = false
     private var isLiking: Boolean = false
 
     private var hasBookmark = false
@@ -60,10 +65,19 @@ class PlayerActivity : AppCompatActivity() {
         likeRef = ref.child(NODE_BOOKS).child(NODE_RECORDS_LIKES)
         recordRef = ref.child(NODE_BOOKS).child(NODE_RECORDS)
         user = FirebaseAuth.getInstance().currentUser!!
-        playButton = findViewById(R.id.playStop)
-        shareButton = findViewById(R.id.activity_player_share)
-        likeButton = findViewById(R.id.like)
-        likeText = findViewById(R.id.like_text)
+
+        playButton = binding.playStop
+        seekBar = binding.seekBar
+        seekBar.max = 100
+        currentTime = binding.currentTime
+        endTime = binding.finishTime
+        mediaPlayer = MediaPlayer()
+        handler = Handler()
+
+        diskImage = binding.disk
+        shareButton = binding.activityPlayerShare
+        likeButton = binding.like
+        likeText = binding.likeText
         setSupportActionBar(binding.myToolbar)
 
         recordRef.addValueEventListener(AppValueEventListener {
@@ -79,19 +93,39 @@ class PlayerActivity : AppCompatActivity() {
             bookmark(binding.bookmark)
         }
 
-        diskImage = findViewById(R.id.disk)
 
         playButton.setOnClickListener {
-            if (isPlaying) {
-                isPlaying = false
+            if (mediaPlayer.isPlaying) {
+                handler.removeCallbacks(updater)
+                mediaPlayer.pause()
                 playButton.setImageResource(R.drawable.ic_play)
                 diskImage.clearAnimation()
             } else {
-                isPlaying = true
+                mediaPlayer.start()
+                updateSeekBar()
                 playButton.setImageResource(R.drawable.ic_pause)
                 rotateDiskAnimation()
             }
         }
+
+        prepareMediaPlayer()
+
+
+        seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
+                val playPosition = (mediaPlayer.duration / 100) * p1
+                mediaPlayer.seekTo(playPosition)
+                currentTime.text = millisecondsToTimer(mediaPlayer.currentPosition)
+            }
+
+            override fun onStartTrackingTouch(p0: SeekBar?) {
+                val playPosition = (mediaPlayer.duration / 100) * p0?.progress!!
+            }
+
+            override fun onStopTrackingTouch(p0: SeekBar?) {
+                val playPosition = (mediaPlayer.duration / 100) * p0?.progress!!
+            }
+        })
 
         shareButton.setOnClickListener {
             val intent = Intent()
@@ -117,7 +151,7 @@ class PlayerActivity : AppCompatActivity() {
         drawLayout()
 
         val tryAgainButton = findViewById<Button>(R.id.fragment_lost_network_try_again_button)
-        tryAgainButton.setOnClickListener{
+        tryAgainButton.setOnClickListener {
             drawLayout()
         }
     }
@@ -247,5 +281,52 @@ class PlayerActivity : AppCompatActivity() {
     private fun rotateDiskAnimation() {
         rotateDiskAnimation = AnimationUtils.loadAnimation(this, R.anim.rotate_disk)
         diskImage.startAnimation(rotateDiskAnimation)
+    }
+
+    private val updater = object : TimerTask() {
+        override fun run() {
+            updateSeekBar()
+            val currentDuration = mediaPlayer.currentPosition
+            currentTime.text = millisecondsToTimer(currentDuration)
+        }
+    }
+
+    private fun updateSeekBar() {
+        if (mediaPlayer.isPlaying) {
+            seekBar.progress =
+                ((mediaPlayer.currentPosition / mediaPlayer.duration).toFloat() * 100).toInt()
+            handler.postDelayed(updater, 500)
+        }
+    }
+
+    private fun millisecondsToTimer(milliseconds: Int): String {
+        var timerString = ""
+        var secondsString = ""
+        val hours = milliseconds / (1000 * 60 * 60)
+        val minutes = milliseconds % (1000 * 60 * 60) / (1000 * 60)
+        val seconds = milliseconds % (1000 * 60 * 60) % (1000 * 60) / 1000
+
+        if (hours > 0) {
+            timerString = "$hours:"
+        }
+
+        secondsString = if (seconds < 10) {
+            "0$seconds"
+        } else {
+            "$seconds"
+        }
+
+        timerString = "$timerString$minutes:$secondsString"
+        return timerString
+    }
+
+    private fun prepareMediaPlayer() {
+        try {
+            mediaPlayer.setDataSource(thisRecord.recordLink)
+            mediaPlayer.prepare()
+            endTime.text = millisecondsToTimer(mediaPlayer.duration)
+        } catch (ex: Throwable) {
+            Toast.makeText(this, ex.message, Toast.LENGTH_SHORT).show()
+        }
     }
 }

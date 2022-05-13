@@ -12,7 +12,7 @@
         <item name="android:textColorPrimary">@color/indigo</item>
         <item name="android:textColorSecondary">@color/additional_purple_1</item>
         <item name="android:listDivider">@color/white_blue</item>
-        <item name="statusBarScrim" >@color/indigo</item>
+        <item name="statusBarScrim">@color/indigo</item>
 
         <item name="colorAccent">@color/white_purple</item>
         <item name="colorSwitchThumbNormal">@color/indigo</item>
@@ -26,7 +26,7 @@
         <item name="android:textColorHighlight">@color/purple_blue</item>
 
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" >@color/indigo</item>
+        <item name="android:statusBarColor">@color/indigo</item>
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
 
 
@@ -85,6 +85,16 @@
 
     <style name="Theme.Moonice.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="LostNetworkButtonStyle" parent="TextAppearance.AppCompat.Widget.Button">
+        <item name="android:backgroundTint">@color/indigo</item>
+        <item name="android:textColor">@color/white_cyan</item>
+    </style>
+
+    <style name="LostNetworkImageStyle">
+        <item name="android:background">@drawable/ic_wifi_off</item>
+        <item name="android:backgroundTint">@color/indigo</item>
+    </style>
+
     <style name="IconDate" parent="Widget.AppCompat.ImageButton">
         <item name="tint">@color/indigo</item>
         <item name="backgroundTint">@color/transparent</item>
@@ -96,9 +106,9 @@
 
     <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
         <item name="color">@color/indigo</item>
-<!--        <item name="barLength">40dp</item>-->
-<!--        <item name="gapBetweenBars">5dp</item>-->
-<!--        <item name="thickness">7dp</item>-->
+        <!--        <item name="barLength">40dp</item>-->
+        <!--        <item name="gapBetweenBars">5dp</item>-->
+        <!--        <item name="thickness">7dp</item>-->
         <item name="icon">@drawable/ic_menu</item>
     </style>
 
