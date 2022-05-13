@@ -108,8 +108,9 @@ class PlayerActivity : AppCompatActivity() {
             }
         }
 
-        prepareMediaPlayer()
-
+        if (NetworkHelper.isNetworkConnected(this)) {
+            prepareMediaPlayer()
+        }
 
         seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
@@ -153,6 +154,7 @@ class PlayerActivity : AppCompatActivity() {
         val tryAgainButton = findViewById<Button>(R.id.fragment_lost_network_try_again_button)
         tryAgainButton.setOnClickListener {
             drawLayout()
+            prepareMediaPlayer()
         }
     }
 
