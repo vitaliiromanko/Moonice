@@ -6,39 +6,42 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragment.main.bookmarks.BookmarksFragment">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-
-        android:paddingHorizontal="20dp"
-        android:paddingTop="15dp">
-
+        android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="20dp"
-            tools:ignore="UseCompoundDrawables">
+            android:orientation="vertical"
 
-            <ImageView
-                style="@style/IconMainTitle"
-                android:contentDescription="@string/moon" />
+            android:paddingHorizontal="20dp">
 
-            <TextView
-                style="@style/TextMainTitle"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                tools:ignore="UseCompoundDrawables">
+
+                <ImageView
+                    style="@style/IconMainTitle"
+                    android:contentDescription="@string/moon" />
+
+                <TextView
+                    style="@style/TextMainTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="10dp"
+                    android:text="@string/my_bookmarks" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/bookmarksRecyclerView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingHorizontal="10dp"
-                android:text="@string/my_bookmarks" />
+                tools:context=".activity.MainActivity"
+                tools:listitem="@layout/item_bookmark" />
+
         </LinearLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/bookmarksRecyclerView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:context=".activity.MainActivity"
-            tools:listitem="@layout/item_bookmark" />
-
-    </LinearLayout>
+    </ScrollView>
 </FrameLayout>

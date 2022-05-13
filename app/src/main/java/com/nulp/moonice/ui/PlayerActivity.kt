@@ -90,12 +90,17 @@ class PlayerActivity : AppCompatActivity() {
         seekBar.max = 100
         currentTime = binding.currentTime
         endTime = binding.finishTime
-        mediaPlayer = MediaPlayer()
-
         diskImage = binding.disk
         shareButton = binding.activityPlayerShare
         likeButton = binding.like
         likeText = binding.likeText
+        diskImageAnimator = ObjectAnimator.ofFloat(diskImage, View.ROTATION, 360F)
+        try {
+            mediaPlayer = MediaPlayer()
+        } catch (ex: Throwable) {
+            finish()
+        }
+
         setSupportActionBar(binding.myToolbar)
 
         recordRef.addValueEventListener(AppValueEventListener {
@@ -189,7 +194,11 @@ class PlayerActivity : AppCompatActivity() {
         shareButton.setOnClickListener {
             val intent = Intent()
             intent.action = Intent.ACTION_SEND
-            intent.putExtra(Intent.EXTRA_TEXT, "Hey Check out this Great app: https://vns.lpnu.ua")
+            intent.putExtra(Intent.EXTRA_SUBJECT, "Moonice")
+            intent.putExtra(
+                Intent.EXTRA_TEXT,
+                "I recommend this chapter to you:\n\nCh.${thisRecord.chapterNumber} ${thisRecord.chapterTitle} of ${bookTitle.text}.\n\n\nInstall Moonice and listen to audiobooks for free.\nhttps://www.youtube.com/watch?v=H0Yirlo6WSU"
+            )
             intent.type = "text/plain"
             startActivity(Intent.createChooser(intent, "Share To:"))
         }
@@ -346,7 +355,6 @@ class PlayerActivity : AppCompatActivity() {
     }
 
     private fun rotateDiskAnimation() {
-        diskImageAnimator = ObjectAnimator.ofFloat(diskImage, View.ROTATION, 360F)
         diskImageAnimator.repeatCount = Animation.INFINITE
         diskImageAnimator.repeatMode = ObjectAnimator.RESTART
         diskImageAnimator.duration = 5000
@@ -402,6 +410,7 @@ class PlayerActivity : AppCompatActivity() {
             endTime.text = millisecondsToTimer(mediaPlayer.duration)
         } catch (ex: Throwable) {
             Toast.makeText(this, ex.message, Toast.LENGTH_SHORT).show()
+            finish()
         }
     }
 }
