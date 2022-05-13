@@ -43,7 +43,6 @@
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:lines="1"
-                    android:scrollHorizontally="true"
                     android:text="@string/throne_of_glass" />
 
                 <TextView
@@ -51,9 +50,9 @@
                     style="@style/SecondaryPlayer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:lines="1"
+                    android:ellipsize="marquee"
                     android:scrollHorizontally="true"
+                    android:singleLine="true"
                     android:text="@string/ch_1_mystical_dream" />
             </LinearLayout>
 
@@ -97,6 +96,7 @@
                 android:background="@color/transparent"
                 android:contentDescription="@string/book_cover"
                 android:maxHeight="200dp"
+                android:scaleType="fitCenter"
                 app:srcCompat="@drawable/book_item_2" />
         </androidx.cardview.widget.CardView>
 
@@ -116,12 +116,6 @@
             android:orientation="horizontal">
 
             <ImageButton
-                android:id="@+id/previousChapter"
-                style="@style/PlayerControlButton"
-                android:contentDescription="@string/previous_chapter_control"
-                app:srcCompat="@drawable/ic_skip_previous" />
-
-            <ImageButton
                 android:id="@+id/fiveSecAgo"
                 style="@style/PlayerControlButton"
                 android:contentDescription="@string/five_seconds_ago_control"
@@ -139,11 +133,6 @@
                 android:contentDescription="@string/five_sec_forward_control"
                 app:srcCompat="@drawable/ic_fast_forward" />
 
-            <ImageButton
-                android:id="@+id/nextChapter"
-                style="@style/PlayerControlButton"
-                android:contentDescription="@string/next_chapter_control"
-                app:srcCompat="@drawable/ic_skip_next" />
         </LinearLayout>
 
         <LinearLayout

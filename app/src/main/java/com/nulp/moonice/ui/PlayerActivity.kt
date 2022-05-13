@@ -1,5 +1,6 @@
 package com.nulp.moonice.ui
 
+import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Typeface
@@ -9,7 +10,6 @@ import android.os.Handler
 import android.util.Log
 import android.view.View
 import android.view.animation.Animation
-import android.view.animation.AnimationUtils
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -21,9 +21,11 @@ import com.google.gson.Gson
 import com.nulp.moonice.R
 import com.nulp.moonice.databinding.ActivityPlayerBinding
 import com.nulp.moonice.model.AudioRecord
+import com.nulp.moonice.model.Book
 import com.nulp.moonice.utils.*
 import com.squareup.picasso.Picasso
 import java.util.*
+
 
 class PlayerActivity : AppCompatActivity() {
 
@@ -33,28 +35,41 @@ class PlayerActivity : AppCompatActivity() {
     private lateinit var likeRef: DatabaseReference
     private lateinit var recordRef: DatabaseReference
     private lateinit var user: FirebaseUser
+    private lateinit var thisRecord: AudioRecord
 
+
+    // variables for media player
     private lateinit var playButton: ImageButton
+    private lateinit var skipBackwardButton: ImageButton
+    private lateinit var skipForwardButton: ImageButton
     private lateinit var seekBar: SeekBar
     private lateinit var currentTime: TextView
     private lateinit var endTime: TextView
     private lateinit var mediaPlayer: MediaPlayer
-    private lateinit var handler: Handler
+    private var handler: Handler = Handler()
+    private val millisecondsFiveSec = 5000
+    // variables for media player
 
+    // variables for other functions (share and like)
+    private lateinit var book: Book
+    private lateinit var bookTitle: TextView
+    private lateinit var chapterTitle: TextView
     private lateinit var shareButton: ImageButton
     private lateinit var likeButton: ImageButton
     private lateinit var likeText: TextView
-
-    private lateinit var thisRecord: AudioRecord
-
-    private lateinit var rotateDiskAnimation: Animation
-    private lateinit var diskImage: ImageView
-
     private var isLiking: Boolean = false
+    // variables for other functions
 
+    // variables for animation
+    private lateinit var diskImage: ImageView
+    private lateinit var diskImageAnimator: ObjectAnimator
+    // variables for animation
+
+    // variables for bookmarks
     private var hasBookmark = false
     private lateinit var userBookmarks: DataSnapshot
     private lateinit var records: DataSnapshot
+    // variables for bookmarks
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,13 +81,16 @@ class PlayerActivity : AppCompatActivity() {
         recordRef = ref.child(NODE_BOOKS).child(NODE_RECORDS)
         user = FirebaseAuth.getInstance().currentUser!!
 
+        bookTitle = binding.activityPlayerBookTitle
+        chapterTitle = binding.activityPlayerChapterInfo
         playButton = binding.playStop
+        skipBackwardButton = binding.fiveSecAgo
+        skipForwardButton = binding.fiveSecForward
         seekBar = binding.seekBar
         seekBar.max = 100
         currentTime = binding.currentTime
         endTime = binding.finishTime
         mediaPlayer = MediaPlayer()
-        handler = Handler()
 
         diskImage = binding.disk
         shareButton = binding.activityPlayerShare
@@ -93,40 +111,80 @@ class PlayerActivity : AppCompatActivity() {
             bookmark(binding.bookmark)
         }
 
-
-        playButton.setOnClickListener {
-            if (mediaPlayer.isPlaying) {
-                handler.removeCallbacks(updater)
-                mediaPlayer.pause()
-                playButton.setImageResource(R.drawable.ic_play)
-                diskImage.clearAnimation()
-            } else {
-                mediaPlayer.start()
-                updateSeekBar()
-                playButton.setImageResource(R.drawable.ic_pause)
-                rotateDiskAnimation()
-            }
-        }
+        // media player operations
 
         if (NetworkHelper.isNetworkConnected(this)) {
             prepareMediaPlayer()
         }
 
+        playButton.setOnClickListener {
+            if (mediaPlayer.isPlaying) {
+                chapterTitle.isSelected = false
+                handler.removeCallbacks(updater)
+                mediaPlayer.pause()
+                playButton.setImageResource(R.drawable.ic_play)
+                diskImageAnimator.pause()
+            } else {
+                mediaPlayer.start()
+                updateSeekBar()
+                chapterTitle.isSelected = true
+                playButton.setImageResource(R.drawable.ic_pause)
+                if (this::diskImageAnimator.isInitialized) {
+                    if (diskImageAnimator.isStarted) {
+                        diskImageAnimator.resume()
+                    } else {
+                        rotateDiskAnimation()
+                    }
+                } else {
+                    rotateDiskAnimation()
+                }
+            }
+        }
+
+        skipBackwardButton.setOnClickListener {
+            mediaPlayer.seekTo(mediaPlayer.currentPosition - millisecondsFiveSec)
+        }
+
+        skipForwardButton.setOnClickListener {
+            mediaPlayer.seekTo(mediaPlayer.currentPosition + millisecondsFiveSec)
+        }
+
         seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
-                val playPosition = (mediaPlayer.duration / 100) * p1
-                mediaPlayer.seekTo(playPosition)
-                currentTime.text = millisecondsToTimer(mediaPlayer.currentPosition)
+                if (p2) {
+                    mediaPlayer.seekTo(((mediaPlayer.duration.toFloat() / 100) * p1).toInt())
+                }
             }
 
             override fun onStartTrackingTouch(p0: SeekBar?) {
-                val playPosition = (mediaPlayer.duration / 100) * p0?.progress!!
+
             }
 
             override fun onStopTrackingTouch(p0: SeekBar?) {
-                val playPosition = (mediaPlayer.duration / 100) * p0?.progress!!
+
             }
         })
+
+        mediaPlayer.setOnCompletionListener {
+            handler.removeCallbacks(updater)
+            playButton.setImageResource(R.drawable.ic_play)
+            diskImageAnimator.end()
+        }
+        // media player operations
+
+        bookTitle.setOnClickListener {
+            mediaPlayer.seekTo(0)
+            seekBar.progress = 0
+            handler.removeCallbacks(updater)
+            currentTime.text = millisecondsToTimer(0)
+            mediaPlayer.pause()
+            chapterTitle.isSelected = false
+            playButton.setImageResource(R.drawable.ic_play)
+            diskImageAnimator.end()
+            val intent = Intent(this@PlayerActivity, BookActivity::class.java)
+            intent.putExtra("book", gson.toJson(book))
+            startActivity(intent)
+        }
 
         shareButton.setOnClickListener {
             val intent = Intent()
@@ -158,6 +216,7 @@ class PlayerActivity : AppCompatActivity() {
         }
     }
 
+
     private fun drawLayout() {
         if (NetworkHelper.isNetworkConnected(this)) {
             binding.fragmentLostNetwork.root.visibility = View.GONE
@@ -171,8 +230,8 @@ class PlayerActivity : AppCompatActivity() {
     }
 
     private fun bookmark(bookmark: ImageButton) {
-        Log.d("Test", "Space")
-        Log.d("Test", "First Has bookmark: $hasBookmark")
+//        Log.d("Test", "Space")
+//        Log.d("Test", "First Has bookmark: $hasBookmark")
 
         if (hasBookmark) {
             for (markSnapshot in userBookmarks.children) {
@@ -211,27 +270,33 @@ class PlayerActivity : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     private fun initPage(binding: ActivityPlayerBinding) {
         binding.backToBookActivity.setOnClickListener {
+            if (mediaPlayer.isPlaying) {
+                chapterTitle.isSelected = false
+                diskImageAnimator.end()
+                mediaPlayer.stop()
+            }
             finish()
         }
         val bookId = thisRecord.book
         ref.child(NODE_BOOKS).child(NODE_BOOK_DETAILS).child(bookId.toString())
             .addValueEventListener(AppValueEventListener {
-                binding.activityPlayerBookTitle.text =
-                    it.child(BOOK_DETAILS_TITLE).value as String
-                Picasso.get().load(it.child(BOOK_DETAILS_PICTURE_LINK).value as String)
+                book = it.getValue(Book::class.java)!!
+                book.id = it.key?.toLong() ?: 1
+                bookTitle.text = book.title
+                Picasso.get().load(book.pictureLink)
                     .into(binding.activityPlayerBookImage)
             })
-        binding.activityPlayerChapterInfo.text =
+        chapterTitle.text =
             "Ch. ${thisRecord.chapterNumber} ${thisRecord.chapterTitle}"
-        binding.likeText.text = thisRecord.like.toString()
+        likeText.text = thisRecord.like.toString()
 
         likeRef.addValueEventListener(AppValueEventListener {
             if (it.child(thisRecord.id.toString()).hasChild(user.uid)) {
-                binding.like.setImageResource(R.drawable.ic_liked)
-                binding.likeText.typeface = Typeface.DEFAULT_BOLD
+                likeButton.setImageResource(R.drawable.ic_liked)
+                likeText.typeface = Typeface.DEFAULT_BOLD
             } else {
-                binding.like.setImageResource(R.drawable.ic_like)
-                binding.likeText.typeface = Typeface.DEFAULT
+                likeButton.setImageResource(R.drawable.ic_like)
+                likeText.typeface = Typeface.DEFAULT
             }
         })
 
@@ -261,8 +326,8 @@ class PlayerActivity : AppCompatActivity() {
                         thisRecord.like
                     )
                     likeRef.child(thisRecord.id.toString()).child(user.uid).removeValue()
-                    binding.like.setImageResource(R.drawable.ic_like)
-                    binding.likeText.typeface = Typeface.DEFAULT
+                    likeButton.setImageResource(R.drawable.ic_like)
+                    likeText.typeface = Typeface.DEFAULT
                     false
                 } else {
                     thisRecord.like = thisRecord.like?.plus(1)
@@ -270,40 +335,48 @@ class PlayerActivity : AppCompatActivity() {
                         thisRecord.like
                     )
                     likeRef.child(thisRecord.id.toString()).child(user.uid).setValue("Liked")
-                    binding.like.setImageResource(R.drawable.ic_liked)
-                    binding.likeText.typeface = Typeface.DEFAULT_BOLD
+                    likeButton.setImageResource(R.drawable.ic_liked)
+                    likeText.typeface = Typeface.DEFAULT_BOLD
                     false
                 }
-                binding.likeText.text = thisRecord.like.toString()
+                likeText.text = thisRecord.like.toString()
 
             }
         })
     }
 
     private fun rotateDiskAnimation() {
-        rotateDiskAnimation = AnimationUtils.loadAnimation(this, R.anim.rotate_disk)
-        diskImage.startAnimation(rotateDiskAnimation)
+        diskImageAnimator = ObjectAnimator.ofFloat(diskImage, View.ROTATION, 360F)
+        diskImageAnimator.repeatCount = Animation.INFINITE
+        diskImageAnimator.repeatMode = ObjectAnimator.RESTART
+        diskImageAnimator.duration = 5000
+        diskImageAnimator.start()
+
     }
 
-    private val updater = object : TimerTask() {
-        override fun run() {
-            updateSeekBar()
-            val currentDuration = mediaPlayer.currentPosition
-            currentTime.text = millisecondsToTimer(currentDuration)
-        }
+    private val updater = Runnable {
+        updateSeekBar()
+        currentTime.text = millisecondsToTimer(mediaPlayer.currentPosition)
     }
 
     private fun updateSeekBar() {
         if (mediaPlayer.isPlaying) {
             seekBar.progress =
-                ((mediaPlayer.currentPosition / mediaPlayer.duration).toFloat() * 100).toInt()
+                ((mediaPlayer.currentPosition.toFloat() / mediaPlayer.duration.toFloat()) * 100).toInt()
+            Log.d("SeekBarSupposedTime", "${mediaPlayer.currentPosition.toFloat()}")
+            Log.d("SeekBarSupposedTime", "${mediaPlayer.duration.toFloat()}")
+            Log.d(
+                "SeekBarSupposedTime",
+                "${(mediaPlayer.currentPosition.toFloat() / mediaPlayer.duration.toFloat())}"
+            )
+            Log.d("SeekBarProgress", "${seekBar.progress}")
             handler.postDelayed(updater, 500)
         }
     }
 
     private fun millisecondsToTimer(milliseconds: Int): String {
         var timerString = ""
-        var secondsString = ""
+        val secondsString: String
         val hours = milliseconds / (1000 * 60 * 60)
         val minutes = milliseconds % (1000 * 60 * 60) / (1000 * 60)
         val seconds = milliseconds % (1000 * 60 * 60) % (1000 * 60) / 1000
