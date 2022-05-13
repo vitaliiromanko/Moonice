@@ -32,6 +32,16 @@
 
     </style>
 
+    <style name="LostNetworkButtonStyle" parent="TextAppearance.AppCompat.Widget.Button">
+        <item name="android:backgroundTint">@color/white_purple</item>
+        <item name="android:textColor">@color/dark_purple_blue</item>
+    </style>
+
+    <style name="LostNetworkImageStyle">
+        <item name="android:background">@drawable/ic_wifi_off</item>
+        <item name="android:backgroundTint">@color/white_purple</item>
+    </style>
+
     <style name="UploadImageButtonStyle" parent="TextAppearance.AppCompat.Widget.Button">
         <item name="backgroundTint">@color/white_purple</item>
         <item name="android:textColor">@color/indigo</item>

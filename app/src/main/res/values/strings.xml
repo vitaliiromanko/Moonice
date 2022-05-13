@@ -88,4 +88,6 @@
     <string name="description_throne_of_glass">Throne of Glass follows Celaena Sardothien, a 18-year-old assassin in the Kingdom of Adarlan. After a year of suffering for her crimes in a slave camp called Endovier, she accepts the offer of Crown Prince Dorian, the King of Adarlan\'s son, to compete with other assassins.</string>
     <string name="genre">Genre</string>
     <string name="user_avatar">User Avatar</string>
+    <string name="lost_internet_connection">Lost internet connection</string>
+    <string name="try_again">Try Again</string>
 </resources>
