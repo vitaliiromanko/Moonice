@@ -293,6 +293,7 @@
         <item name="android:background">@color/dark_purple_blue</item>
         <item name="android:thumbTint">@color/sky_blue</item>
         <item name="android:progressTint">@color/sky_blue</item>
+        <item name="android:progressBackgroundTint">@color/light_purple</item>
     </style>
 
     <style name="PlayerSeekBarLayout">
