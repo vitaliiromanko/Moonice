@@ -194,6 +194,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         if (!searchView.isIconified) {
+            searchView.setQuery("", false);
+            searchView.clearFocus();
             searchView.isIconified = true
             searchView.layoutParams.width = WRAP_CONTENT
             toolbarTitle.visibility = View.VISIBLE

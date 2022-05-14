@@ -101,6 +101,7 @@ class PlayerActivity : AppCompatActivity() {
             finish()
         }
 
+
         setSupportActionBar(binding.myToolbar)
 
         recordRef.addValueEventListener(AppValueEventListener {
@@ -147,17 +148,35 @@ class PlayerActivity : AppCompatActivity() {
         }
 
         skipBackwardButton.setOnClickListener {
+            if (mediaPlayer.currentPosition - millisecondsFiveSec >= 0) {
+                currentTime.text =
+                    millisecondsToTimer(mediaPlayer.currentPosition - millisecondsFiveSec)
+            } else {
+                currentTime.text = millisecondsToTimer(0)
+            }
             mediaPlayer.seekTo(mediaPlayer.currentPosition - millisecondsFiveSec)
+            seekBar.progress =
+                ((mediaPlayer.currentPosition.toFloat() / mediaPlayer.duration.toFloat()) * 100).toInt()
         }
 
         skipForwardButton.setOnClickListener {
+            if (mediaPlayer.currentPosition + millisecondsFiveSec <= mediaPlayer.duration) {
+                currentTime.text =
+                    millisecondsToTimer(mediaPlayer.currentPosition + millisecondsFiveSec)
+            } else {
+                currentTime.text = millisecondsToTimer(mediaPlayer.duration)
+            }
             mediaPlayer.seekTo(mediaPlayer.currentPosition + millisecondsFiveSec)
+            seekBar.progress =
+                ((mediaPlayer.currentPosition.toFloat() / mediaPlayer.duration.toFloat()) * 100).toInt()
         }
 
         seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
                 if (p2) {
                     mediaPlayer.seekTo(((mediaPlayer.duration.toFloat() / 100) * p1).toInt())
+                    currentTime.text =
+                        millisecondsToTimer(((mediaPlayer.duration.toFloat() / 100) * p1).toInt())
                 }
             }
 
@@ -194,7 +213,7 @@ class PlayerActivity : AppCompatActivity() {
         shareButton.setOnClickListener {
             val intent = Intent()
             intent.action = Intent.ACTION_SEND
-            intent.putExtra(Intent.EXTRA_SUBJECT, "Moonice")
+            intent.putExtra(Intent.EXTRA_SUBJECT, "Share this chapter to:")
             intent.putExtra(
                 Intent.EXTRA_TEXT,
                 "I recommend this chapter to you:\n\nCh.${thisRecord.chapterNumber} ${thisRecord.chapterTitle} of ${bookTitle.text}.\n\n\nInstall Moonice and listen to audiobooks for free.\nhttps://www.youtube.com/watch?v=H0Yirlo6WSU"
@@ -371,13 +390,6 @@ class PlayerActivity : AppCompatActivity() {
         if (mediaPlayer.isPlaying) {
             seekBar.progress =
                 ((mediaPlayer.currentPosition.toFloat() / mediaPlayer.duration.toFloat()) * 100).toInt()
-            Log.d("SeekBarSupposedTime", "${mediaPlayer.currentPosition.toFloat()}")
-            Log.d("SeekBarSupposedTime", "${mediaPlayer.duration.toFloat()}")
-            Log.d(
-                "SeekBarSupposedTime",
-                "${(mediaPlayer.currentPosition.toFloat() / mediaPlayer.duration.toFloat())}"
-            )
-            Log.d("SeekBarProgress", "${seekBar.progress}")
             handler.postDelayed(updater, 500)
         }
     }
@@ -412,6 +424,11 @@ class PlayerActivity : AppCompatActivity() {
             Toast.makeText(this, ex.message, Toast.LENGTH_SHORT).show()
             finish()
         }
+    }
+
+    override fun onDestroy() {
+        mediaPlayer.release()
+        super.onDestroy()
     }
 
     override fun onBackPressed() {
