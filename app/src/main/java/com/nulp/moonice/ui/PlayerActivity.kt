@@ -413,4 +413,13 @@ class PlayerActivity : AppCompatActivity() {
             finish()
         }
     }
+
+    override fun onBackPressed() {
+        if (mediaPlayer.isPlaying) {
+            chapterTitle.isSelected = false
+            diskImageAnimator.end()
+            mediaPlayer.stop()
+        }
+        finish()
+    }
 }

@@ -75,4 +75,9 @@ class ForgotPasswordActivity : AppCompatActivity() {
                 }
         }
     }
+
+    override fun onBackPressed() {
+        startActivity(Intent(this@ForgotPasswordActivity, LoginActivity::class.java))
+        finish()
+    }
 }

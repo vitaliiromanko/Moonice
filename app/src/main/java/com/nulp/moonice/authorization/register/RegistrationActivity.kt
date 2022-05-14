@@ -214,4 +214,9 @@ class RegistrationActivity : AppCompatActivity() {
             }
 
     }
+
+    override fun onBackPressed() {
+        startActivity(Intent(this@RegistrationActivity, LoginActivity::class.java))
+        finish()
+    }
 }
