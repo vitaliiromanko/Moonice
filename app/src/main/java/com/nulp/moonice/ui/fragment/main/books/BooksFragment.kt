@@ -70,10 +70,10 @@ class BooksFragment : Fragment() {
     }
 
     private fun initPopularBooksRecycleView(recyclerView: RecyclerView) {
-        var bookArrayList = arrayListOf<Book>()
         ref.child(NODE_BOOKS)
             .addValueEventListener(AppValueEventListener {
                 if (it.exists()) {
+                    val bookArrayList = arrayListOf<Book>()
                     for (bookSnapshot in it.child(NODE_BOOK_DETAILS).children) {
                         if (it.child(NODE_BOOKS_TOP).child(TOP_POPULAR_BOOKS)
                                 .hasChild(bookSnapshot.key!!)
@@ -85,7 +85,6 @@ class BooksFragment : Fragment() {
                             }
                         }
                     }
-                    bookArrayList = bookArrayList.take(10) as ArrayList<Book>
                     recyclerView.adapter = BooksAdapter((object : BooksActionListener {
                         override fun onBookClick(book: Book) {
                             val gson = Gson()
@@ -100,10 +99,10 @@ class BooksFragment : Fragment() {
     }
 
     private fun initTopComedyRecycleView(recyclerView: RecyclerView) {
-        var bookArrayList = arrayListOf<Book>()
         ref.child(NODE_BOOKS)
             .addValueEventListener(AppValueEventListener {
                 if (it.exists()) {
+                    val bookArrayList = arrayListOf<Book>()
                     for (bookSnapshot in it.child(NODE_BOOK_DETAILS).children) {
                         if (it.child(NODE_BOOKS_TOP).child(TOP_COMEDY)
                                 .hasChild(bookSnapshot.key!!)
@@ -115,7 +114,6 @@ class BooksFragment : Fragment() {
                             }
                         }
                     }
-                    bookArrayList = bookArrayList.take(10) as ArrayList<Book>
                     recyclerView.adapter = BooksAdapter((object : BooksActionListener {
                         override fun onBookClick(book: Book) {
                             val gson = Gson()
@@ -130,10 +128,10 @@ class BooksFragment : Fragment() {
     }
 
     private fun initTopDramaRecycleView(recyclerView: RecyclerView) {
-        var bookArrayList = arrayListOf<Book>()
         ref.child(NODE_BOOKS)
             .addValueEventListener(AppValueEventListener {
                 if (it.exists()) {
+                    val bookArrayList = arrayListOf<Book>()
                     for (bookSnapshot in it.child(NODE_BOOK_DETAILS).children) {
                         if (it.child(NODE_BOOKS_TOP).child(TOP_DRAMA)
                                 .hasChild(bookSnapshot.key!!)
@@ -145,7 +143,6 @@ class BooksFragment : Fragment() {
                             }
                         }
                     }
-                    bookArrayList = bookArrayList.take(10) as ArrayList<Book>
                     recyclerView.adapter = BooksAdapter((object : BooksActionListener {
                         override fun onBookClick(book: Book) {
                             val gson = Gson()
@@ -160,9 +157,9 @@ class BooksFragment : Fragment() {
     }
 
     private fun initTopFantasyRecycleView(recyclerView: RecyclerView) {
-        var bookArrayList = arrayListOf<Book>()
         ref.child(NODE_BOOKS)
             .addValueEventListener(AppValueEventListener {
+                val bookArrayList = arrayListOf<Book>()
                 if (it.exists()) {
                     for (bookSnapshot in it.child(NODE_BOOK_DETAILS).children) {
                         if (it.child(NODE_BOOKS_TOP).child(TOP_FANTASY)
@@ -175,7 +172,6 @@ class BooksFragment : Fragment() {
                             }
                         }
                     }
-                    bookArrayList = bookArrayList.take(10) as ArrayList<Book>
                     recyclerView.adapter = BooksAdapter((object : BooksActionListener {
                         override fun onBookClick(book: Book) {
                             val gson = Gson()
@@ -190,9 +186,9 @@ class BooksFragment : Fragment() {
     }
 
     private fun initTopRomanceRecycleView(recyclerView: RecyclerView) {
-        var bookArrayList = arrayListOf<Book>()
         ref.child(NODE_BOOKS)
             .addValueEventListener(AppValueEventListener {
+                val bookArrayList = arrayListOf<Book>()
                 if (it.exists()) {
                     for (bookSnapshot in it.child(NODE_BOOK_DETAILS).children) {
                         if (it.child(NODE_BOOKS_TOP).child(TOP_ROMANCE)
@@ -205,7 +201,6 @@ class BooksFragment : Fragment() {
                             }
                         }
                     }
-                    bookArrayList = bookArrayList.take(10) as ArrayList<Book>
                     recyclerView.adapter = BooksAdapter((object : BooksActionListener {
                         override fun onBookClick(book: Book) {
                             val gson = Gson()
