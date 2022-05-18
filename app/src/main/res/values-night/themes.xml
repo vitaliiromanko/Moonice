@@ -43,8 +43,8 @@
     </style>
 
     <style name="UploadImageButtonStyle" parent="TextAppearance.AppCompat.Widget.Button">
-        <item name="backgroundTint">@color/white_purple</item>
-        <item name="android:textColor">@color/indigo</item>
+        <item name="backgroundTint">@color/light_purple</item>
+        <item name="android:textColor">@color/white_purple</item>
     </style>
 
     <style name="SearchTheme" parent="Widget.AppCompat.Light.SearchView">
@@ -227,22 +227,22 @@
     </style>
 
     <style name="EditProfileToolbarTheme" parent="ThemeOverlay.AppCompat.ActionBar">
-        <item name="android:background">@color/white_purple</item>
-        <item name="android:textColor">@color/indigo</item>
+        <item name="android:background">@color/light_purple</item>
+        <item name="android:textColor">@color/white_purple</item>
         <item name="android:textSize">22sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:gravity">center</item>
-        <item name="tint">@color/indigo</item>
+        <item name="tint">@color/white_purple</item>
         <item name="backgroundTint">@color/transparent</item>
     </style>
 
     <style name="LikesToolbarTheme" parent="ThemeOverlay.AppCompat.ActionBar">
-        <item name="android:background">@color/white_purple</item>
-        <item name="android:textColor">@color/indigo</item>
+        <item name="android:background">@color/light_purple</item>
+        <item name="android:textColor">@color/white_purple</item>
         <item name="android:textSize">22sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:gravity">center</item>
-        <item name="tint">@color/indigo</item>
+        <item name="tint">@color/white_purple</item>
         <item name="backgroundTint">@color/transparent</item>
     </style>
 
