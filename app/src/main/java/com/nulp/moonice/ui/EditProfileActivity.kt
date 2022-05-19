@@ -38,6 +38,8 @@ import java.util.*
 class EditProfileActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEditProfileBinding
     private lateinit var ref: DatabaseReference
+    private lateinit var pictureRef: StorageReference
+    private lateinit var pictureLink: String
     private lateinit var auth: FirebaseAuth
     private lateinit var curUser: FirebaseUser
     private var cal: Calendar = Calendar.getInstance()
@@ -249,7 +251,7 @@ class EditProfileActivity : AppCompatActivity() {
             usernameOld = it.child(USER_DETAILS_USERNAME).value as String
             binding.emailEditProfile.setText(it.child(USER_DETAILS_EMAIL).value as String)
             textviewDate!!.text = it.child(USER_DETAILS_BIRTH_DATE).value as String
-            val pictureLink = it.child(USER_DETAILS_PROFILE_IMAGE).value as String
+            pictureLink = it.child(USER_DETAILS_PROFILE_IMAGE).value as String
             if (pictureLink != "") {
                 Picasso.get().load(pictureLink)
                     .into(binding.profilePictureEditProfile)
@@ -396,6 +398,15 @@ class EditProfileActivity : AppCompatActivity() {
         storageRef.putFile(pictureUri).addOnSuccessListener {
             storageRef.downloadUrl.addOnSuccessListener {
                 Log.d("ProfilePicUrl", it.toString())
+
+                if (pictureLink.isNotEmpty()) {
+                    try {
+                        FirebaseStorage.getInstance().getReferenceFromUrl(pictureLink).delete()
+                    } catch (e: IllegalArgumentException)  {
+                        Log.d("Exception", e.toString())
+                    }
+                }
+
                 userRef.child(USER_DETAILS_PROFILE_IMAGE)
                     .setValue(it.toString())
             }
