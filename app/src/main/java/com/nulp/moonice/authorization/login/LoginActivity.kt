@@ -198,7 +198,7 @@ class LoginActivity : AppCompatActivity() {
         hashMap[USER_DETAILS_USERNAME] = currentUser?.displayName
         hashMap[USER_DETAILS_EMAIL] = currentUser.email
         hashMap[USER_DETAILS_BIRTH_DATE] = "--/--/----"
-        hashMap[USER_DETAILS_PROFILE_IMAGE] = ""
+        hashMap[USER_DETAILS_PROFILE_IMAGE] = currentUser.photoUrl.toString()
         hashMap[USER_DETAILS_TIMESTAMP] = timestamp
 
 
