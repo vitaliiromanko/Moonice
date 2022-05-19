@@ -19,9 +19,9 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.view.ContextThemeWrapper
 import androidx.core.content.FileProvider
-import com.github.javafaker.Faker
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
@@ -39,6 +39,7 @@ class EditProfileActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEditProfileBinding
     private lateinit var ref: DatabaseReference
     private lateinit var auth: FirebaseAuth
+    private lateinit var curUser: FirebaseUser
     private var cal: Calendar = Calendar.getInstance()
     private val today: Calendar = Calendar.getInstance()
     private val millieYear: Long = 31556952000
@@ -102,6 +103,7 @@ class EditProfileActivity : AppCompatActivity() {
             }
         }
         auth = FirebaseAuth.getInstance()
+        curUser = auth.currentUser!!
         val userId = auth.currentUser?.uid ?: "0"
         val userReference = ref.child(NODE_USERS).child(NODE_USER_DETAILS).child(userId)
         initPage(binding, userReference)
@@ -389,8 +391,7 @@ class EditProfileActivity : AppCompatActivity() {
         pictureUri: Uri
     ): Boolean {
         var success = false
-        val faker = Faker.instance()
-        val filename = faker.leagueOfLegends().champion() + faker.space().star() + ".jpg"
+        val filename = curUser.uid + UUID.randomUUID() + ".jpg"
         storageRef = FirebaseStorage.getInstance().getReference("/UserAvatars/$filename")
         storageRef.putFile(pictureUri).addOnSuccessListener {
             storageRef.downloadUrl.addOnSuccessListener {
