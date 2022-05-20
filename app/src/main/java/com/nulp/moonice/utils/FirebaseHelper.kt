@@ -1,7 +1,8 @@
 package com.nulp.moonice.utils
 
 const val FIREBASE_URL = "https://moonicedatabase-default-rtdb.europe-west1.firebasedatabase.app"
-const val FIREBASE_STORAGE_URL = "https://firebasestorage.googleapis.com/v0/b/moonicedatabase.appspot.com/o/"
+const val FIREBASE_STORAGE_URL =
+    "https://firebasestorage.googleapis.com/v0/b/moonicedatabase.appspot.com/o/"
 
 const val NODE_USERS = "Users"
 const val NODE_USER_DETAILS = "UsersInfo"

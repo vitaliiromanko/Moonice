@@ -37,8 +37,8 @@
                 style="@style/ItemChapterNumberStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/ch_1"
-                android:layout_marginHorizontal="10dp" />
+                android:layout_marginHorizontal="10dp"
+                android:text="@string/ch_1" />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -55,9 +55,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
                 android:ellipsize="end"
-                android:text="@string/mystical_dream"
                 android:lines="1"
-                android:scrollHorizontally="false" />
+                android:scrollHorizontally="false"
+                android:text="@string/mystical_dream" />
         </LinearLayout>
 
         <TextView

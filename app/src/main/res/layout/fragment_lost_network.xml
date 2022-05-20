@@ -18,11 +18,10 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            style="@style/LostNetworkImageStyle"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginBottom="20dp"
-            style="@style/LostNetworkImageStyle"
-            />
+            android:layout_marginBottom="20dp" />
 
         <TextView
             style="@style/TextMainTitle"
@@ -34,13 +33,13 @@
 
         <Button
             android:id="@+id/fragment_lost_network_try_again_button"
+            style="@style/LostNetworkButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:paddingVertical="10dp"
             android:paddingHorizontal="30dp"
-            style="@style/LostNetworkButtonStyle"
-            android:text="@string/try_again" />
+            android:paddingVertical="10dp"
+            android:text="@string/try_again"
+            android:textSize="16sp" />
 
     </LinearLayout>
 

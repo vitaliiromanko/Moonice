@@ -10,9 +10,9 @@
     <androidx.cardview.widget.CardView style="@style/ItemBookCoverCardStyle">
 
         <ImageButton
-            android:contentDescription="@string/book_cover"
             android:id="@+id/bookmark_image_logo"
             style="@style/ItemBookCoverButtonStyle"
+            android:contentDescription="@string/book_cover"
             android:src="@drawable/book_item_2" />
     </androidx.cardview.widget.CardView>
 
@@ -29,8 +29,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="3"
-            android:textSize="16sp"
-            android:text="@string/throne_of_glass" />
+            android:text="@string/throne_of_glass"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/bookmark_item_publish_data"

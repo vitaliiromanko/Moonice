@@ -38,7 +38,6 @@ import java.util.*
 class EditProfileActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEditProfileBinding
     private lateinit var ref: DatabaseReference
-    private lateinit var pictureRef: StorageReference
     private lateinit var pictureLink: String
     private lateinit var auth: FirebaseAuth
     private lateinit var curUser: FirebaseUser
@@ -181,9 +180,6 @@ class EditProfileActivity : AppCompatActivity() {
 
         if (requestCode == REQUEST_IMAGE_UPLOAD && resultCode == Activity.RESULT_OK && data != null) {
             selectedPictureUri = data.data!!
-//            val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, selectedPictureUri)
-//            val bitmapDrawable = BitmapDrawable(bitmap)
-//            binding.profilePictureEditProfile.setImageDrawable(bitmapDrawable)
             binding.profilePictureEditProfile.setImageURI(selectedPictureUri)
             profilePictureTaken = false
             profilePictureUploaded = true
@@ -402,7 +398,7 @@ class EditProfileActivity : AppCompatActivity() {
                 if (pictureLink.isNotEmpty()) {
                     try {
                         FirebaseStorage.getInstance().getReferenceFromUrl(pictureLink).delete()
-                    } catch (e: IllegalArgumentException)  {
+                    } catch (e: IllegalArgumentException) {
                         Log.d("Exception", e.toString())
                     }
                 }

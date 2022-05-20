@@ -43,8 +43,10 @@ class BookmarkAdapter(
             holder.itemView.tag = bookmark
             bookmarkImageLogo.tag = bookmark
             bookmarkItemTitle.text = bookmark.book!!.title
-            bookmarkItemPublishData.text = "${bookmark.book!!.author}, ${bookmark.book!!.publishDate}"
-            bookmarkItemChapterData.text = "Ch.${bookmark.record!!.chapterNumber} ${bookmark.record!!.chapterTitle}"
+            bookmarkItemPublishData.text =
+                "${bookmark.book!!.author}, ${bookmark.book!!.publishDate}"
+            bookmarkItemChapterData.text =
+                "Ch.${bookmark.record!!.chapterNumber} ${bookmark.record!!.chapterTitle}"
             Picasso.get().load(bookmark.book!!.pictureLink).into(bookmarkImageLogo)
         }
     }

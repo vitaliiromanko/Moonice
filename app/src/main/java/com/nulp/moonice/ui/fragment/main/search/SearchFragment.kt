@@ -5,7 +5,6 @@ import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.util.DisplayMetrics
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -128,7 +127,8 @@ class SearchFragment : Fragment() {
     }
 
     private fun calculateNoOfColumns(
-        context: Context): Int {
+        context: Context
+    ): Int {
         val displayMetrics: DisplayMetrics = context.resources.displayMetrics
         val screenWidthDp = displayMetrics.widthPixels.toFloat() / displayMetrics.density - 20
         return (screenWidthDp / columnWidthDp.toFloat() + 0.5).toInt()

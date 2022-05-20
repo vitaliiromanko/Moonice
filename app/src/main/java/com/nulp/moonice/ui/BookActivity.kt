@@ -91,7 +91,7 @@ class BookActivity : AppCompatActivity() {
         drawLayout()
 
         val tryAgainButton = findViewById<Button>(R.id.fragment_lost_network_try_again_button)
-        tryAgainButton.setOnClickListener{
+        tryAgainButton.setOnClickListener {
             drawLayout()
         }
     }
@@ -171,7 +171,6 @@ class BookActivity : AppCompatActivity() {
             .addValueEventListener(AppValueEventListener {
                 binding.navHeaderBook.bookGenreHeaderBar.text = it.value as String
             })
-//        binding.navHeaderBook.bookGenreHeaderBar.text = genreValue.toString()
         Picasso.get().load(book.pictureLink).into(binding.navHeaderBook.navHeaderBookBookImage)
 
         bookmarkRef.child(user.uid)

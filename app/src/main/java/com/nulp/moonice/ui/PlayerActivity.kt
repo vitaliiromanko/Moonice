@@ -37,7 +37,6 @@ class PlayerActivity : AppCompatActivity() {
     private lateinit var user: FirebaseUser
     private lateinit var thisRecord: AudioRecord
 
-
     // variables for media player
     private lateinit var playButton: ImageButton
     private lateinit var skipBackwardButton: ImageButton

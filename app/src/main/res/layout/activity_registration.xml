@@ -28,8 +28,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:orientation="vertical"
-            android:paddingHorizontal="10dp"
-            >
+            android:paddingHorizontal="10dp">
 
 
             <com.google.android.material.textfield.TextInputLayout

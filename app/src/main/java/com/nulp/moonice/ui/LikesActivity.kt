@@ -46,7 +46,7 @@ class LikesActivity : AppCompatActivity() {
         drawLayout()
 
         val tryAgainButton = findViewById<Button>(R.id.fragment_lost_network_try_again_button)
-        tryAgainButton.setOnClickListener{
+        tryAgainButton.setOnClickListener {
             drawLayout()
         }
     }
