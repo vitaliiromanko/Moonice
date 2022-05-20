@@ -223,7 +223,7 @@ class PlayerActivity : AppCompatActivity() {
         }
 
         likeButton.setOnClickListener {
-            likeRecord(binding)
+            likeRecord()
         }
 
         likeText.setOnClickListener {
@@ -344,7 +344,7 @@ class PlayerActivity : AppCompatActivity() {
             })
     }
 
-    private fun likeRecord(binding: ActivityPlayerBinding) {
+    private fun likeRecord() {
         isLiking = true
         likeRef.addValueEventListener(AppValueEventListener {
             if (isLiking) {
