@@ -18,7 +18,7 @@ import com.nulp.moonice.R
 import com.nulp.moonice.authorization.login.LoginActivity
 import com.nulp.moonice.databinding.ActivityRegistrationBinding
 import com.nulp.moonice.utils.*
-import com.nulp.moonice.vital_changer.LoadingDialog
+import com.nulp.moonice.authorization.animation.LoadingDialog
 import java.text.SimpleDateFormat
 import java.util.*
 

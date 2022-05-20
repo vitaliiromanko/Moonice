@@ -1,4 +1,4 @@
-package com.nulp.moonice.vital_changer
+package com.nulp.moonice.authorization.animation
 
 import android.app.Activity
 import android.app.AlertDialog

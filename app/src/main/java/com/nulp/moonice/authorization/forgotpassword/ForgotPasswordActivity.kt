@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.nulp.moonice.authorization.login.LoginActivity
 import com.nulp.moonice.databinding.ActivityForgotPasswordBinding
-import com.nulp.moonice.vital_changer.LoadingDialog
+import com.nulp.moonice.authorization.animation.LoadingDialog
 
 class ForgotPasswordActivity : AppCompatActivity() {
 

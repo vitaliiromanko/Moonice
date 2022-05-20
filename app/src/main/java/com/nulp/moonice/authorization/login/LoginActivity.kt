@@ -27,7 +27,7 @@ import com.nulp.moonice.authorization.register.RegistrationActivity
 import com.nulp.moonice.databinding.ActivityLoginBinding
 import com.nulp.moonice.ui.MainActivity
 import com.nulp.moonice.utils.*
-import com.nulp.moonice.vital_changer.LoadingDialog
+import com.nulp.moonice.authorization.animation.LoadingDialog
 import java.util.*
 
 
