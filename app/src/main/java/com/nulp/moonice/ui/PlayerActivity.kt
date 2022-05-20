@@ -193,6 +193,7 @@ class PlayerActivity : AppCompatActivity() {
             handler.removeCallbacks(updater)
             playButton.setImageResource(R.drawable.ic_play)
             diskImageAnimator.end()
+            chapterTitle.isSelected = false
         }
         // media player operations
 
