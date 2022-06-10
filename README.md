@@ -28,7 +28,6 @@ Monice is a mobile application for listening to audiobooks. It was created for M
 * Adding bookmarks to audiochapters and books (marking first audiochapter of a book to start reading later), reading and removing them
 * Search by title among all books in DB
 * Check all users with avatars and usernames that liked a specific audiochapter
-* Caching
 
 ### Account
 * Edit profile picture (upload from gallery or take a photo with camera, image is saved in Firebase Storage after applying changes)
