@@ -1,18 +1,20 @@
-<h1 align="center">
-  📖 Moonice 📖
-</h1>
+<h1 align="center">📖 Moonice 📖</h1>
 <img align="right" width="90" height="90"
      alt="Book with play button, Moonice logo"
      src="https://github.com/vitaliiromanko/Moonice/blob/master/app/src/main/res/mipmap-hdpi/ic_moonice_icon_round.png?raw=true">
-Monice is a mobile application for listening to audiobooks. It was created for Mobile App Development course at Lviv Polytechnic National University. 
-<p></p>
 <img src="https://img.shields.io/badge/version-1.0.0-blueviolet?style=for-the-badge" alt="Version Badge">
+Monice is a mobile application for listening to audiobooks. It was created for Mobile App Development course at Lviv Polytechnic National University. 
 
-## System
-- Version: 1.0
-- Language: Kotlin
-- Support system: Firebase
+<hr>
 
+<div align="center"> 
+  <a href="#-functionality">Functionality</a><span margin="10px"> |
+  <a href="#-languages-and-tools">Languages and Tools</a> |
+  <a href="#-creators">Creators</a>
+</div>
+
+<hr>  
+  
 ## 📱 Functionality
 
 ### Authentication
